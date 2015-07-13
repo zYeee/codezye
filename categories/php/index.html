@@ -49,7 +49,7 @@
 
 
 
-  <title> hello world </title>
+  <title> Category: php // hello world </title>
 </head>
 
 <body>
@@ -63,9 +63,7 @@
   </div>
 <![endif]-->
 
-  <div class="container one-column 
-   page-home 
-">
+  <div class="container one-column ">
     <div class="headband"></div>
 
     <div id="header" class="header">
@@ -149,172 +147,33 @@
       <div class="main-inner">
         <div id="content" class="content">
           
-  <div id="posts" class="posts-expand">
-    
-      
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/07/14/php-foreach-引用参数会造成的问题/">
-                php foreach 引用参数会造成的问题
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on 2015-07-14
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; In
-            
-              <a href="/categories/php/">php</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/07/14/php-foreach-引用参数会造成的问题/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/14/php-foreach-引用参数会造成的问题/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
+  <div id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        php
+        <small>Category</small>
+      </h2>
     </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>php运行以下代码</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line"><span class="variable">$a</span> = <span class="keyword">array</span>(<span class="string">'abe'</span>,<span class="string">'ben'</span>,<span class="string">'cam'</span>);</span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$a</span> <span class="keyword">as</span> &amp;<span class="variable">$n</span>)&#123;</span><br><span class="line"><span class="variable">$n</span> = strtoupper(<span class="variable">$n</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$a</span> <span class="keyword">as</span> <span class="variable">$n</span>) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">print_r(<span class="variable">$a</span>);</span><br><span class="line"><span class="preprocessor">?&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>原以为这段程序会输出</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">ABE</span></span><br><span class="line"><span class="keyword">BEN</span><br><span class="line"></span><span class="label">CAM</span></span><br></pre></td></tr></table></figure>
-<p>没想到输出的是</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">ABE</span></span><br><span class="line"><span class="keyword">BEN</span><br><span class="line"></span><span class="keyword">BEN</span></span><br></pre></td></tr></table></figure>
-<p>在第一次遍历时，变量n被定义为了<strong>引用</strong>，它指向的是上一次遍历时<strong>最后的那个元素</strong>。因为第一次遍历后，因为没有unset($n)，所以$n仍然是一个引用，指向$a[2]。<br><br>第二次foreach:<br></p>
-<ol>
-<li>将$n改为$a[0] ABE BEN ABE<br></li>
-<li>将$n改为$a[1] ABE BEN BEN<br></li>
-<li>将$n改为$a[2] ABE BEN BEN<br></li>
-</ol>
-
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
 
     
       
 
-  <div class="post post-type-normal ">
+  <div class="post post-type-normal">
     <div class="post-header">
 
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/07/13/父亲，走好。/">
-                父亲，走好。
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on 2015-07-13
-        </span>
-
+      <div class="post-title">
         
-          <span class="post-category">
-            &nbsp; | &nbsp; In
-            
-              <a href="/categories/个人/">个人</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/07/13/父亲，走好。/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/13/父亲，走好。/"></span>
+            <a class="post-title-link" href="/2015/07/14/php-foreach-引用参数会造成的问题/">
+              php foreach 引用参数会造成的问题
             </a>
-          </span>
-          
         
       </div>
-    </div>
 
-    <div class="post-body">
+      <div class="post-meta">
+        <span class="post-time"> 07-14 </span>
+      </div>
 
-      
-      
-
-      
-        
-          <p>2015年7月12日22点30分，时间没有多停止一秒，而我父亲的生命却从此停滞不前。<br><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/13/父亲，走好。/#more">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
     </div>
   </div>
 
@@ -323,6 +182,7 @@
   </div>
 
   
+
 
         </div>
 
@@ -439,6 +299,12 @@
 
   
   
+  
+    <script type="text/javascript">
+      postMotionOptions = {stagger: 100, drag: true};
+    </script>
+  
+
 
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
@@ -470,26 +336,6 @@
   
 
   
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"zyeee"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-
 
   
   
