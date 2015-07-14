@@ -49,7 +49,7 @@
 
 
 
-  <title> 父亲，走好。 // hello world </title>
+  <title> fedora firewall 配置 // hello world </title>
 </head>
 
 <body>
@@ -160,7 +160,7 @@
           
           
             
-              父亲，走好。
+              fedora firewall 配置
             
           
         </h1>
@@ -168,14 +168,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Posted on 2015-07-13
+          Posted on 2015-07-14
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; In
             
-              <a href="/categories/个人/">个人</a>
+              <a href="/categories/linux/">linux</a>
 
               
               
@@ -188,8 +188,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/07/13/父亲，走好。/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/13/父亲，走好。/"></span>
+            <a href="/2015/07/14/fedora-firewall-配置/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/14/fedora-firewall-配置/"></span>
             </a>
           </span>
           
@@ -203,12 +203,11 @@
       
 
       
-        <p>2015年7月12日22点30分，时间没有多停止一秒，而我父亲的生命却从此停滞不前。<br><br><a id="more"></a><br>很多人叫我不要难过了。我觉得我心里不难过。这是一种很奇特的感觉。我觉得我始终无法接受父亲已经走掉的这个现实。我总觉得，每当我想他给他打电话的时候，他会按掉，然后用家里的电话给我打过来，是因为他想给我省电话费。每当我坐火车回家晚上打开家门的时候，他总能给我准备好我爱吃的虾仁粥。每当我离开家乡的时候，他总能早起送我，目送我上车，直到接到我的平安到达的短信才放心……<br><br>我总觉得他没有真正离开我，我总觉得他还时刻在我身边，会在我需要他的时候出现，会给我一些让我觉得厌烦的关心。也许这就是对至亲的一种感觉，并非生死可以隔断。<br></p>
-<hr>
-<p>你终于可以从此无需牵挂，乐得逍遥自在。<br><br>哀思无需千言万语，爸我相信你能够明白。<br><br>你所有的愿望，我都会为你实现。<br><br>你所有的愿望，都会成为我的第二条生命，我会带着它们好好活下去。</p>
-<hr>
-<p>父亲，一路走好。</p>
-<p>—</p>
+        <p>fedora系统会对特写的port加上防火墙限制，所以在进行开发的时候，要关闭这些特定端口的防火墙。<br><br><a id="more"></a><br>firewall有GUI，通过GUI可以方便地对其进行操作。<br><br>firewall-cmd是firewall的commend line配置命令:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd [--zone=<span class="tag">&lt;<span class="title">zone</span>&gt;</span>] --add-port=<span class="tag">&lt;<span class="title">port</span>&gt;</span>[-<span class="tag">&lt;<span class="title">port</span>&gt;</span>]/<span class="tag">&lt;<span class="title">protocol</span>&gt;</span> [--timeout=<span class="tag">&lt;<span class="title">seconds</span>&gt;</span>]</span><br></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">firewall-<span class="built_ins">cmd</span> --<span class="built_ins">add</span>-port=8080/tcp 开放8080端口的tcp连接</span><br><span class="line">firewall-<span class="built_ins">cmd</span> --remove-port=8080/tcp</span><br><span class="line">firewall-<span class="built_ins">cmd</span> --<span class="built_ins">add</span>-service=ftp  开放ftp服务</span><br><span class="line">firewall-<span class="built_ins">cmd</span> --remove-service=ftp</span><br></pre></td></tr></table></figure>
+<p><strong>注:以上配置皆为暂时性的配置，重启后即失效。若要永久生效，加入参数—permanent</strong></p>
 
       
     </div>
@@ -220,11 +219,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/14/php-foreach-引用参数会造成的问题/">php foreach 引用参数会造成的问题</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/14/linux计划任务crontab/">linux计划任务crontab</a>
             
           </div>
         </div>
@@ -244,8 +243,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/07/13/父亲，走好。/"
-               data-title="父亲，走好。" data-url="http://yoursite.com/2015/07/13/父亲，走好。/">
+          <div class="ds-thread" data-thread-key="2015/07/14/fedora-firewall-配置/"
+               data-title="fedora firewall 配置" data-url="http://yoursite.com/2015/07/14/fedora-firewall-配置/">
           </div>
         
       </div>
