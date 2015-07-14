@@ -212,11 +212,11 @@
 <li>输出重定向<br></li>
 </ul>
 <figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 标准输出重定向</span><br><span class="line"><span class="prompt">2&gt; </span>标准错误输出重定向 </span><br><span class="line"><span class="number">2</span>&gt;&amp;<span class="number">1</span> 重定向标准错误输出到标准输出 (<span class="function_or_atom">ll</span> <span class="function_or_atom">aa</span> &gt; <span class="function_or_atom">err</span> <span class="number">2</span>&gt;&amp;<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>有些精简的linux里没有pstree命令</li>
-</ul>
-<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum install psmisc后就有了</span><br><span class="line">psmisc软件包包含三个帮助管理/<span class="keyword">proc</span>目录的程序。</span><br><span class="line">安装下列程序: fuser, killall,pstree和pstree.x11(到pstree的链接)</span><br><span class="line">fuser 显示使用指定文件或者文件系统的进程的<span class="type">PID</span>。</span><br><span class="line">killall 杀死某个名字的进程，它向运行指定命令的所有进程发出信号。</span><br><span class="line">pstree 树型显示当前运行的进程。</span><br><span class="line">pstree.x11 与pstree功能相同，只是在退出前需要确认。</span><br></pre></td></tr></table></figure>
-
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/07/14/tips/#more">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -294,17 +294,11 @@
         
           <p>php运行以下代码</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line"><span class="variable">$a</span> = <span class="keyword">array</span>(<span class="string">'abe'</span>,<span class="string">'ben'</span>,<span class="string">'cam'</span>);</span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$a</span> <span class="keyword">as</span> &amp;<span class="variable">$n</span>)&#123;</span><br><span class="line"><span class="variable">$n</span> = strtoupper(<span class="variable">$n</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$a</span> <span class="keyword">as</span> <span class="variable">$n</span>) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">print_r(<span class="variable">$a</span>);</span><br><span class="line"><span class="preprocessor">?&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>原以为这段程序会输出</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">ABE</span></span><br><span class="line"><span class="keyword">BEN</span><br><span class="line"></span><span class="label">CAM</span></span><br></pre></td></tr></table></figure>
-<p>没想到输出的是</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">ABE</span></span><br><span class="line"><span class="keyword">BEN</span><br><span class="line"></span><span class="keyword">BEN</span></span><br></pre></td></tr></table></figure>
-<p>在第一次遍历时，变量n被定义为了<strong>引用</strong>，它指向的是上一次遍历时<strong>最后的那个元素</strong>。因为第一次遍历后，因为没有unset($n)，所以$n仍然是一个引用，指向$a[2]。<br><br>第二次foreach:<br></p>
-<ol>
-<li>将$n改为$a[0] ABE BEN ABE<br></li>
-<li>将$n改为$a[1] ABE BEN BEN<br></li>
-<li>将$n改为$a[2] ABE BEN BEN<br></li>
-</ol>
-
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/07/14/php-foreach-引用参数会造成的问题/#more">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
