@@ -49,7 +49,7 @@
 
 
 
-  <title> Category: 个人 // hello world </title>
+  <title> Archive // hello world </title>
 </head>
 
 <body>
@@ -63,7 +63,7 @@
   </div>
 <![endif]-->
 
-  <div class="container one-column ">
+  <div class="container one-column  page-archive ">
     <div class="headband"></div>
 
     <div id="header" class="header">
@@ -149,14 +149,31 @@
           
 
   <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        个人
-        <small>Category</small>
-      </h2>
-    </div>
+    <span class="archive-move-on"></span>
+
+    <span class="archive-page-counter">
+      
+      
+      
+        
+      
+      Um..! 11 posts in total. Keep on posting.
+    </span>
 
     
+
+      
+      
+      
+
+      
+        
+        <div class="collection-title">
+          <h2 class="archive-year motion-element" id="archive-year-2015">2015</h2>
+        </div>
+      
+      
+
       
 
   <div class="post post-type-normal">
@@ -178,10 +195,16 @@
   </div>
 
 
+
     
+
   </div>
 
   
+  <div class="pagination">
+    <a class="extend prev" rel="prev" href="/archives/2015/">&laquo;</a><a class="page-number" href="/archives/2015/">1</a><span class="page-number current">2</span>
+  </div>
+
 
 
         </div>
@@ -324,6 +347,12 @@
   <script type="text/javascript" src="/js/search-toggle.js"></script>
 
   
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
+
 
   <script type="text/javascript">
     $(document).ready(function () {
