@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="leetcode," />
+  <meta name="keywords" content="apue," />
 
 
 
@@ -49,7 +49,7 @@
 
 
 
-  <title> leetcode 编辑距离 Edit Distance // hello world </title>
+  <title> [APUE]FORK机制简谈 // hello world </title>
 </head>
 
 <body>
@@ -160,7 +160,7 @@
           
           
             
-              leetcode 编辑距离 Edit Distance
+              [APUE]FORK机制简谈
             
           
         </h1>
@@ -175,7 +175,7 @@
           <span class="post-category">
             &nbsp; | &nbsp; In
             
-              <a href="/categories/algorithm/">algorithm</a>
+              <a href="/categories/读书笔记/">读书笔记</a>
 
               
               
@@ -188,8 +188,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/07/16/leetcode-编辑距离-Edit-Distance/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/16/leetcode-编辑距离-Edit-Distance/"></span>
+            <a href="/2015/07/16/APUE-FORK机制简谈/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/16/APUE-FORK机制简谈/"></span>
             </a>
           </span>
           
@@ -203,12 +203,17 @@
       
 
       
-        <p>简单又经典的动规，以前一直没有做过，现在做个简单的纪录。</p>
-<p>主要理解这个动态转移方程:</p>
-<blockquote>
-<p>dp[i][j]=min(dp[i-1][j]+1,dp[i-1][j]+1,dp[i][j]+f[i][j]) </p>
+        <h2 id="chapter1:">chapter1:</h2><ol>
+<li>调用fork创建一个新进程，新进程是调用进程的一个副本，调用进程为”父进程”，创建的进程为“子进程”，fork对父进程返回子进程的进程id,对子进程返回0。fork创建一个新进程，被调用一次，返回两次(父进程一次子进程一次)。<a id="more"></a>
+</li>
+</ol>
+<h2 id="chapter8:">chapter8:</h2><ol>
+<li>fork并没有真正的返回两次，它依然返回了一次，只是OS对fork进行的操作使得我们看起来它返回了两次而已。系统调用fork()创建新进程后，在进程表里新建了一个新的表项，生成的子进程志父进程完全是相对独立的进程，生成子进程后会给父进程返回一个下整数。子进程在之后被调度，会得到一个为0的返回值，这个过程是两个进程来自于同一程序的两次执行。</li>
+<li><strong>fork之前的printf(“xxxxx”)没有加换行符会将输出内容重复输出一遍的原因</strong>：<blockquote>
+<p>因为这是 带缓存 的I/O，而缓存类型如果是连到终端设备，就是 行缓存 的，反之是全缓存。因为是行缓存，又因为这里没有了换行符，又又因为在fork之前一没有换行符二没有什么能让缓冲区满的语句，所以缓存中的数据在fork之前不会输出到终端 ，所以复制给子进程的缓存中就包含了before fork。</p>
 </blockquote>
-<p>dp[i][j]表示字符串1的前i个字符转到字符串2的前j个字符最少的变动次数，若字符串i==字符串j,f[i][j]=0,else-&gt;f[i][j]=1</p>
+</li>
+</ol>
 
       
     </div>
@@ -217,7 +222,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/leetcode/"> #leetcode </a>
+            <a href="/tags/apue/"> #apue </a>
           
         </div>
       
@@ -226,13 +231,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/16/输入两个数m-n-输出m个数，每个数都在-0-n-之间/">[编程珠玑]输入两个数m,n,输出m个数，每个数都在[0,n)之间</a>
+              <a href="/2015/07/16/python类的可变类型成员和不可变类型成员的区别/">python类的可变类型成员和不可变类型成员的区别</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/16/int64不超上限的位运算方法/">__int64不超上限的位运算方法</a>
+              <a href="/2015/07/16/输入两个数m-n-输出m个数，每个数都在-0-n-之间/">[编程珠玑]输入两个数m,n,输出m个数，每个数都在[0,n)之间</a>
             
           </div>
         </div>
@@ -252,8 +257,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/07/16/leetcode-编辑距离-Edit-Distance/"
-               data-title="leetcode 编辑距离 Edit Distance" data-url="http://yoursite.com/2015/07/16/leetcode-编辑距离-Edit-Distance/">
+          <div class="ds-thread" data-thread-key="2015/07/16/APUE-FORK机制简谈/"
+               data-title="[APUE]FORK机制简谈" data-url="http://yoursite.com/2015/07/16/APUE-FORK机制简谈/">
           </div>
         
       </div>
@@ -348,7 +353,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter1:"><span class="nav-number">1.</span> <span class="nav-text">chapter1:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter8:"><span class="nav-number">2.</span> <span class="nav-text">chapter8:</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

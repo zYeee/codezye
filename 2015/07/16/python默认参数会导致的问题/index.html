@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="leetcode," />
+  <meta name="keywords" content="Hexo,next" />
 
 
 
@@ -49,7 +49,7 @@
 
 
 
-  <title> leetcode 编辑距离 Edit Distance // hello world </title>
+  <title> python默认参数会导致的问题 // hello world </title>
 </head>
 
 <body>
@@ -160,7 +160,7 @@
           
           
             
-              leetcode 编辑距离 Edit Distance
+              python默认参数会导致的问题
             
           
         </h1>
@@ -175,7 +175,7 @@
           <span class="post-category">
             &nbsp; | &nbsp; In
             
-              <a href="/categories/algorithm/">algorithm</a>
+              <a href="/categories/python/">python</a>
 
               
               
@@ -188,8 +188,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/07/16/leetcode-编辑距离-Edit-Distance/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/16/leetcode-编辑距离-Edit-Distance/"></span>
+            <a href="/2015/07/16/python默认参数会导致的问题/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/16/python默认参数会导致的问题/"></span>
             </a>
           </span>
           
@@ -203,36 +203,25 @@
       
 
       
-        <p>简单又经典的动规，以前一直没有做过，现在做个简单的纪录。</p>
-<p>主要理解这个动态转移方程:</p>
-<blockquote>
-<p>dp[i][j]=min(dp[i-1][j]+1,dp[i-1][j]+1,dp[i][j]+f[i][j]) </p>
-</blockquote>
-<p>dp[i][j]表示字符串1的前i个字符转到字符串2的前j个字符最少的变动次数，若字符串i==字符串j,f[i][j]=0,else-&gt;f[i][j]=1</p>
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span> <span class="params">(num=[])</span>:</span> </span><br><span class="line">	num.append(<span class="number">1</span>) </span><br><span class="line">	<span class="keyword">print</span> num</span><br><span class="line"></span><br><span class="line">foo() </span><br><span class="line">[<span class="number">1</span>] </span><br><span class="line">foo() </span><br><span class="line">[<span class="number">1</span>,<span class="number">1</span>] </span><br><span class="line">foo() </span><br><span class="line">[<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>在python里，函数的默认值是在函数<strong>被定义</strong>的时候实例化的，而不是在调用的时候。<br>在每次给函数指定一个 默认值 的时候，python都会把这个值给储存下来。如果在调用的时候重写了这个 默认值 ，那储存下来的值就不会被使用了。不重写的时候，就会让 默认值引用存储的值 ，如上面这个例子，使用默认参数的时候，都会引用之前存储的num，而num是list类型，为<strong>可变类型</strong>，能够被修改。所以会出现上面的那种结果。</p>
 
       
     </div>
 
     <div class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/leetcode/"> #leetcode </a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/16/输入两个数m-n-输出m个数，每个数都在-0-n-之间/">[编程珠玑]输入两个数m,n,输出m个数，每个数都在[0,n)之间</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/16/int64不超上限的位运算方法/">__int64不超上限的位运算方法</a>
+              <a href="/2015/07/16/python类的可变类型成员和不可变类型成员的区别/">python类的可变类型成员和不可变类型成员的区别</a>
             
           </div>
         </div>
@@ -252,8 +241,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/07/16/leetcode-编辑距离-Edit-Distance/"
-               data-title="leetcode 编辑距离 Edit Distance" data-url="http://yoursite.com/2015/07/16/leetcode-编辑距离-Edit-Distance/">
+          <div class="ds-thread" data-thread-key="2015/07/16/python默认参数会导致的问题/"
+               data-title="python默认参数会导致的问题" data-url="http://yoursite.com/2015/07/16/python默认参数会导致的问题/">
           </div>
         
       </div>

@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="leetcode," />
+  <meta name="keywords" content="Hexo,next" />
 
 
 
@@ -49,7 +49,7 @@
 
 
 
-  <title> leetcode 编辑距离 Edit Distance // hello world </title>
+  <title> python类的可变类型成员和不可变类型成员的区别 // hello world </title>
 </head>
 
 <body>
@@ -160,7 +160,7 @@
           
           
             
-              leetcode 编辑距离 Edit Distance
+              python类的可变类型成员和不可变类型成员的区别
             
           
         </h1>
@@ -175,7 +175,7 @@
           <span class="post-category">
             &nbsp; | &nbsp; In
             
-              <a href="/categories/algorithm/">algorithm</a>
+              <a href="/categories/python/">python</a>
 
               
               
@@ -188,8 +188,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/07/16/leetcode-编辑距离-Edit-Distance/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/16/leetcode-编辑距离-Edit-Distance/"></span>
+            <a href="/2015/07/16/python类的可变类型成员和不可变类型成员的区别/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/16/python类的可变类型成员和不可变类型成员的区别/"></span>
             </a>
           </span>
           
@@ -203,36 +203,27 @@
       
 
       
-        <p>简单又经典的动规，以前一直没有做过，现在做个简单的纪录。</p>
-<p>主要理解这个动态转移方程:</p>
-<blockquote>
-<p>dp[i][j]=min(dp[i-1][j]+1,dp[i-1][j]+1,dp[i][j]+f[i][j]) </p>
-</blockquote>
-<p>dp[i][j]表示字符串1的前i个字符转到字符串2的前j个字符最少的变动次数，若字符串i==字符串j,f[i][j]=0,else-&gt;f[i][j]=1</p>
+        <h3 id="可变属性和不可变属性">可变属性和不可变属性</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">foo1</span><span class="params">(object)</span>:</span></span><br><span class="line">x = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">foo2</span><span class="params">(object)</span>:</span></span><br><span class="line">x = &#123;<span class="string">"100"</span>:<span class="number">2</span>&#125;</span><br><span class="line"></span><br><span class="line">f1 = foo1()</span><br><span class="line">f2 = foo2()</span><br><span class="line"></span><br><span class="line">f1.x = <span class="number">3</span></span><br><span class="line"><span class="keyword">print</span> f1.x</span><br><span class="line"><span class="keyword">print</span> foo1.x</span><br><span class="line"></span><br><span class="line">f2.x[<span class="string">'101'</span>] = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> f2.x</span><br><span class="line"><span class="keyword">print</span> foo2.x</span><br></pre></td></tr></table></figure>
+<p><a id="more"></a>&lt;<br>执行上面的代码会发现，f1作为foo1的实例，当f1的属性被改变时，类foo1的属性未能被改变。而f2的属性被改变的时候，类foo2的属性也随之改变。</p>
+<p>因为python的类型分为可变类型和不可变类型，不可变的类型有string,integer,tuple。可变类型有list和dict。因为foo1的成员x为不可变属性，所以在重新赋值时会给对象新建一个“新实例属性”，覆盖了对类属性的引用。而foo2的成员为可变类型，所以可以更改它的值。</p>
 
       
     </div>
 
     <div class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/leetcode/"> #leetcode </a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/16/输入两个数m-n-输出m个数，每个数都在-0-n-之间/">[编程珠玑]输入两个数m,n,输出m个数，每个数都在[0,n)之间</a>
+              <a href="/2015/07/16/python默认参数会导致的问题/">python默认参数会导致的问题</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/16/int64不超上限的位运算方法/">__int64不超上限的位运算方法</a>
+              <a href="/2015/07/16/APUE-FORK机制简谈/">[APUE]FORK机制简谈</a>
             
           </div>
         </div>
@@ -252,8 +243,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/07/16/leetcode-编辑距离-Edit-Distance/"
-               data-title="leetcode 编辑距离 Edit Distance" data-url="http://yoursite.com/2015/07/16/leetcode-编辑距离-Edit-Distance/">
+          <div class="ds-thread" data-thread-key="2015/07/16/python类的可变类型成员和不可变类型成员的区别/"
+               data-title="python类的可变类型成员和不可变类型成员的区别" data-url="http://yoursite.com/2015/07/16/python类的可变类型成员和不可变类型成员的区别/">
           </div>
         
       </div>
@@ -348,7 +339,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#可变属性和不可变属性"><span class="nav-number">1.</span> <span class="nav-text">可变属性和不可变属性</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
