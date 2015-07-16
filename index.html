@@ -210,20 +210,11 @@
         
           <p>某个信号出现时，内核有<strong>3种</strong>处理方式。<br><br>1.忽略信号(SIGKILL和SIGSTOP不能被忽略)<br><br>2.捕捉信号(SIGKILL和SIGSTOP不能被捕捉)<br><br>3.执行系统默认动作<br></p>
 <hr>
-<h4 id="常见信号">常见信号</h4><ul>
-<li>SIGCHLD:一个进程被终止时，该信号被发给其父进程。</li>
-<li>SIGINT:用户中断，按CTRL+C时会发出该信号。</li>
-<li>SIGKILL:强制杀死进程，不能被捕捉或忽略。命令 kill -9</li>
-<li>SIGTERM:发出系统默认的终止信号。进程在退出前有机会做好清理工作。</li>
-<li>SIGQUIT:终止进程并产生core文件。CTRL+\</li>
-<li>SIGSTOP:停止进程.CTRL+Z。<strong>SIGCONT</strong>信号可继续该进程</li>
-<li>SIGUSR1,SIGUSR2:用户定义信号</li>
-</ul>
-<hr>
-<p>信号机制的接口函数是</p>
-<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void <span class="list">(<span class="keyword">*signal</span><span class="list">(<span class="keyword">int</span> signo, void <span class="list">(<span class="keyword">*func</span>)</span><span class="list">(<span class="keyword">int</span>)</span>)</span>)</span><span class="list">(<span class="keyword">int</span>)</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
-<p>func的值如果是SIG_IGN则表示忽略此信号，如果是SIG_DFL是执行默认动作。</p>
-
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/07/16/APUE-常见信号/#more">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -300,15 +291,12 @@
       
         
           <h2 id="php_namespace_用法">php namespace 用法</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line">	<span class="keyword">namespace</span> <span class="title">test</span>;</span><br><span class="line">	define(<span class="string">'MESSAGE'</span>, <span class="string">'hello world'</span>);</span><br><span class="line"><span class="preprocessor">?&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>若MESSAGE前不加入namespace，则默认会定义在global namespace下。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line">	<span class="keyword">namespace</span> <span class="title">test</span>;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">strlen</span><span class="params">()</span></span>&#123;</span><br><span class="line">		reutrn <span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="preprocessor">?&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>若要调用系统strlen函数，可用\strlen(“hello”);否则，会默认调用\test\strlen()，若未发现再在全局空间里寻找strlen。<br>常量和类名同理</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use a<span class="command">\b</span><span class="command">\c</span></span><br></pre></td></tr></table></figure>
-<p>相当于use a\b\c as c</p>
-<p><strong>配合__autoload魔术方法和spl_autoload_register方法可实现动态加载文件(lazy loading机制)</strong></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">ClassAutoloader</span> </span>&#123;</span><br><span class="line">       <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            spl_autoload_register(<span class="keyword">array</span>(<span class="variable">$this</span>, <span class="string">'loader'</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">loader</span><span class="params">(<span class="variable">$className</span>)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">'Trying to load '</span>, <span class="variable">$className</span>, <span class="string">' via '</span>, <span class="keyword">__METHOD__</span>, <span class="string">"()\n"</span>;</span><br><span class="line">            <span class="keyword">include</span> <span class="variable">$className</span> . <span class="string">'.php'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable">$autoloader</span> = <span class="keyword">new</span> ClassAutoloader();</span><br><span class="line"></span><br><span class="line">    <span class="variable">$obj</span> = <span class="keyword">new</span> Class1();</span><br><span class="line">    <span class="variable">$obj</span> = <span class="keyword">new</span> Class2();</span><br><span class="line"><span class="preprocessor">?&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p><code>bool spl_autoload_register ([ callable $autoload_function [, bool $throw = true [, bool $prepend = false ]]] )</code><br><br><code>autoload_function</code>欲注册的自动装载函数。如果没有提供任何参数，则自动注册 autoload 的默认实现函数spl_autoload()。<code>(若绑定到类内的函数，第一个参数可以array(&#39;class_name&#39;,&#39;method_name&#39;)形式)</code>。<code>throw</code>此参数设置了 autoload_function 无法成功注册时， spl_autoload_register()是否抛出异常。<code>prepend</code>如果是 true，spl_autoload_register() 会添加函数到队列之首，而不是队列尾部。`</p>
-
+<p>若MESSAGE前不加入namespace，则默认会定义在global namespace下。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/07/16/php-namespace-用法和autoload机制/#more">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
