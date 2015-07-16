@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="leetcode," />
+  <meta name="keywords" content="apue," />
 
 
 
@@ -49,7 +49,7 @@
 
 
 
-  <title> leetcode 编辑距离 Edit Distance // hello world </title>
+  <title> [APUE]常见信号 // hello world </title>
 </head>
 
 <body>
@@ -160,7 +160,7 @@
           
           
             
-              leetcode 编辑距离 Edit Distance
+              [APUE]常见信号
             
           
         </h1>
@@ -175,7 +175,7 @@
           <span class="post-category">
             &nbsp; | &nbsp; In
             
-              <a href="/categories/algorithm/">algorithm</a>
+              <a href="/categories/读书笔记/">读书笔记</a>
 
               
               
@@ -188,8 +188,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/07/16/leetcode-编辑距离-Edit-Distance/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/16/leetcode-编辑距离-Edit-Distance/"></span>
+            <a href="/2015/07/16/APUE-常见信号/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/16/APUE-常见信号/"></span>
             </a>
           </span>
           
@@ -203,12 +203,21 @@
       
 
       
-        <p>简单又经典的动规，以前一直没有做过，现在做个简单的纪录。</p>
-<p>主要理解这个动态转移方程:</p>
-<blockquote>
-<p>dp[i][j]=min(dp[i-1][j]+1,dp[i-1][j]+1,dp[i][j]+f[i][j]) </p>
-</blockquote>
-<p>dp[i][j]表示字符串1的前i个字符转到字符串2的前j个字符最少的变动次数，若字符串i==字符串j,f[i][j]=0,else-&gt;f[i][j]=1</p>
+        <p>某个信号出现时，内核有<strong>3种</strong>处理方式。<br><br>1.忽略信号(SIGKILL和SIGSTOP不能被忽略)<br><br>2.捕捉信号(SIGKILL和SIGSTOP不能被捕捉)<br><br>3.执行系统默认动作<br></p>
+<hr>
+<h4 id="常见信号">常见信号</h4><ul>
+<li>SIGCHLD:一个进程被终止时，该信号被发给其父进程。</li>
+<li>SIGINT:用户中断，按CTRL+C时会发出该信号。</li>
+<li>SIGKILL:强制杀死进程，不能被捕捉或忽略。命令 kill -9</li>
+<li>SIGTERM:发出系统默认的终止信号。进程在退出前有机会做好清理工作。</li>
+<li>SIGQUIT:终止进程并产生core文件。CTRL+\</li>
+<li>SIGSTOP:停止进程.CTRL+Z。<strong>SIGCONT</strong>信号可继续该进程</li>
+<li>SIGUSR1,SIGUSR2:用户定义信号</li>
+</ul>
+<hr>
+<p>信号机制的接口函数是</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void <span class="list">(<span class="keyword">*signal</span><span class="list">(<span class="keyword">int</span> signo, void <span class="list">(<span class="keyword">*func</span>)</span><span class="list">(<span class="keyword">int</span>)</span>)</span>)</span><span class="list">(<span class="keyword">int</span>)</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>func的值如果是SIG_IGN则表示忽略此信号，如果是SIG_DFL是执行默认动作。</p>
 
       
     </div>
@@ -217,7 +226,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/leetcode/"> #leetcode </a>
+            <a href="/tags/apue/"> #apue </a>
           
         </div>
       
@@ -226,13 +235,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/16/输入两个数m-n-输出m个数，每个数都在-0-n-之间/">[编程珠玑]输入两个数m,n,输出m个数，每个数都在[0,n)之间</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/16/int64不超上限的位运算方法/">__int64不超上限的位运算方法</a>
+              <a href="/2015/07/16/php-namespace-用法和autoload机制/">php namespace 用法和autoload机制</a>
             
           </div>
         </div>
@@ -252,8 +259,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/07/16/leetcode-编辑距离-Edit-Distance/"
-               data-title="leetcode 编辑距离 Edit Distance" data-url="http://yoursite.com/2015/07/16/leetcode-编辑距离-Edit-Distance/">
+          <div class="ds-thread" data-thread-key="2015/07/16/APUE-常见信号/"
+               data-title="[APUE]常见信号" data-url="http://yoursite.com/2015/07/16/APUE-常见信号/">
           </div>
         
       </div>
@@ -348,7 +355,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#常见信号"><span class="nav-number">1.</span> <span class="nav-text">常见信号</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
