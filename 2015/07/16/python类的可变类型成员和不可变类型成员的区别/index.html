@@ -204,7 +204,8 @@
 
       
         <h3 id="可变属性和不可变属性">可变属性和不可变属性</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">foo1</span><span class="params">(object)</span>:</span></span><br><span class="line">x = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">foo2</span><span class="params">(object)</span>:</span></span><br><span class="line">x = &#123;<span class="string">"100"</span>:<span class="number">2</span>&#125;</span><br><span class="line"></span><br><span class="line">f1 = foo1()</span><br><span class="line">f2 = foo2()</span><br><span class="line"></span><br><span class="line">f1.x = <span class="number">3</span></span><br><span class="line"><span class="keyword">print</span> f1.x</span><br><span class="line"><span class="keyword">print</span> foo1.x</span><br><span class="line"></span><br><span class="line">f2.x[<span class="string">'101'</span>] = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> f2.x</span><br><span class="line"><span class="keyword">print</span> foo2.x</span><br></pre></td></tr></table></figure>
-<p><a id="more"></a>&lt;<br>执行上面的代码会发现，f1作为foo1的实例，当f1的属性被改变时，类foo1的属性未能被改变。而f2的属性被改变的时候，类foo2的属性也随之改变。</p>
+<a id="more"></a>
+<p>执行上面的代码会发现，f1作为foo1的实例，当f1的属性被改变时，类foo1的属性未能被改变。而f2的属性被改变的时候，类foo2的属性也随之改变。</p>
 <p>因为python的类型分为可变类型和不可变类型，不可变的类型有string,integer,tuple。可变类型有list和dict。因为foo1的成员x为不可变属性，所以在重新赋值时会给对象新建一个“新实例属性”，覆盖了对类属性的引用。而foo2的成员为可变类型，所以可以更改它的值。</p>
 
       
@@ -291,7 +292,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
