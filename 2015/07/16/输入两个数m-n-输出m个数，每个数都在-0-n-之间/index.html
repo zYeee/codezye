@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="php," />
+  <meta name="keywords" content="Hexo,next" />
 
 
 
@@ -49,7 +49,7 @@
 
 
 
-  <title> php foreach 引用参数会造成的问题 // hello world </title>
+  <title> [编程珠玑]输入两个数m,n,输出m个数，每个数都在[0,n)之间 // hello world </title>
 </head>
 
 <body>
@@ -160,7 +160,7 @@
           
           
             
-              php foreach 引用参数会造成的问题
+              [编程珠玑]输入两个数m,n,输出m个数，每个数都在[0,n)之间
             
           
         </h1>
@@ -168,14 +168,22 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Posted on 2015-07-14
+          Posted on 2015-07-16
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; In
             
-              <a href="/categories/php/">php</a>
+              <a href="/categories/algorithm/">algorithm</a>
+
+              
+              
+                , 
+              
+
+            
+              <a href="/categories/algorithm/读书笔记/">读书笔记</a>
 
               
               
@@ -188,8 +196,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/07/14/php-foreach-引用参数会造成的问题/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/14/php-foreach-引用参数会造成的问题/"></span>
+            <a href="/2015/07/16/输入两个数m-n-输出m个数，每个数都在-0-n-之间/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/16/输入两个数m-n-输出m个数，每个数都在-0-n-之间/"></span>
             </a>
           </span>
           
@@ -203,43 +211,22 @@
       
 
       
-        <p>php运行以下代码</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line"><span class="variable">$a</span> = <span class="keyword">array</span>(<span class="string">'abe'</span>,<span class="string">'ben'</span>,<span class="string">'cam'</span>);</span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$a</span> <span class="keyword">as</span> &amp;<span class="variable">$n</span>)&#123;</span><br><span class="line"><span class="variable">$n</span> = strtoupper(<span class="variable">$n</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$a</span> <span class="keyword">as</span> <span class="variable">$n</span>) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">print_r(<span class="variable">$a</span>);</span><br><span class="line"><span class="preprocessor">?&gt;</span></span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>原以为这段程序会输出</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">ABE</span></span><br><span class="line"><span class="keyword">BEN</span><br><span class="line"></span><span class="label">CAM</span></span><br></pre></td></tr></table></figure>
-<p>没想到输出的是</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">ABE</span></span><br><span class="line"><span class="keyword">BEN</span><br><span class="line"></span><span class="keyword">BEN</span></span><br></pre></td></tr></table></figure>
-<p>在第一次遍历时，变量n被定义为了<strong>引用</strong>，它指向的是上一次遍历时<strong>最后的那个元素</strong>。因为第一次遍历后，因为没有unset($n)，所以$n仍然是一个引用，指向$a[2]。<br><br>第二次foreach:<br></p>
-<ol>
-<li>将$n改为$a[0] ABE BEN ABE<br></li>
-<li>将$n改为$a[1] ABE BEN BEN<br></li>
-<li>将$n改为$a[2] ABE BEN BEN<br></li>
-</ol>
-
+        <h3 id="生成的数字不能有重复，要按从小到大的顺序排列。">生成的数字不能有重复，要按从小到大的顺序排列。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python                                                                   </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-                                                             </span></span><br><span class="line"><span class="keyword">import</span> random                                                                       </span><br><span class="line">                                                                                    </span><br><span class="line">                                                                                    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span><span class="params">(m, n)</span>:</span>                                                                                                                                                                                                     </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):                                                              </span><br><span class="line">        rand = int(random.uniform(<span class="number">10000</span>, <span class="number">20000</span>))                                 </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):                                                       </span><br><span class="line">            <span class="keyword">if</span>(rand % (n - i) &lt; m):                                              </span><br><span class="line">                <span class="keyword">print</span> i                                                             </span><br><span class="line">                m -= <span class="number">1</span>                                                              </span><br><span class="line">                                                                                    </span><br><span class="line">                                                                                    </span><br><span class="line">a = raw_input(<span class="string">""</span>)                                                                   </span><br><span class="line">b = raw_input(<span class="string">""</span>)                                                                   </span><br><span class="line">fun(int(a), int(b))</span><br></pre></td></tr></table></figure>
       
     </div>
 
     <div class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/php/"> #php </a>
-          
-        </div>
       
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/14/tips/">tips(一)</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/13/父亲，走好。/">父亲，走好。</a>
+              <a href="/2015/07/16/leetcode-编辑距离-Edit-Distance/">leetcode 编辑距离 Edit Distance</a>
             
           </div>
         </div>
@@ -259,8 +246,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/07/14/php-foreach-引用参数会造成的问题/"
-               data-title="php foreach 引用参数会造成的问题" data-url="http://yoursite.com/2015/07/14/php-foreach-引用参数会造成的问题/">
+          <div class="ds-thread" data-thread-key="2015/07/16/输入两个数m-n-输出m个数，每个数都在-0-n-之间/"
+               data-title="[编程珠玑]输入两个数m,n,输出m个数，每个数都在[0,n)之间" data-url="http://yoursite.com/2015/07/16/输入两个数m-n-输出m个数，每个数都在-0-n-之间/">
           </div>
         
       </div>
@@ -355,7 +342,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成的数字不能有重复，要按从小到大的顺序排列。"><span class="nav-number">1.</span> <span class="nav-text">生成的数字不能有重复，要按从小到大的顺序排列。</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

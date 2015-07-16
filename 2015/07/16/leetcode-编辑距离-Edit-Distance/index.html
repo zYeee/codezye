@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="php," />
+  <meta name="keywords" content="leetcode," />
 
 
 
@@ -49,7 +49,7 @@
 
 
 
-  <title> php foreach 引用参数会造成的问题 // hello world </title>
+  <title> leetcode 编辑距离 Edit Distance // hello world </title>
 </head>
 
 <body>
@@ -160,7 +160,7 @@
           
           
             
-              php foreach 引用参数会造成的问题
+              leetcode 编辑距离 Edit Distance
             
           
         </h1>
@@ -168,14 +168,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Posted on 2015-07-14
+          Posted on 2015-07-16
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; In
             
-              <a href="/categories/php/">php</a>
+              <a href="/categories/algorithm/">algorithm</a>
 
               
               
@@ -188,8 +188,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/07/14/php-foreach-引用参数会造成的问题/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/14/php-foreach-引用参数会造成的问题/"></span>
+            <a href="/2015/07/16/leetcode-编辑距离-Edit-Distance/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/16/leetcode-编辑距离-Edit-Distance/"></span>
             </a>
           </span>
           
@@ -203,19 +203,12 @@
       
 
       
-        <p>php运行以下代码</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line"><span class="variable">$a</span> = <span class="keyword">array</span>(<span class="string">'abe'</span>,<span class="string">'ben'</span>,<span class="string">'cam'</span>);</span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$a</span> <span class="keyword">as</span> &amp;<span class="variable">$n</span>)&#123;</span><br><span class="line"><span class="variable">$n</span> = strtoupper(<span class="variable">$n</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$a</span> <span class="keyword">as</span> <span class="variable">$n</span>) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">print_r(<span class="variable">$a</span>);</span><br><span class="line"><span class="preprocessor">?&gt;</span></span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>原以为这段程序会输出</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">ABE</span></span><br><span class="line"><span class="keyword">BEN</span><br><span class="line"></span><span class="label">CAM</span></span><br></pre></td></tr></table></figure>
-<p>没想到输出的是</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">ABE</span></span><br><span class="line"><span class="keyword">BEN</span><br><span class="line"></span><span class="keyword">BEN</span></span><br></pre></td></tr></table></figure>
-<p>在第一次遍历时，变量n被定义为了<strong>引用</strong>，它指向的是上一次遍历时<strong>最后的那个元素</strong>。因为第一次遍历后，因为没有unset($n)，所以$n仍然是一个引用，指向$a[2]。<br><br>第二次foreach:<br></p>
-<ol>
-<li>将$n改为$a[0] ABE BEN ABE<br></li>
-<li>将$n改为$a[1] ABE BEN BEN<br></li>
-<li>将$n改为$a[2] ABE BEN BEN<br></li>
-</ol>
+        <p>简单又经典的动规，以前一直没有做过，现在做个简单的纪录。</p>
+<p>主要理解这个动态转移方程:</p>
+<blockquote>
+<p>dp[i][j]=min(dp[i-1][j]+1,dp[i-1][j]+1,dp[i][j]+f[i][j]) </p>
+</blockquote>
+<p>dp[i][j]表示字符串1的前i个字符转到字符串2的前j个字符最少的变动次数，若字符串i==字符串j,f[i][j]=0,else-&gt;f[i][j]=1</p>
 
       
     </div>
@@ -224,7 +217,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/php/"> #php </a>
+            <a href="/tags/leetcode/"> #leetcode </a>
           
         </div>
       
@@ -233,13 +226,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/14/tips/">tips(一)</a>
+              <a href="/2015/07/16/输入两个数m-n-输出m个数，每个数都在-0-n-之间/">[编程珠玑]输入两个数m,n,输出m个数，每个数都在[0,n)之间</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/13/父亲，走好。/">父亲，走好。</a>
+              <a href="/2015/07/16/int64不超上限的位运算方法/">__int64不超上限的位运算方法</a>
             
           </div>
         </div>
@@ -259,8 +252,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/07/14/php-foreach-引用参数会造成的问题/"
-               data-title="php foreach 引用参数会造成的问题" data-url="http://yoursite.com/2015/07/14/php-foreach-引用参数会造成的问题/">
+          <div class="ds-thread" data-thread-key="2015/07/16/leetcode-编辑距离-Edit-Distance/"
+               data-title="leetcode 编辑距离 Edit Distance" data-url="http://yoursite.com/2015/07/16/leetcode-编辑距离-Edit-Distance/">
           </div>
         
       </div>
