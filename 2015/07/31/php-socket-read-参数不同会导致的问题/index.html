@@ -221,7 +221,8 @@
       
 
       
-        <p>这几天公司项目需要调用socket连接服务，在一个获取结果为1000多个字长的结果上，发现会概率性的拿不全数据。<br>最后定位问题在php原生函数socket_read上，这个函数的返回有时会莫名对正常数据进行截断。<br>该函数的声明为<br><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">string</span> socket_read ( resource <span class="variable">$socket</span> , <span class="keyword">int</span> <span class="variable">$length</span> [, <span class="keyword">int</span> <span class="variable">$type</span> = PHP_BINARY_READ ] )</span><br></pre></td></tr></table></figure></p>
+        <p>这几天公司项目需要调用socket连接服务，在一个获取结果为1000多个字长的结果上，发现会概率性的拿不全数据。最后定位问题在php原生函数socket_read上，这个函数的返回有时会莫名对正常数据进行截断。<br>该函数的声明为</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">string</span> socket_read ( resource <span class="variable">$socket</span> , <span class="keyword">int</span> <span class="variable">$length</span> [, <span class="keyword">int</span> <span class="variable">$type</span> = PHP_BINARY_READ ] )</span><br></pre></td></tr></table></figure>
 <ul>
 <li><strong>PHP_BINARY_READ</strong> (Default) - use the system recv() function. Safe for reading binary data.</li>
 <li><strong>PHP_NORMAL_READ</strong> - reading stops at \n or \r.<a id="more"></a>
