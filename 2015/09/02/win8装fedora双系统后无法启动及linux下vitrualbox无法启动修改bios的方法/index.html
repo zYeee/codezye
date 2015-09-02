@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="leetcode," />
+  <meta name="keywords" content="Hexo,next" />
 
 
 
@@ -49,7 +49,7 @@
 
 
 
-  <title> leetcode 编辑距离 Edit Distance // hello world </title>
+  <title> win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法 // hello world </title>
 </head>
 
 <body>
@@ -178,7 +178,7 @@
           
           
             
-              leetcode 编辑距离 Edit Distance
+              win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法
             
           
         </h1>
@@ -186,14 +186,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Posted on 2015-07-16
+          Posted on 2015-09-02
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; In
             
-              <a href="/categories/algorithm/">algorithm</a>
+              <a href="/categories/linux/">linux</a>
 
               
               
@@ -206,8 +206,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/07/16/leetcode-编辑距离-Edit-Distance/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/16/leetcode-编辑距离-Edit-Distance/"></span>
+            <a href="/2015/09/02/win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/02/win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法/"></span>
             </a>
           </span>
           
@@ -221,36 +221,45 @@
       
 
       
-        <p>简单又经典的动规，以前一直没有做过，现在做个简单的纪录。</p>
-<p>主要理解这个动态转移方程:</p>
+        <p>公司办公发的电脑总是联想的e系列，自带window，要自己装linux会遇到很多问题。</p>
+<h3 id="装完fedora后引导页选择win8会报cannot_load_image">装完fedora后引导页选择win8会报cannot load image</h3><p><em>以前在win7装双系统不会出现这个问题，win8装双系统后要进bios设置引导</em><br><a id="more"></a></p>
+<ol>
+<li>进入bios，通过左右将光标移动至<strong>Security</strong>菜单选项。</li>
+<li>通过上下方向键将光标移动至下方的<strong>Secure Boot</strong>选项按下回车键</li>
+<li>按下回车键后我们可以在窗口中找到<strong>Secure Boot</strong>选项，然后通过上下方向键移动至<strong>Secure Boot</strong>选项按下回车键，我们可以看到出现”Disable”和”Enabled”两个选项，我们选择“Disable”选项按下回车键。</li>
+<li>接着再次通过左右方向键将光标移动至<strong>Startup</strong>菜单选项，然后使用上下方向键将光标移动至<strong>UEFI/Legacy Boot</strong>选项按下回车键，在弹出的窗口中我们选择“Both”选项，按下回车键确认。</li>
+<li>然后通过上下方向键将光标移动至<strong>UEFI/Legacy Boot Priority</strong>选项按下回车键，在弹出的窗口中选择“Legacy First”选项，按下回车键确定。</li>
+<li>DONE</li>
+</ol>
+<p>参考：<a href="http://www.laomaotao.org/softhelp/bios/382.html" target="_blank" rel="external">thinkpad笔记本uefi无法启动详细解决教程</a></p>
+<h3 id="Vitrualbox启动时报vt-x未开启">Vitrualbox启动时报vt-x未开启</h3><p><em>因为vagrant会用到vitrual，在vagrant up的时候，发现vitrualbox会报错</em></p>
 <blockquote>
-<p>dp[i][j]=min(dp[i-1][j]+1,dp[i-1][j]+1,dp[i][j]+f[i][j]) </p>
+<p>Thishost supports Intel VT-x, but Intel VT-x is disabled.<br>IntelVT-x might be disabled if it has been disabled in the BIOS/firmware settings orthe host has not been power-cycled since changing this setting.<br><br>(1)Verify that the BIOS/firmware settings enable Intel VT-x and disable ‘trustedexecution.’<br><br>(2)Power-cycle the host if either of these BIOS/firmware settings have beenchanged.<br><br>(3)Power-cycle the host if you have not done so since installing VMwareWorkstation.(4)Update the host’s BIOS/firmware to the latest version.</p>
 </blockquote>
-<p>dp[i][j]表示字符串1的前i个字符转到字符串2的前j个字符最少的变动次数，若字符串i==字符串j,f[i][j]=0,else-&gt;f[i][j]=1</p>
+<p>意思说Intel VT-x技术没开，进bios打开就行。</p>
+<ol>
+<li>进入bios使用箭头键，滚动到“Config”。</li>
+<li>滚动到“CPU”，然后按Enter 键 ，滚动到“Intel  Virtualization Technology”，然后按Enter 键<br>选择“Enabled”。</li>
+<li>继续使用箭头键，滚动到“security”，然后按Enter 键。</li>
+<li>滚动到“virtualization”，然后按Enter 键 ，进去后有两项，一项是Intel VirtualizationTechnology，一项是Intel VT-d都改成Enabled。</li>
+<li>DONE</li>
+</ol>
 
       
     </div>
 
     <div class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/leetcode/"> #leetcode </a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/16/输入两个数m-n-输出m个数，每个数都在-0-n-之间/">[编程珠玑]输入两个数m,n,输出m个数，每个数都在[0,n)之间</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/16/int64不超上限的位运算方法/">__int64不超上限的位运算方法</a>
+              <a href="/2015/07/31/php-socket-read-参数不同会导致的问题/">php socket_read 参数不同会导致的问题</a>
             
           </div>
         </div>
@@ -270,8 +279,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/07/16/leetcode-编辑距离-Edit-Distance/"
-               data-title="leetcode 编辑距离 Edit Distance" data-url="http://yoursite.com/2015/07/16/leetcode-编辑距离-Edit-Distance/">
+          <div class="ds-thread" data-thread-key="2015/09/02/win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法/"
+               data-title="win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法" data-url="http://yoursite.com/2015/09/02/win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法/">
           </div>
         
       </div>
@@ -366,7 +375,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#装完fedora后引导页选择win8会报cannot_load_image"><span class="nav-number">1.</span> <span class="nav-text">装完fedora后引导页选择win8会报cannot load image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vitrualbox启动时报vt-x未开启"><span class="nav-number">2.</span> <span class="nav-text">Vitrualbox启动时报vt-x未开启</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
