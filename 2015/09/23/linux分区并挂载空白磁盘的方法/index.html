@@ -49,7 +49,7 @@
 
 
 
-  <title> php socket_read 参数不同会导致的问题 // hello world </title>
+  <title> linux分区并挂载空白磁盘的方法 // hello world </title>
 </head>
 
 <body>
@@ -178,7 +178,7 @@
           
           
             
-              php socket_read 参数不同会导致的问题
+              linux分区并挂载空白磁盘的方法
             
           
         </h1>
@@ -186,14 +186,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Posted on 2015-07-31
+          Posted on 2015-09-23
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; In
             
-              <a href="/categories/php/">php</a>
+              <a href="/categories/linux/">linux</a>
 
               
               
@@ -206,8 +206,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/07/31/php-socket-read-参数不同会导致的问题/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/31/php-socket-read-参数不同会导致的问题/"></span>
+            <a href="/2015/09/23/linux分区并挂载空白磁盘的方法/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/23/linux分区并挂载空白磁盘的方法/"></span>
             </a>
           </span>
           
@@ -221,22 +221,42 @@
       
 
       
-        <p>这几天公司项目需要调用socket连接服务，在一个获取结果为1000多个字长的结果上，发现会概率性的拿不全数据。最后定位问题在php原生函数<strong>socket_read</strong>上，这个函数的返回有时会莫名对正常数据进行截断。<br>该函数的声明为</p>
-<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">string</span> socket_read ( resource <span class="variable">$socket</span> , <span class="keyword">int</span> <span class="variable">$length</span> [, <span class="keyword">int</span> <span class="variable">$type</span> = PHP_BINARY_READ ] )</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>PHP_BINARY_READ</strong> (Default) - use the system recv() function. Safe for reading binary data.</li>
-<li><strong>PHP_NORMAL_READ</strong> - reading stops at \n or \r.<a id="more"></a>
-</li>
-</ul>
-<p>php的源码实现中，对该函数的处理是这样的：</p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable">type =</span>= PHP_NORMAL_READ) &#123;</span><br><span class="line">    <span class="variable">retval =</span> php_read(php_sock, tmpbuf, length, <span class="number">0</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable">retval =</span> recv(php_sock-&gt;bsd_socket, tmpbuf, length, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>从这里可以发现，如果参数是PHP_BINARY_READ，会调用系统的recv函数。查询APUE发现对recv函数的说明是这样的：</p>
+        <p>最近打算自己搞一个最新的fedora22的vagrant_box作为开发环境。但是官网下的box文件，分配给根目录/的大小只有3G，所以原先想找办法对/进行扩容，但是弄了很久都没有成功，因为该box精简过很多命令文件，像pvcreate之类的都无法使用。所以想到一个新的办法。就是把/目录下的/var，/home之类占空间的文件夹，挂载新分配的空闲磁盘。弄了好久总算成功了，记录一下：<br><br><a id="more"></a></p>
+<h3 id="查看分区">查看分区</h3><p>通过执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk <span class="operator">-l</span></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>recv方法中，对于SOCK_STREAM套接字，接收的数据可能会比预期少。不能保证调用一次recv就会读取整个字符串，需要重复调用它直到返回值为0。</p>
+<p>Disk /dev/sda: 40 GiB, 42949672960 bytes, 83886080 sectors<br><br>Units: sectors of 1 <em> 512 = 512 bytes<br><br>Sector size (logical/physical): 512 bytes / 512 bytes<br><br>I/O size (minimum/optimal): 512 bytes / 512 bytes<br><br>Disklabel type: dos<br><br>Disk identifier: 0xe02b2711<br><br><br><br>Device Boot Start     End Sectors Size Id Type<br><br>/dev/sda1  </em>     2048 6146047 6144000   3G 83 Linux</p>
 </blockquote>
-<p>问题就出在这里了，框架内的默认type传的是PHP_BINARY_READ，而PHP之会调用一次的recv，所以有可能会发生拿不全数据的情况。<br>将参数改为PHP_NORMAL_READ就好了，会持续地进行读取。</p>
-<p>php_read的源码</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">*t = '\0';</span></span><br><span class="line"><span class="keyword">while</span> (*t != '\<span class="keyword">n</span>' &amp;&amp; *t != '\r' &amp;&amp; <span class="keyword">n</span> &lt; maxlen) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">m</span> &gt; 0) &#123;</span><br><span class="line">        t++;</span><br><span class="line">        <span class="keyword">n</span>++;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">m</span> == 0) &#123;</span><br><span class="line">        no_read++;</span><br><span class="line">        <span class="keyword">if</span> (nonblock &amp;&amp; no_read &gt;= 2) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">n</span>;</span><br><span class="line">            <span class="comment">/* The first pass, m always is 0, so no_read becomes 1</span><br><span class="line">             * in the first pass. no_read becomes 2 in the second pass,</span><br><span class="line">             * and if this is nonblocking, we should return.. */</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (no_read &gt; 200) &#123;</span><br><span class="line">            set_errno(ECONNRESET);</span><br><span class="line">            <span class="keyword">return</span> -1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">n</span> &lt; maxlen) &#123;</span><br><span class="line">        <span class="keyword">m</span> = recv(sock-&gt;bsd_socket, (void *) t, 1, flags);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (errno != 0 &amp;&amp; errno != ESPIPE &amp;&amp; errno != EAGAIN) &#123;</span><br><span class="line">        <span class="keyword">return</span> -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    set_errno(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>发现/dev/sda有个磁盘有40G空间而/只占用了其中的3G，于是打算把/dev/sda多出的空间给分出来。</p>
+<h3 id="新建分区">新建分区</h3><p>执行</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk <span class="regexp">/dev/</span>sda</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Changes will remain in memory only, until you decide to write them.<br><br>Be careful before using the write command.<br><br><br><br>Command (m for help): <strong>n</strong><br><br>Partition type<br><br>   p   primary (1 primary, 0 extended, 3 free)<br><br>   e   extended (container for logical partitions)<br><br>Select (default p): <strong>p</strong><br><br>Partition number (2-4, default 2):<br><br>First sector (6146048-83886079, default 6146048):<br><br>Last sector, +sectors or +size{K,M,G,T,P} (6146048-83886079, default 83886079):<br><br><br><br>Created a new partition 2 of type ‘Linux’ and of size 37.1 GiB.<br><br><br><br>Command (m for help): <strong>w</strong><br><br>The partition table has been altered.<br><br>Calling ioctl() to re-read partition table.<br></p>
+</blockquote>
+<p>成功后重启</p>
+<h3 id="挂载分区">挂载分区</h3><p>直接执行</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount <span class="regexp">/dev/</span>sda2 <span class="regexp">/mnt</span></span><br></pre></td></tr></table></figure>
+<p>有可能会提示</p>
+<blockquote>
+<p>mount: /dev/sda2 is write-protected, mounting read-only<br><br>mount: unknown filesystem type<br><br>所以要格式化该磁盘<br><br>执行</p>
+</blockquote>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfs<span class="class">.ext3</span> /dev/sda2</span><br></pre></td></tr></table></figure>
+<p>成功后就可以正常挂载了。<br>注意这样的挂载<strong>并不是持久化</strong>的挂载，如果要让系统每次都自动挂载，那么就应该修改/etc/fstab文件：<br>在后面添加：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/dev/</span>sda2   /mnt   ext3  <span class="keyword">default</span>   <span class="number">0</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>对于该文件的说明：</p>
+<blockquote>
+<ol>
+<li>第4列为挂载选项，详细参考man mount. 下面列出一些常用的选项：<br><br>auto: 系统自动挂载，fstab默认就是这个选项 <br><br>ro: read-only <br><br>rw: read-write <br><br>defaults: rw, suid, dev, exec, auto, nouser, and async. </li>
+<li>第5列为dump选项，设置是否让备份程序dump备份文件系统，0为忽略，1为备份。 </li>
+<li>第6列为fsck选项，告诉fsck程序以什么顺序检查文件系统，0为忽略。</li>
+</ol>
+</blockquote>
+<p>然后把/var复制到/mnt目录下。<br>在/etc/fstab中添加新的挂载信息：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/mnt/<span class="tag">var</span>  /<span class="tag">var</span>    <span class="attribute">none</span>  rw,bind  <span class="number">1</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>最后/etc/fstab中是这样的：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/dev/sda2        /mnt	ext3	defaults	<span class="number">1</span> <span class="number">2</span></span><br><span class="line">/mnt/<span class="tag">var</span>  /<span class="tag">var</span>    <span class="attribute">none</span>  rw,bind  <span class="number">1</span> <span class="number">1</span></span><br><span class="line">/mnt/workplace  /workplace    <span class="attribute">none</span>  rw,bind  <span class="number">1</span> <span class="number">2</span></span><br><span class="line">/mnt/home  /home    <span class="attribute">none</span>  rw,bind  <span class="number">1</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p><strong>/usr文件夹不能重新挂载，会出错导致进不了系统！！！</strong></p>
+
       
     </div>
 
@@ -247,13 +267,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/09/02/win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法/">win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/23/PHP-abstruct和interface的总结/">PHP abstruct和interface的总结</a>
+              <a href="/2015/09/02/win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法/">win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法</a>
             
           </div>
         </div>
@@ -273,8 +291,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/07/31/php-socket-read-参数不同会导致的问题/"
-               data-title="php socket_read 参数不同会导致的问题" data-url="http://yoursite.com/2015/07/31/php-socket-read-参数不同会导致的问题/">
+          <div class="ds-thread" data-thread-key="2015/09/23/linux分区并挂载空白磁盘的方法/"
+               data-title="linux分区并挂载空白磁盘的方法" data-url="http://yoursite.com/2015/09/23/linux分区并挂载空白磁盘的方法/">
           </div>
         
       </div>
@@ -369,7 +387,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看分区"><span class="nav-number">1.</span> <span class="nav-text">查看分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建分区"><span class="nav-number">2.</span> <span class="nav-text">新建分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#挂载分区"><span class="nav-number">3.</span> <span class="nav-text">挂载分区</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
