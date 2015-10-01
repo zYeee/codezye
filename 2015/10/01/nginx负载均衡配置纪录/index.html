@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,next" />
+  <meta name="keywords" content="nginx," />
 
 
 
@@ -49,7 +49,7 @@
 
 
 
-  <title> win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法 // hello world </title>
+  <title> nginx负载均衡配置纪录 // hello world </title>
 </head>
 
 <body>
@@ -178,7 +178,7 @@
           
           
             
-              win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法
+              nginx负载均衡配置纪录
             
           
         </h1>
@@ -186,14 +186,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Posted on 2015-09-02
+          Posted on 2015-10-01
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; In
             
-              <a href="/categories/linux/">linux</a>
+              <a href="/categories/运维/">运维</a>
 
               
               
@@ -206,8 +206,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/09/02/win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/02/win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法/"></span>
+            <a href="/2015/10/01/nginx负载均衡配置纪录/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/01/nginx负载均衡配置纪录/"></span>
             </a>
           </span>
           
@@ -221,50 +221,36 @@
       
 
       
-        <p>公司办公发的电脑总是联想的e系列，自带window，要自己装linux会遇到很多问题。</p>
-<h3 id="装完fedora后引导页选择win8会报cannot_load_image">装完fedora后引导页选择win8会报cannot load image</h3><p><em>以前在win7装双系统不会出现这个问题，win8装双系统后要进bios设置引导</em><br><a id="more"></a></p>
-<ol>
-<li>进入bios，通过左右将光标移动至<strong>Security</strong>菜单选项。</li>
-<li>通过上下方向键将光标移动至下方的<strong>Secure Boot</strong>选项按下回车键</li>
-<li>按下回车键后我们可以在窗口中找到<strong>Secure Boot</strong>选项，然后通过上下方向键移动至<strong>Secure Boot</strong>选项按下回车键，我们可以看到出现”Disable”和”Enabled”两个选项，我们选择“Disable”选项按下回车键。</li>
-<li>接着再次通过左右方向键将光标移动至<strong>Startup</strong>菜单选项，然后使用上下方向键将光标移动至<strong>UEFI/Legacy Boot</strong>选项按下回车键，在弹出的窗口中我们选择“Both”选项，按下回车键确认。</li>
-<li>然后通过上下方向键将光标移动至<strong>UEFI/Legacy Boot Priority</strong>选项按下回车键，在弹出的窗口中选择“Legacy First”选项，按下回车键确定。</li>
-<li>DONE</li>
-</ol>
-<p>参考：<a href="http://www.laomaotao.org/softhelp/bios/382.html" target="_blank" rel="external">thinkpad笔记本uefi无法启动详细解决教程</a></p>
-<h3 id="Vitrualbox启动时报vt-x未开启">Vitrualbox启动时报vt-x未开启</h3><p><em>因为vagrant会用到vitrual，在vagrant up的时候，发现vitrualbox会报错</em></p>
+        <p>负载均衡是大流量网站要做的一个东西，我用了nginx快一年了，一直都是用现成的反向代理而没有自已配置过。这次打算自己动手配置下并纪录详细的方法。<br><br><strong>测试环境：</strong>virtual box启了三台虚拟机，系统为fedora 22。<br><br><strong>测试域名：</strong>test.me<br><br><strong>A服务器IP:</strong>192.168.5.24<br><br><strong>B服务器IP:</strong>192.168.5.25<br><br><strong>C服务器IP:</strong>192.168.5.26<br><br><em>思路：把域名解析到A服务器，由A服务器作负载均衡到B服务器和C服务器上。</em><br><br><a id="more"></a></p>
+<p>在A服务器的/etc/nginx/nginx.conf的http段中加入如下代码(weight可设置权重，down暂不参加负载):</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">upstream</span> a.com &#123; </span><br><span class="line">      <span class="title">server</span>  <span class="number">192.168.5.25:80</span> weight=<span class="number">2</span>; </span><br><span class="line">      <span class="title">server</span>  <span class="number">192.168.5.26:80</span> weight=<span class="number">1</span> down; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>Thishost supports Intel VT-x, but Intel VT-x is disabled.<br>IntelVT-x might be disabled if it has been disabled in the BIOS/firmware settings orthe host has not been power-cycled since changing this setting.<br><br>(1)Verify that the BIOS/firmware settings enable Intel VT-x and disable ‘trustedexecution.’<br><br>(2)Power-cycle the host if either of these BIOS/firmware settings have beenchanged.<br><br>(3)Power-cycle the host if you have not done so since installing VMwareWorkstation.(4)Update the host’s BIOS/firmware to the latest version.</p>
+<p>upstream目前支持<strong>4</strong>种方式的分配<br><br>1)、轮询（默认）<br><br>      每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。<br>2)、weight <br><br>      指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况。<br>2)、ip_hash <br><br>      每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题。<br>3)、fair（第三方）<br><br>      按后端服务器的响应时间来分配请求，响应时间短的优先分配。<br>4)、url_hash（第三方）<br><br>test.me的server段的location字段:</p>
 </blockquote>
-<p>意思说Intel VT-x技术没开，进bios打开就行。</p>
-<ol>
-<li>进入bios使用箭头键，滚动到“Config”。</li>
-<li>滚动到“CPU”，然后按Enter 键 ，滚动到“Intel  Virtualization Technology”，然后按Enter 键<br>选择“Enabled”。</li>
-<li>继续使用箭头键，滚动到“security”，然后按Enter 键。</li>
-<li>滚动到“virtualization”，然后按Enter 键 ，进去后有两项，一项是Intel VirtualizationTechnology，一项是Intel VT-d都改成Enabled。</li>
-<li>DONE</li>
-</ol>
-<h3 id="vagrant_up_时报_Warning:_Authentication_failure-Retrying…-">vagrant up 时报 Warning: Authentication failure.Retrying….</h3><p>如下方法可解决该问题：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">以vagrant身份进入系统</span><br><span class="line"><span class="keyword">cd</span> /home/vagrant</span><br><span class="line">wget http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/mitchellh/vagrant/master/<span class="built_in">keys</span>/vagrant.pub -O .ssh/authorized_keys</span><br><span class="line">chmod <span class="number">700</span> .ssh</span><br><span class="line">vagrant chmod <span class="number">600</span> .ssh/authorized_keys</span><br><span class="line">vagrant chown -R vagran<span class="variable">t:vagrant</span> .ssh</span><br></pre></td></tr></table></figure>
-<p>done</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">location</span> / &#123;</span><br><span class="line">	<span class="title">proxy_pass</span>         <span class="url">http://test.me</span>; </span><br><span class="line">    <span class="title">proxy_set_header</span>   Host             <span class="variable">$host</span>; </span><br><span class="line">    <span class="title">proxy_set_header</span>   X-Real-IP        <span class="variable">$remote_addr</span>; </span><br><span class="line">    <span class="title">proxy_set_header</span>   X-Forwarded-For  <span class="variable">$proxy_add_x_forwarded_for</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>reload nginx<br><br><em>主服务器也可以把请求转发给自己，设置为别的端口即可。</em></p>
 
       
     </div>
 
     <div class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/nginx/"> #nginx </a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/09/23/linux分区并挂载空白磁盘的方法/">linux分区并挂载空白磁盘的方法</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/31/php-socket-read-参数不同会导致的问题/">php socket_read 参数不同会导致的问题</a>
+              <a href="/2015/09/23/linux分区并挂载空白磁盘的方法/">linux分区并挂载空白磁盘的方法</a>
             
           </div>
         </div>
@@ -284,8 +270,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/09/02/win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法/"
-               data-title="win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法" data-url="http://yoursite.com/2015/09/02/win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法/">
+          <div class="ds-thread" data-thread-key="2015/10/01/nginx负载均衡配置纪录/"
+               data-title="nginx负载均衡配置纪录" data-url="http://yoursite.com/2015/10/01/nginx负载均衡配置纪录/">
           </div>
         
       </div>
@@ -380,7 +366,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#装完fedora后引导页选择win8会报cannot_load_image"><span class="nav-number">1.</span> <span class="nav-text">装完fedora后引导页选择win8会报cannot load image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vitrualbox启动时报vt-x未开启"><span class="nav-number">2.</span> <span class="nav-text">Vitrualbox启动时报vt-x未开启</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vagrant_up_时报_Warning:_Authentication_failure-Retrying…-"><span class="nav-number">3.</span> <span class="nav-text">vagrant up 时报 Warning: Authentication failure.Retrying….</span></a></li></ol></div>
+              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
