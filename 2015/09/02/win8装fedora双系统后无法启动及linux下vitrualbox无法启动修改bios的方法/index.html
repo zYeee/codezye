@@ -244,6 +244,9 @@
 <li>滚动到“virtualization”，然后按Enter 键 ，进去后有两项，一项是Intel VirtualizationTechnology，一项是Intel VT-d都改成Enabled。</li>
 <li>DONE</li>
 </ol>
+<h3 id="vagrant_up_时报_Warning:_Authentication_failure-Retrying…-">vagrant up 时报 Warning: Authentication failure.Retrying….</h3><p>如下方法可解决该问题：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">以vagrant身份进入系统</span><br><span class="line"><span class="keyword">cd</span> /home/vagrant</span><br><span class="line">wget http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/mitchellh/vagrant/master/<span class="built_in">keys</span>/vagrant.pub -O .ssh/authorized_keys</span><br><span class="line">chmod <span class="number">700</span> .ssh</span><br><span class="line">vagrant chmod <span class="number">600</span> .ssh/authorized_keys</span><br><span class="line">vagrant chown -R vagran<span class="variable">t:vagrant</span> .ssh</span><br></pre></td></tr></table></figure>
+<p>done</p>
 
       
     </div>
@@ -377,7 +380,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#装完fedora后引导页选择win8会报cannot_load_image"><span class="nav-number">1.</span> <span class="nav-text">装完fedora后引导页选择win8会报cannot load image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vitrualbox启动时报vt-x未开启"><span class="nav-number">2.</span> <span class="nav-text">Vitrualbox启动时报vt-x未开启</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#装完fedora后引导页选择win8会报cannot_load_image"><span class="nav-number">1.</span> <span class="nav-text">装完fedora后引导页选择win8会报cannot load image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vitrualbox启动时报vt-x未开启"><span class="nav-number">2.</span> <span class="nav-text">Vitrualbox启动时报vt-x未开启</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vagrant_up_时报_Warning:_Authentication_failure-Retrying…-"><span class="nav-number">3.</span> <span class="nav-text">vagrant up 时报 Warning: Authentication failure.Retrying….</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
