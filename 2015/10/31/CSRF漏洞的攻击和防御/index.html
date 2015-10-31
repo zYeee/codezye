@@ -223,7 +223,7 @@
       
         <p>最近因为公司测试发现公司站点的有些请求接口存在csrf漏洞，我负责去修复这些漏洞，将漏洞修复好后我在此做一个总结。</p>
 <blockquote>
-<p>CSRF(cross-site request forgery)跨站请示伪造，是一种对网站的恶意利用，与XSS不同，XSS利用的是站点内的信任用户，而CSRF则通过伪装来自受信任用户的请示来利用受信任的网站。</p>
+<p>CSRF(cross-site request forgery)跨站请示伪造，是一种对网站的恶意利用，与XSS不同，XSS利用的是站点内的信任用户，而CSRF则通过伪装来自受信任用户的请示来利用受信任的网站。<br><a id="more"></a></p>
 </blockquote>
 <h2 id="攻击方式">攻击方式</h2><h3 id="GET类型的CSRF">GET类型的CSRF</h3><p>GET类型的CSRF利用非常简单，只需要一个HTTP请求就可以了。一般会这样子来利用：</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="tag">img</span> src=<span class="string">"http://test.me/cost.php?uid=3"</span>/&gt;</span><br></pre></td></tr></table></figure>
