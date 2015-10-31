@@ -221,7 +221,7 @@
       
 
       
-        <p>负载均衡是大流量网站要做的一个东西，我用了nginx快一年了，一直都是用现成的反向代理而没有自已配置过。这次打算自己动手配置下并纪录详细的方法。<br><br><strong>测试环境：</strong>virtual box启了三台虚拟机，系统为fedora 22。<br><br><strong>测试域名：</strong>test.me<br><br><strong>A服务器IP:</strong>192.168.5.24<br><br><strong>B服务器IP:</strong>192.168.5.25<br><br><strong>C服务器IP:</strong>192.168.5.26<br><br><em>思路：把域名解析到A服务器，由A服务器作负载均衡到B服务器和C服务器上。</em><br><br><a id="more"></a></p>
+        <p>负载均衡是大流量网站要做的一个东西，我用了nginx快一年了，一直都是用现成的反向代理而没有自已配置过。这次打算自己动手配置下并纪录详细的方法。<br><br><a id="more"></a><br><strong>测试环境：</strong>virtual box启了三台虚拟机，系统为fedora 22。<br><br><strong>测试域名：</strong>test.me<br><br><strong>A服务器IP:</strong>192.168.5.24<br><br><strong>B服务器IP:</strong>192.168.5.25<br><br><strong>C服务器IP:</strong>192.168.5.26<br><br><em>思路：把域名解析到A服务器，由A服务器作负载均衡到B服务器和C服务器上。</em><br></p>
 <p>在A服务器的/etc/nginx/nginx.conf的http段中加入如下代码(weight可设置权重，down暂不参加负载):</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">upstream</span> a.com &#123; </span><br><span class="line">      <span class="title">server</span>  <span class="number">192.168.5.25:80</span> weight=<span class="number">2</span>; </span><br><span class="line">      <span class="title">server</span>  <span class="number">192.168.5.26:80</span> weight=<span class="number">1</span> down; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -320,14 +320,14 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">categories</span>
               </a>
           </div>

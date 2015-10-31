@@ -228,6 +228,7 @@
 <li>声明为抽象的方法，在实现的时候必须包含相同或更低的访问级别。</li>
 <li>不能用new关键字来创建抽象类的实例。</li>
 <li>被声明为抽象的方法不能包含函数体。</li>
+<li>继承一个抽象类就必须实现它的所有抽象方法。</li>
 </ul>
 <p>例：定义一个抽象基类：</p>
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">car</span>&#123;</span></span><br><span class="line">	<span class="keyword">abstract</span> function getMaxSpeed()&#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FastCar</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Car</span>&#123;</span></span><br><span class="line">	function getMaxSpeed()&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">150</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -331,14 +332,14 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">categories</span>
               </a>
           </div>
