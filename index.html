@@ -228,16 +228,12 @@
         
           <p>最近因为公司测试发现公司站点的有些请求接口存在csrf漏洞，我负责去修复这些漏洞，将漏洞修复好后我在此做一个总结。</p>
 <blockquote>
-<p>CSRF(cross-site request forgery)跨站请示伪造，是一种对网站的恶意利用，与XSS不同，XSS利用的是站点内的信任用户，而CSRF则通过伪装来自受信任用户的请示来利用受信任的网站。</p>
-</blockquote>
-<h2 id="攻击方式">攻击方式</h2><h3 id="GET类型的CSRF">GET类型的CSRF</h3><p>GET类型的CSRF利用非常简单，只需要一个HTTP请求就可以了。一般会这样子来利用：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="tag">img</span> src=<span class="string">"http://test.me/cost.php?uid=3"</span>/&gt;</span><br></pre></td></tr></table></figure>
-<p>在访问有这个img tag的页面后，就会向test.me/cost.php发出参数uid为3的http get请求，就达到了攻击者的目的。<br><br><em>之前有爆出过某weibo的关注动作就是一个get请求，恶意用户通过私信的方式发送一个陌生url,用户点击后就会在不知情的情况下关注该恶意用户。</em></p>
-<h3 id="POST类型的CSRF">POST类型的CSRF</h3><p>要利用post类型的csrf可以使用一个自动提交的表单。如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">form</span> <span class="attribute">action</span>=<span class="value">"http://test.me/cost.php"</span> <span class="attribute">method</span>=<span class="value">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">name</span>=<span class="value">"uid"</span> <span class="attribute">value</span>=<span class="value">3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">form</span>&gt;</span></span><br><span class="line">/<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="css"></span><br><span class="line">    <span class="tag">document</span><span class="class">.forms</span><span class="attr_selector">[0]</span><span class="class">.submit</span>();</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="防范方法">防范方法</h2><h3 id="加入token">加入token</h3><p>这是防范csrf攻击最常用的方式。比较通用的方式是保持原有的参数不变，另外添加一个参数token，这个值是随机的，服务端在接到请求后首先检查这个token是不是合法，如果不合法就返回错误，有效防止第三方攻击。<br>很常见的做法是将session_id md5之后做为token进行加密。<br><br><strong>敏感操作都要使用post，防止token出现在url中</strong></p>
-<h3 id="检测refer">检测refer</h3><p>通过检查refer值，我们可以看出这个请求是合法的还是非法的。但是服务器不是任何时候都能接受到referer的值。所以refer的检测用于监控csrf的发生。</p>
-
+<p>CSRF(cross-site request forgery)跨站请示伪造，是一种对网站的恶意利用，与XSS不同，XSS利用的是站点内的信任用户，而CSRF则通过伪装来自受信任用户的请示来利用受信任的网站。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/10/31/CSRF漏洞的攻击和防御/#more">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
