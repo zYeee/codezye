@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,next" />
+  <meta name="keywords" content="vim插件," />
 
 
 
@@ -49,7 +49,7 @@
 
 
 
-  <title> vim使用和技巧总结 // hello world </title>
+  <title> vim项目全局搜索的方法比较 // hello world </title>
 </head>
 
 <body>
@@ -178,7 +178,7 @@
           
           
             
-              vim使用和技巧总结
+              vim项目全局搜索的方法比较
             
           
         </h1>
@@ -206,8 +206,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/11/01/vim使用和技巧总结/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/01/vim使用和技巧总结/"></span>
+            <a href="/2015/11/01/vim项目全局搜索的方法比较/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/01/vim项目全局搜索的方法比较/"></span>
             </a>
           </span>
           
@@ -221,12 +221,30 @@
       
 
       
-        <p>到目前为止我用vim应该有四年了，除了以前写acm时使用的dev-c++，确实觉得还不太想用ide。用了这么久算不上资深也算的上熟悉了吧。vim可以挖掘的东西有那么多，直到现在还经常有“哇原来还可以这样用诶”的感叹。所以在这里打算纪录一下一些有用的vim技巧。</p>
+        <p>到目前为止我用vim应该有四年了，除了以前写acm时使用的dev-c++，确实觉得还不太想用ide。用了这么久算不上资深也算的上熟悉了吧。vim可以挖掘的东西有那么多，直到现在还经常有“哇原来还可以这样用诶”的感叹。<br><br>我的vimrc：<em>github.com/zYeee/dev/blob/master/.vimrc</em><br></p>
+<p>现在拿到的有项目代码文件很多，vim又天生无法实现很好的代码跳转，ctags的跳转有时候会让人无语，所以之前在找一个需要的string的时候都是退出到shell，然后执行原生的grep指令来找，虽然可以但是随着要找的次数越来越多，这样的方法也显得很挫和浪费时间，于是想找找有没有快一点的全局搜索方案，找了下有不少，个人也比对了一下，总结如下：<br><a id="more"></a></p>
+<h2 id="命令">命令</h2><h3 id="vimgrep:在文件和目录中查找匹配的字符串">vimgrep:在文件和目录中查找匹配的字符串</h3><p>之前一直以为vim没有这个功能，都是到项目文件夹里执行grep xxx来查找自己想要的字符串，了解了下，居然有vimgrep这个命令，这样子查找起来就方便多了。<br></p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">; 在当前的文件夹下查找字符串<span class="keyword">*</span><span class="keyword">*</span>test<span class="keyword">*</span><span class="keyword">*</span>:</span><br><span class="line">vimgrep /test/ <span class="keyword">*</span></span><br><span class="line">; 在当前的文件夹和子文件夹下查找字符串<span class="keyword">*</span><span class="keyword">*</span>test<span class="keyword">*</span><span class="keyword">*</span>:</span><br><span class="line">vimgrep /test/ <span class="keyword">*</span><span class="keyword">*</span>/<span class="keyword">*</span>.<span class="keyword">*</span></span><br></pre></td></tr></table></figure>
+<p>结束后可用copen来打开结果列表。</p>
+<h2 id="插件">插件</h2><h3 id="easygrep：一个有快速grep功能的插件">easygrep：一个有快速grep功能的插件</h3><p>该插件内置的是vimgrep命令。可以用Bundle来安装。基本用法如下：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;Leader&gt;vv  - Grep <span class="keyword">for</span> <span class="operator">the</span> <span class="built_in">word</span> under <span class="operator">the</span> cursor, match all occurences,</span><br><span class="line">              like <span class="string">'g*'</span>.  See <span class="string">":help gstar"</span>.</span><br><span class="line">&lt;Leader&gt;vV  - Grep <span class="keyword">for</span> <span class="operator">the</span> <span class="built_in">word</span> under <span class="operator">the</span> cursor, match <span class="keyword">whole</span> <span class="built_in">word</span>, like</span><br><span class="line">              <span class="string">'*'</span>.  See <span class="string">":help star"</span>.</span><br><span class="line">&lt;Leader&gt;va  - Like vv, but <span class="built_in">add</span> <span class="built_in">to</span> existing list.</span><br><span class="line">&lt;Leader&gt;vA  - Like vV, but <span class="built_in">add</span> <span class="built_in">to</span> existing list.</span><br><span class="line">&lt;Leader&gt;vr  - Perform <span class="operator">a</span> <span class="built_in">global</span> search <span class="command"><span class="keyword">on</span> <span class="title">the</span> <span class="title">word</span> <span class="title">under</span> <span class="title">the</span> <span class="title">cursor</span></span></span><br><span class="line">              <span class="operator">and</span> prompt <span class="keyword">for</span> <span class="operator">a</span> pattern <span class="operator">with</span> which <span class="built_in">to</span> <span class="built_in">replace</span> <span class="keyword">it</span>.</span><br><span class="line">&lt;Leader&gt;vR  - Like vr, but match <span class="keyword">whole</span> <span class="built_in">word</span>.</span><br></pre></td></tr></table></figure>
+<p>在vimrc内加入</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">g:EasyGrepRecursive</span>=<span class="number">1</span> //可以使默认模式改为递归</span><br><span class="line"><span class="keyword">let</span> <span class="variable">g:EasyGrepMode</span>=<span class="number">2</span> //<span class="keyword">grep</span>指定文件</span><br></pre></td></tr></table></figure>
+<p>虽然这个插件用起来方便，但是在用了ack.vim这个插件后还是觉得ack更加强大一些，所以还是用ack来做全局搜索了。下面介绍：</p>
+<h3 id="ack-vim：">ack.vim：</h3><p>虽然easygrep把搜索功能已经做的很方便了，但是在遇到一些大的项目的时候，依然会有速度很慢甚至崩溃等问题出现。Ack这个插件是系统的ack指令作为支持，是perl实现的，所以效率要比grep要高，而且会自动过滤一些.git等无用的目录。首先系统要有ack这个命令，据说大多数的linux发行版上都有，但是我的fedora 22上没有这个命令，def source也没有， 所以要自己去<a href="http://beyondgrep.com/install/" target="_blank" rel="external">官网</a>下载，ack.vim这个插件可以通过Bundle来下载。<br><br>用法和系统的ack命令相同。可以通过man ack来查看。<br><br>基本用法已经能够满足大部分需求：</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">:Ack</span> <span class="collection">[options]</span> <span class="collection">&#123;pattern&#125;</span> <span class="collection">[<span class="collection">&#123;directories&#125;</span>]</span></span><br></pre></td></tr></table></figure>
+<p>默认是大小写敏感的，加入参数-i可以使大小写不敏感。</p>
 
       
     </div>
 
     <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vim插件/"> #vim插件 </a>
+          
+        </div>
       
 
       
@@ -257,8 +275,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/11/01/vim使用和技巧总结/"
-               data-title="vim使用和技巧总结" data-url="http://yoursite.com/2015/11/01/vim使用和技巧总结/">
+          <div class="ds-thread" data-thread-key="2015/11/01/vim项目全局搜索的方法比较/"
+               data-title="vim项目全局搜索的方法比较" data-url="http://yoursite.com/2015/11/01/vim项目全局搜索的方法比较/">
           </div>
         
       </div>
@@ -319,7 +337,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -353,7 +371,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#命令"><span class="nav-number">1.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vimgrep:在文件和目录中查找匹配的字符串"><span class="nav-number">1.1.</span> <span class="nav-text">vimgrep:在文件和目录中查找匹配的字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插件"><span class="nav-number">2.</span> <span class="nav-text">插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#easygrep：一个有快速grep功能的插件"><span class="nav-number">2.1.</span> <span class="nav-text">easygrep：一个有快速grep功能的插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ack-vim："><span class="nav-number">2.2.</span> <span class="nav-text">ack.vim：</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
