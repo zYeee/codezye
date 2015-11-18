@@ -180,6 +180,96 @@
           
           
             
+              <a class="post-title-link" href="/2015/11/18/设计模式-工厂模式和ioc控制反转（一）/">
+                [设计模式]工厂模式和ioc控制反转（一）
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on 2015-11-18
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/thinking-in-programming/">thinking in programming</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/11/18/设计模式-工厂模式和ioc控制反转（一）/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/18/设计模式-工厂模式和ioc控制反转（一）/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>设计模式断断续续一直在看，但是因为实际项目中没有接触过，所以也一直都是纸上谈兵，处于一个看了就忘，忘了再看的阶段。最近在看新公司的框架代码，用的是symfony，但是做过大幅度修改，加入了很多自己的特性和优化。而且继承关系嵌套很复杂，越看越让人觉得以前的自己根本不会写代码ToT。比如说这个框架里实现了java spring里的interceptor方法，看了一天的代码才勉强看明白。里面应该是用了ioc控制反转这个设计模式。之前我从来没有了解过这个，了解后一下子想到了工厂模式，因为没有什么设计模式方面的经验，所以甚至很容易把两者混淆，于是想写点总结记录一下两者异同，也便加深自己的理解。</p>
+<blockquote>
+<p>In object-oriented programming (OOP), a factory is an object for creating other objects – formally a factory is simply an object that returns an object from some method call, which is assumed to be “new”.[a] More broadly, a subroutine that returns a “new” object may be referred to as a “factory”, as in factory method or factory function. This is a basic concept in OOP, and forms the basis for a number of related software design patterns.             —wikipedia</p>
+</blockquote>
+<p>从维基百科对工厂模式的解释可以看出，它就真的像是一个工厂那样，你想要什么类，告诉它，它就能够把你想要的类生产出来给你。而可以被你调用的方法名，都是一致的，所以你不需要关心它们的内部实现。<br><br>比如说，数据库有很多种，mysql，sqlite，access等等，此时可以把这些类都封装好，让一个通用的工厂，来生产这些类的实例。<br><br>下面用一个简单的例子来说明。工厂模式也有很多变种，比如抽像工厂模式，在这里不作细表。</p>
+<p>首先定义一个抽象基类来控制数据库操作的基本方法，这里就简单的定义两个方法。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">DB_adapter</span></span>&#123;</span><br><span class="line">    <span class="keyword">abstract</span> <span class="function"><span class="keyword">function</span> <span class="title">connect</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">abstract</span> <span class="function"><span class="keyword">function</span> <span class="title">query</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面再定义两个数据库类的具体实现</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">mysql_adapter</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">DB_adapter</span>&#123;</span></span><br><span class="line">    function connect()&#123;</span><br><span class="line">        echo <span class="string">"mysql connect..."</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    function query()&#123;</span><br><span class="line">        echo <span class="string">"mysql query..."</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">sqlite_adapter</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">DB_adapter</span>&#123;</span></span><br><span class="line">    function connect()&#123;</span><br><span class="line">        echo <span class="string">"sqlite connect..."</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    function query()&#123;</span><br><span class="line">        echo <span class="string">"sqlite query"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>数据库的连接实例可用<strong>单例模式</strong>，这里为了简单说明也就省略了。<br>下面是一个工厂类</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DB_factory</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getDB</span><span class="params">(<span class="variable">$type</span>)</span></span>&#123;</span><br><span class="line">        <span class="variable">$class</span> = <span class="variable">$type</span>.<span class="string">"_adapter"</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="variable">$class</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用这种方式来调用，就能够得到自己想要的数据库对象。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="rule"><span class="attribute">DB_factory</span>:<span class="value">:<span class="function">getDB</span>(<span class="string">"mysql"</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>以上就是有关工厂模式的简单介绍，下一篇进行ioc的总结。</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/11/01/vim项目全局搜索的方法比较/">
                 vim项目全局搜索的方法比较
               </a>
@@ -907,88 +997,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/07/16/php-namespace-用法和autoload机制/">
-                php namespace 用法和autoload机制
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on 2015-07-16
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; In
-            
-              <a href="/categories/php/">php</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/07/16/php-namespace-用法和autoload机制/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/16/php-namespace-用法和autoload机制/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h2 id="php_namespace_用法">php namespace 用法</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line">	<span class="keyword">namespace</span> <span class="title">test</span>;</span><br><span class="line">	define(<span class="string">'MESSAGE'</span>, <span class="string">'hello world'</span>);</span><br><span class="line"><span class="preprocessor">?&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>若MESSAGE前不加入namespace，则默认会定义在global namespace下。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/16/php-namespace-用法和autoload机制/#more">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -1027,21 +1035,21 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">categories</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
