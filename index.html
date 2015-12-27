@@ -180,6 +180,102 @@
           
           
             
+              <a class="post-title-link" href="/2015/11/19/设计模式-工厂模式和ioc控制反转（二）/">
+                [设计模式]工厂模式和ioc控制反转（二）
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on 2015-11-19
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/thinking-in-programming/">thinking in programming</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/11/19/设计模式-工厂模式和ioc控制反转（二）/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/19/设计模式-工厂模式和ioc控制反转（二）/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>控制反转是一个抽象的概念。说白了就是<strong>一个对象如何去获取他所依赖的对象的引用的方法</strong>。依赖注入(<em>Dependency Injection</em>)是一个常用的方法。</p>
+<p>通过下面的例子来简单引入控制反转这个概念。<br>程序内有需求去调用一个低层对象的方法，比如数据库操作，最简单的方法可能是这样的：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">business</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$db_adapter</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="variable">$this</span>-&gt;db_adapter = <span class="keyword">new</span> mysqlAdapter();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getResult</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="variable">$this</span>-&gt;db_adapter-&gt;getResult();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">mysqlAdapter</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getResult</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="keyword">__METHOD__</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$bis</span> = <span class="keyword">new</span> business();</span><br><span class="line"><span class="variable">$bis</span>-&gt;getResult();</span></span><br></pre></td></tr></table></figure>
+<p>以上的代码会导致应用程序对低层的模块产生依赖，也就是耦合度比较高，如果要改用access或者别的数据库系统，就要去改动business类的代码。这是不好的设计。</p>
+<p>那么换一个方法</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IDbCommand</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getResultFromAdapter</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">business</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$db_adapter</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setDB</span><span class="params">(IDbCommend <span class="variable">$db</span>)</span></span>&#123;</span><br><span class="line">        <span class="variable">$this</span>-&gt;db_adapter = <span class="variable">$db</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getResult</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="variable">$this</span>-&gt;db_adapter-&gt;getResultFromAdapter();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">mysqlAdapter</span> <span class="keyword">implements</span> <span class="title">IDbCommend</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getResultFromAdapter</span><span class="params">()</span></span>&#123;</span><br><span class="line">        var_dump(<span class="keyword">__METHOD__</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">accessAdapter</span> <span class="keyword">implements</span> <span class="title">IDbCommend</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getResultFromAdapter</span><span class="params">()</span></span>&#123;</span><br><span class="line">        var_dump(<span class="keyword">__METHOD__</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$bis</span> = <span class="keyword">new</span> business();</span><br><span class="line"><span class="variable">$bis</span>-&gt;setDB(<span class="keyword">new</span> mysqlAdapter());</span><br><span class="line"><span class="variable">$bis</span>-&gt;getResult();</span><br><span class="line"></span><br><span class="line"><span class="variable">$bis</span>-&gt;setDB(<span class="keyword">new</span> accessAdapter());</span><br><span class="line"><span class="variable">$bis</span>-&gt;getResult();</span></span><br></pre></td></tr></table></figure>
+<p>如上，就是将business类调用具体哪个类(mysql or access)的控制权从其中移除，实现了控制的“反转”，控制权从实际的mysqlAdapter转移到了抽象的IDbcommand接口上，让business只依赖于这个接口，而不依赖于具体的实现，且所有数据库的具体实现也都依赖于IDbCommand接口。</p>
+<p>以上就是依赖注入一个最简单的解释。实际上比较常用的注入方式有三种：</p>
+<ul>
+<li>Setter injection 使用setter方法</li>
+<li>Constructor injection 使用构造函数</li>
+<li>Property Injection 直接设置属性</li>
+</ul>
+<p>上面的例子用的是第一种方式。</p>
+<h4 id="依赖注入容器(Dependency_Injection_Container)">依赖注入容器(Dependency Injection Container)</h4><p>如上文所言，实现注入有多种方式，那么我们可能会编写出如下的代码：</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$connection</span> <span class="subst">=</span> <span class="literal">new</span> Connection();</span><br><span class="line"><span class="variable">$session</span> <span class="subst">=</span> <span class="literal">new</span> Session();</span><br><span class="line"><span class="variable">$fileSystem</span> <span class="subst">=</span> <span class="literal">new</span> FileSystem();</span><br><span class="line"><span class="variable">$filter</span> <span class="subst">=</span> <span class="literal">new</span> Filter();</span><br><span class="line"><span class="variable">$selector</span> <span class="subst">=</span> <span class="literal">new</span> Selector();</span><br><span class="line"></span><br><span class="line"><span class="comment">//__construct</span></span><br><span class="line"><span class="variable">$some</span> <span class="subst">=</span> <span class="literal">new</span> SomeComponent(<span class="variable">$connection</span>, <span class="variable">$session</span>, <span class="variable">$fileSystem</span>, <span class="variable">$filter</span>, <span class="variable">$selector</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//setter</span></span><br><span class="line"><span class="variable">$some</span><span class="subst">-&gt;</span>setConnection(<span class="variable">$connection</span>);</span><br><span class="line"><span class="variable">$some</span><span class="subst">-&gt;</span>setSession(<span class="variable">$session</span>);</span><br><span class="line"><span class="variable">$some</span><span class="subst">-&gt;</span>setFileSystem(<span class="variable">$fileSystem</span>);</span><br><span class="line"><span class="variable">$some</span><span class="subst">-&gt;</span>setFilter(<span class="variable">$filter</span>);</span><br><span class="line"><span class="variable">$some</span><span class="subst">-&gt;</span>setSelector(<span class="variable">$selector</span>);</span><br></pre></td></tr></table></figure>
+<p>使用这样的组件的时候，我们就需要创建很多个setter方法或者建立一个多参数的构造函数来传递他们，在使用组件之前还要创建依赖，这会让我们的代码变得不容易维护。<br><br>一个比较好的方法，就是为依赖提供一个容器。这个容器就作为一个全局的注册表，能够把获取依赖实例这一过程解耦，降低组组件的复杂性。</p>
+<p>先看代码</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Db</span></span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"db"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="keyword">__METHOD__</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cache</span></span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"cache"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ioc</span></span>&#123;</span><br><span class="line">  <span class="keyword">protected</span> <span class="keyword">static</span> <span class="variable">$reg</span> = [];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">set</span><span class="params">(<span class="variable">$name</span>, Callable <span class="variable">$resolver</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span>::<span class="variable">$reg</span>[<span class="variable">$name</span>] = <span class="variable">$resolver</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">get</span><span class="params">(<span class="variable">$name</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="keyword">static</span>::<span class="variable">$reg</span>[<span class="variable">$name</span>]))&#123;</span><br><span class="line">      <span class="variable">$resolver</span> = <span class="keyword">static</span>::<span class="variable">$reg</span>[<span class="variable">$name</span>];</span><br><span class="line">      <span class="keyword">return</span> <span class="variable">$resolver</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ioc::set(<span class="string">'db'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Db();</span><br><span class="line">&#125;);</span><br><span class="line">ioc::set(<span class="string">'cache'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Cache();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable">$db</span> = ioc::get(<span class="string">'db'</span>);</span><br><span class="line"><span class="variable">$db</span>-&gt;test();</span></span><br></pre></td></tr></table></figure>
+<p>如上我们就把实例对象注入到了一个容器当中去。实现了IOC。<br>除了依赖注入，还有别的方式也可以实现控制反转。比如说service locator，在这里先不作讨论。<br><br>总体来说，IoC模式调用类只依赖接口，而不依赖具体的实现类。控制权交给了容器，在运行的时候才由容器决定将具体的实现动态的“注入”到调用类的对象中，减少了耦合。</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/11/18/设计模式-工厂模式和ioc控制反转（一）/">
                 [设计模式]工厂模式和ioc控制反转（一）
               </a>
@@ -906,88 +1002,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/07/16/APUE-常见信号/">
-                [APUE]常见信号
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on 2015-07-16
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; In
-            
-              <a href="/categories/linux/">linux</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/07/16/APUE-常见信号/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/16/APUE-常见信号/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>某个信号出现时，内核有<strong>3种</strong>处理方式。<br><br>1.忽略信号(SIGKILL和SIGSTOP不能被忽略)<br><br>2.捕捉信号(SIGKILL和SIGSTOP不能被捕捉)<br><br>3.执行系统默认动作<br></p>
-<hr>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/16/APUE-常见信号/#more">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -1026,7 +1040,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
