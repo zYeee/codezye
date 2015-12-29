@@ -49,7 +49,7 @@
 
 
 
-  <title> fedora firewall 配置 // hello world </title>
+  <title> OSX执行sed -i指令时提示extra characters at the end of command失败 // hello world </title>
 </head>
 
 <body>
@@ -178,7 +178,7 @@
           
           
             
-              fedora firewall 配置
+              OSX执行sed -i指令时提示extra characters at the end of command失败
             
           
         </h1>
@@ -186,14 +186,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Posted on 2015-07-14
+          Posted on 2015-12-29
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; In
             
-              <a href="/categories/运维/">运维</a>
+              <a href="/categories/linux/">linux</a>
 
               
               
@@ -206,8 +206,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/07/14/fedora-firewall-配置/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/14/fedora-firewall-配置/"></span>
+            <a href="/2015/12/29/OSX执行sed-i指令时提示extra-characters-at-the-end-of-command失败/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/29/OSX执行sed-i指令时提示extra-characters-at-the-end-of-command失败/"></span>
             </a>
           </span>
           
@@ -221,11 +221,16 @@
       
 
       
-        <p>fedora系统会对特写的port加上防火墙限制，所以在进行开发的时候，要关闭这些特定端口的防火墙。<br><br><a id="more"></a><br>firewall有GUI，通过GUI可以方便地对其进行操作。<br><br>firewall-cmd是firewall的commend line配置命令:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd [--zone=<span class="tag">&lt;<span class="title">zone</span>&gt;</span>] --add-port=<span class="tag">&lt;<span class="title">port</span>&gt;</span>[-<span class="tag">&lt;<span class="title">port</span>&gt;</span>]/<span class="tag">&lt;<span class="title">protocol</span>&gt;</span> [--timeout=<span class="tag">&lt;<span class="title">seconds</span>&gt;</span>]</span><br></pre></td></tr></table></figure>
-<p>例：</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">firewall-<span class="built_ins">cmd</span> --<span class="built_ins">add</span>-port=8080/tcp 开放8080端口的tcp连接</span><br><span class="line">firewall-<span class="built_ins">cmd</span> --remove-port=8080/tcp</span><br><span class="line">firewall-<span class="built_ins">cmd</span> --<span class="built_ins">add</span>-service=ftp  开放ftp服务</span><br><span class="line">firewall-<span class="built_ins">cmd</span> --remove-service=ftp</span><br></pre></td></tr></table></figure>
-<p><strong>注:以上配置皆为暂时性的配置，重启后即失效。若要永久生效，加入参数—permanent</strong></p>
+        <p>今天想给一个文件夹里的所有文件做一个全局的字符串替换，查找资料发现了如下命令:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -<span class="tag">i</span> <span class="string">"s/oldstring/newstring/g"</span> filename</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>但是执行下来总是提示</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed ：<span class="number">1</span>：extra <span class="keyword">characters</span> <span class="keyword">at</span> <span class="operator">the</span> <span class="function"><span class="keyword">end</span> <span class="title">of</span> <span class="title">t</span> <span class="title">command</span></span></span><br></pre></td></tr></table></figure>
+<p>而无法成功。<br>查了很久才知道<strong>unix和linux的sed命令的用法是不一样的</strong>， 要用如下方式来使用。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -<span class="tag">i</span> <span class="string">""</span> <span class="string">"s/oldstring/newstring/g"</span> filename</span><br></pre></td></tr></table></figure>
+<p>仅仅对-i参数有影响，对别的操作是没有影响的。</p>
+<p>如果要全局替换，可用管道命令：</p>
+<p>```<br>grep -rl oldstring filedir|xargs sed -i “” ‘s/oldstring/newstring/g’</p>
 
       
     </div>
@@ -237,13 +242,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/16/int64不超上限的位运算方法/">__int64不超上限的位运算方法</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/14/linux计划任务crontab/">linux计划任务crontab</a>
+              <a href="/2015/12/28/压力测试工具tsung用法简介/">压力测试工具tsung用法简介</a>
             
           </div>
         </div>
@@ -263,8 +266,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/07/14/fedora-firewall-配置/"
-               data-title="fedora firewall 配置" data-url="http://yoursite.com/2015/07/14/fedora-firewall-配置/">
+          <div class="ds-thread" data-thread-key="2015/12/29/OSX执行sed-i指令时提示extra-characters-at-the-end-of-command失败/"
+               data-title="OSX执行sed -i指令时提示extra characters at the end of command失败" data-url="http://yoursite.com/2015/12/29/OSX执行sed-i指令时提示extra-characters-at-the-end-of-command失败/">
           </div>
         
       </div>
