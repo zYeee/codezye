@@ -1,0 +1,657 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+    <meta name="description" content="此情可待成追忆，只是当时已惘然" />
+
+
+
+  <meta name="keywords" content="测试," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'post'
+  };
+</script>
+
+
+
+
+  <title> 压力测试工具tsung用法简介 // hello world </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">hello world</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            <i class="menu-item-icon icon-categories"></i> <br />
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            <i class="menu-item-icon icon-about"></i> <br />
+            About
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'jhSc_CsF6foZTvQsAY7Y','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              压力测试工具tsung用法简介
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on 2015-12-28
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/linux/">linux</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/12/28/压力测试工具tsung用法简介/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/28/压力测试工具tsung用法简介/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h4 id="简介">简介</h4><p>公司原来使用的压力测试工具是jmeter，最新看到tsung作为一个压测工具也有不错的表现。于是就研究了tsung的使用。<br><br>tsung是erlang开发的一个开源的多协议分布式负载测试工具，它能用来压力测试HTTP, WebDAV, SOAP, PostgreSQL, MySQL, LDAP 和 Jabber/XMPP的服务器。它可以分布在多个客户机，并能够模拟成千上万的虚拟用户数并发。</p>
+<h4 id="安装">安装</h4><p>首先是安装tsung，因为最新的tsung是1.6.0版的，系统自带的源可能没有最新版本，所以到官网<a href="http://tsung.erlang-projects.org/" target="_blank" rel="external">http://tsung.erlang-projects.org/</a> 下载源码包来编译，configure &amp;&amp; make &amp;&amp; make install完成。<br><a id="more"></a></p>
+<h4 id="配置文件">配置文件</h4><p>tsung是根据xml配置文件里的参数内容来进行压测。默认tsung会加载配置文件：~/.tsung/tsung.xml<br><br>如果该文件夹下初始为空，则在/usr/share/doc/tsung/examples下有样例的xml文件，http的配置是http_simple.xml<br><br>下面来讲几个关键的配置</p>
+<h5 id="clients">clients</h5><p>用户产生的方式</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">clients</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">client</span> <span class="attribute">host</span>=<span class="value">"localhost"</span> <span class="attribute">use_controller_vm</span>=<span class="value">"true"</span> <span class="attribute">maxusers</span>=<span class="value">"30000"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">clients</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>tsung运行时可以由很多的虚拟机组成，client配置指明这个client机器上最多生成的用户数，如果use_controller_vm为true的话，那么当用户数达到mmaxusers，tsung会自动生成新的VM。</p>
+<h5 id="servers">servers</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">servers</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">server</span> <span class="attribute">host</span>=<span class="value">"garden.blue.jude.poppen.lab"</span> <span class="attribute">port</span>=<span class="value">"80"</span> <span class="attribute">type</span>=<span class="value">"tcp"</span>&gt;</span><span class="tag">&lt;/<span class="title">server</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">servers</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>server段可以配置被测服务器的相关信息，也可以配置成集群，如下</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;servers&gt;</span><br><span class="line">  &lt;server <span class="variable">host=</span><span class="string">"server1"</span> <span class="variable">port=</span><span class="string">"80"</span> <span class="variable">type=</span><span class="string">"tcp"</span> <span class="variable">weight=</span><span class="string">"4"</span>&gt;&lt;/server&gt;</span><br><span class="line">  &lt;server <span class="variable">host=</span><span class="string">"server2"</span> <span class="variable">port=</span><span class="string">"80"</span> <span class="variable">type=</span><span class="string">"tcp"</span> <span class="variable">weight=</span><span class="string">"1"</span>&gt;&lt;/server&gt;</span><br><span class="line">&lt;/servers&gt;</span><br></pre></td></tr></table></figure>
+<p>这时tsung会根据weight值来选择发起请求的server</p>
+<h5 id="monitoring">monitoring</h5><p>系统监控服务，配置完后可获取被测server的cpu，内存，负载，数据库的相关信息。可以配置成erlang的监控服务和snmp的监控服务。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">monitoring</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">monitor</span> <span class="attribute">host</span>=<span class="value">"garden"</span> <span class="attribute">type</span>=<span class="value">"erlang"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">mysqladmin</span> <span class="attribute">port</span>=<span class="value">"3306"</span> <span class="attribute">username</span>=<span class="value">"root"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">monitor</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">monitoring</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="load">load</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">load</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="title">arrivalphase</span> <span class="attribute">phase</span>=<span class="value">"1"</span> <span class="attribute">duration</span>=<span class="value">"3"</span> <span class="attribute">unit</span>=<span class="value">"minute"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="title">users</span> <span class="attribute">maxnumber</span>=<span class="value">"100"</span> <span class="attribute">interarrival</span>=<span class="value">"0.02"</span> <span class="attribute">unit</span>=<span class="value">"second"</span> &gt;</span><span class="tag">&lt;/<span class="title">users</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="title">arrivalphase</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">load</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>load段可配置访问的负载，访问可以配成多个阶段，由phase值指定。duration是测试持续时间，unit是单位。<br><br>users段的maxnumber限制了生成的最大用户数，interarrival=”0.02”表示0.02秒产生一个新用户，用户按照session的配置顺序执行session中的request。</p>
+<h5 id="options">options</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">options</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="title">option</span> <span class="attribute">type</span>=<span class="value">"ts_http"</span> <span class="attribute">name</span>=<span class="value">"user_agent"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="title">user_agent</span> <span class="attribute">probability</span>=<span class="value">"80"</span>&gt;</span>Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.8) Gecko/20050513 Galeon/1.3.21<span class="tag">&lt;/<span class="title">user_agent</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="title">user_agent</span> <span class="attribute">probability</span>=<span class="value">"20"</span>&gt;</span>Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4<span class="tag">&lt;/<span class="title">user_agent</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="title">options</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>options段可配置一些请求的信息，如agent信息。</p>
+<h5 id="sessions">sessions</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">sessions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">session</span> <span class="attribute">name</span>=<span class="value">"http-example"</span> <span class="attribute">probability</span>=<span class="value">"70"</span> <span class="attribute">type</span>=<span class="value">"ts_http"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">setdynvars</span> <span class="attribute">sourcetype</span>=<span class="value">"random_number"</span> <span class="attribute">start</span>=<span class="value">"1"</span> <span class="attribute">end</span> =<span class="value">"100"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">var</span> <span class="attribute">name</span>=<span class="value">"itemid"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">setdynvars</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">transaction</span> <span class="attribute">name</span>=<span class="value">'getlist'</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">request</span> <span class="attribute">subst</span>=<span class="value">"true"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">http</span> <span class="attribute">url</span>=<span class="value">"/comment/getList"</span> <span class="attribute">method</span>=<span class="value">"POST"</span> <span class="attribute">contents</span> = "<span class="attribute">item_type</span>=<span class="value">image&amp;amp;item_id=%%_itemid%%"</span>&gt;</span><span class="tag">&lt;/<span class="title">http</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">request</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">transaction</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">session</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">session</span> <span class="attribute">name</span>=<span class="value">"http-example"</span> <span class="attribute">probability</span>=<span class="value">"30"</span> <span class="attribute">type</span>=<span class="value">"ts_http"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">setdynvars</span> <span class="attribute">sourcetype</span>=<span class="value">"random_number"</span> <span class="attribute">start</span>=<span class="value">"1"</span> <span class="attribute">end</span>=<span class="value">"100"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">var</span> <span class="attribute">name</span>=<span class="value">"itemid"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">setdynvars</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">setdynvars</span> <span class="attribute">sourcetype</span>=<span class="value">"random_number"</span> <span class="attribute">start</span>=<span class="value">"20"</span> <span class="attribute">end</span>=<span class="value">"5000000"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">var</span> <span class="attribute">name</span>=<span class="value">"content"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">setdynvars</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">transaction</span> <span class="attribute">name</span>=<span class="value">'getlist'</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">request</span> <span class="attribute">subst</span>=<span class="value">"true"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">http</span> <span class="attribute">url</span>=<span class="value">"/comment/addComment"</span> <span class="attribute">method</span>=<span class="value">"POST"</span> <span class="attribute">contents</span> = "<span class="attribute">item_type</span>=<span class="value">image&amp;amp;item_id=%%_itemid%%&amp;amp;content=%%_content%%"</span>&gt;</span><span class="tag">&lt;/<span class="title">http</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">request</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">transaction</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">session</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">sessions</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可配置多个子session，进而可测试多个api，可以设置请求概率，在probability里被定义，要求每个session的probability之和是100。类型是http。<br><br>sessions里可用for来设定请求次数，如下</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">for</span> <span class="keyword">from</span>=<span class="string">"1"</span> <span class="keyword">to</span>=<span class="string">"@loop"</span> incr=<span class="string">"1"</span> <span class="keyword">var</span>=<span class="string">"counter"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>在<request>里面可以设置请求的具体信息。在请求参数里可以带上随机数。随机数和随机字符串的定义如下：</request></p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;setdynvars <span class="variable">sourcetype=</span><span class="string">"random_number"</span> <span class="variable">start=</span><span class="string">"20"</span> <span class="variable">end=</span><span class="string">"5000000"</span>&gt;</span><br><span class="line">  &lt;var <span class="variable">name=</span><span class="string">"xxx"</span> /&gt;</span><br><span class="line">&lt;/setdynvars&gt;</span><br><span class="line">&lt;setdynvars <span class="variable">sourcetype=</span><span class="string">"random_string"</span> <span class="variable">length=</span><span class="string">"10"</span>&gt;</span><br><span class="line">  &lt;var <span class="variable">name=</span><span class="string">"xxx"</span> /&gt;</span><br><span class="line">&lt;/setdynvars&gt;</span><br></pre></td></tr></table></figure>
+<p>以%%_xxx%%的形式来调用，这里必须注意的是，要使用随机数，request必须加上<strong>subst=”true”</strong>参数，不然随机数无法被引用成功。随机数也可从文件读取，如csv。<br><br>http内部可定义header参数：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">http_header</span> <span class="attribute">name</span>=<span class="value">"Authorization"</span> <span class="attribute">value</span>=<span class="value">"111"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">http_header</span> <span class="attribute">name</span>=<span class="value">"Cookie"</span> <span class="attribute">value</span>=<span class="value">"authToken=%%_auth_token%%; Path=/"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- content-Type：POST请求参数的格式，如果是json格式可以这样写 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">http_header</span> <span class="attribute">name</span>=<span class="value">"Content-Type"</span> <span class="attribute">value</span>=<span class="value">"application/json"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>thinktime可用于定义两个请求的间隔时间</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">thinktime</span> <span class="attribute">value</span>=<span class="value">"1"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>另外可定义不同的transaction ，这样子结果里就会显示不同transaction的具体信息。</p>
+<h4 id="开始测试">开始测试</h4><p>运行命令</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsung <span class="built_in">start</span></span><br></pre></td></tr></table></figure>
+<p>开始测试<br><br>运行时执行</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsung <span class="keyword">status</span></span><br></pre></td></tr></table></figure>
+<p>可获取tsung运行时的状态<br></p>
+<h4 id="生成报表">生成报表</h4><p>测试程序结束后，进入log文件夹下的对应结果文件夹，执行</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsung_stats</span><br></pre></td></tr></table></figure>
+<p>就可以得到我们想要的结果报表了。</p>
+<h4 id="分析结果报表">分析结果报表</h4><p>生成好后的report.html就是测试的最终结果。<br><br>Main statistics里有一些总体的信息<br><img src="http://i4.tietuku.com/071ca6af8dc0b716.jpg" alt="Main statistics"><br>有几张重要的结果图如下：<br></p>
+<ul>
+<li>tsung产生的用户曲线图<br><img src="http://i4.tietuku.com/626cf1ea3aacecfc.png" alt="Main statistics"><br>Y轴代表每秒用户数，tsung每秒会产生一批用户，这个统计结果是每十秒统计一次，所有的图的起始位置显示的是0，其实是第一个10秒</li>
+<li>http接口响应数曲线图（TPS）<br><img src="http://i4.tietuku.com/c4ac98043eff22bb.png" alt="Main statistics"><br>Y轴是每秒响应数，右上角的200是http状态码，如果有多个状态码，会有多条不同颜色的曲线。</li>
+<li>http接口响应时间曲线图<br><img src="http://i4.tietuku.com/08ddf48adfe0ed31.png" alt="Main statistics"><br>Y轴是接口响应时间，单位是毫秒，request的线代表请求响应总耗时，connect的线代表tcp链接建立的时间。</li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/测试/"> #测试 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/29/OSX执行sed-i指令时提示extra-characters-at-the-end-of-command失败/">OSX执行sed -i指令时提示extra characters at the end of command失败</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/19/设计模式-工厂模式和ioc控制反转（二）/">[设计模式]工厂模式和ioc控制反转（二）</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+
+    
+      <div class="comments" id="comments">
+        
+          <div class="ds-thread" data-thread-key="2015/12/28/压力测试工具tsung用法简介/"
+               data-title="压力测试工具tsung用法简介" data-url="http://yoursite.com/2015/12/28/压力测试工具tsung用法简介/">
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460" alt="zhuye" />
+          <p class="site-author-name">zhuye</p>
+        </div>
+        <p class="site-description motion-element">此情可待成追忆，只是当时已惘然</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/zYeee" target="_blank">GitHub</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+        
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置文件"><span class="nav-number">3.</span> <span class="nav-text">配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#clients"><span class="nav-number">3.1.</span> <span class="nav-text">clients</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#servers"><span class="nav-number">3.2.</span> <span class="nav-text">servers</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#monitoring"><span class="nav-number">3.3.</span> <span class="nav-text">monitoring</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#load"><span class="nav-number">3.4.</span> <span class="nav-text">load</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#options"><span class="nav-number">3.5.</span> <span class="nav-text">options</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#sessions"><span class="nav-number">3.6.</span> <span class="nav-text">sessions</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开始测试"><span class="nav-number">4.</span> <span class="nav-text">开始测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成报表"><span class="nav-number">5.</span> <span class="nav-text">生成报表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分析结果报表"><span class="nav-number">6.</span> <span class="nav-text">分析结果报表</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">zhuye</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zyeee"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+
+  
+  <!-- lazyload -->
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+      <script type="text/javascript">
+        jQuery(function() {          
+            jQuery("#posts img").lazyload({
+              placeholder:"http://www.arao.me/loading.gif",  
+                effect:"fadeIn"
+              });
+            });
+    </script>   
+</body>
+</html>

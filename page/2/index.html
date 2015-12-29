@@ -180,6 +180,172 @@
           
           
             
+              <a class="post-title-link" href="/2015/07/31/php-socket-read-参数不同会导致的问题/">
+                php socket_read 参数不同会导致的问题
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on 2015-07-31
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/php/">php</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/07/31/php-socket-read-参数不同会导致的问题/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/31/php-socket-read-参数不同会导致的问题/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>这几天公司项目需要调用socket连接服务，在一个获取结果为1000多个字长的结果上，发现会概率性的拿不全数据。最后定位问题在php原生函数<strong>socket_read</strong>上，这个函数的返回有时会莫名对正常数据进行截断。<br>该函数的声明为</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">string</span> socket_read ( resource <span class="variable">$socket</span> , <span class="keyword">int</span> <span class="variable">$length</span> [, <span class="keyword">int</span> <span class="variable">$type</span> = PHP_BINARY_READ ] )</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>PHP_BINARY_READ</strong> (Default) - use the system recv() function. Safe for reading binary data.</li>
+<li><strong>PHP_NORMAL_READ</strong> - reading stops at \n or \r.
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/07/31/php-socket-read-参数不同会导致的问题/#more">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/07/23/PHP-abstruct和interface的总结/">
+                PHP abstruct和interface的总结
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on 2015-07-23
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/php/">php</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/07/23/PHP-abstruct和interface的总结/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/23/PHP-abstruct和interface的总结/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>经历了几次面试，经常被问到php的abstruct和interface，因为没有系统的总结过，所以答的都不算很好。正好在看《PHP高级程序设计模式，框架与测试》这本书也提到了这两个特性，所以总结下：<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/07/23/PHP-abstruct和interface的总结/#more">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/07/16/APUE-常见信号/">
                 [APUE]常见信号
               </a>
@@ -811,168 +977,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/07/14/fedora-firewall-配置/">
-                fedora firewall 配置
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on 2015-07-14
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; In
-            
-              <a href="/categories/运维/">运维</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/07/14/fedora-firewall-配置/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/14/fedora-firewall-配置/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>fedora系统会对特写的port加上防火墙限制，所以在进行开发的时候，要关闭这些特定端口的防火墙。<br><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/14/fedora-firewall-配置/#more">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/07/14/linux计划任务crontab/">
-                linux计划任务crontab
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on 2015-07-14
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; In
-            
-              <a href="/categories/linux/">linux</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/07/14/linux计划任务crontab/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/14/linux计划任务crontab/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>crontab -e 编辑当前用户的cron job<br><br>crontab -l 列出当前用户的cron job<br><br>crontab -r 删除当前用户的cron job<br></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/14/linux计划任务crontab/#more">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -1011,7 +1015,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1025,7 +1029,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
