@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="apue,读书笔记," />
+  <meta name="keywords" content="Hexo,next" />
 
 
 
@@ -49,7 +49,7 @@
 
 
 
-  <title> [APUE]FORK机制简谈 // hello world </title>
+  <title> php二维数组排序array_multisort，实现sql中的order by // hello world </title>
 </head>
 
 <body>
@@ -178,7 +178,7 @@
           
           
             
-              [APUE]FORK机制简谈
+              php二维数组排序array_multisort，实现sql中的order by
             
           
         </h1>
@@ -186,14 +186,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Posted on 2015-07-16
+          Posted on 2016-01-25
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; In
             
-              <a href="/categories/linux/">linux</a>
+              <a href="/categories/php/">php</a>
 
               
               
@@ -206,8 +206,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/07/16/APUE-FORK机制简谈/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/16/APUE-FORK机制简谈/"></span>
+            <a href="/2016/01/25/php二维数组排序array-multisort，实现sql中的order-by/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/25/php二维数组排序array-multisort，实现sql中的order-by/"></span>
             </a>
           </span>
           
@@ -221,43 +221,45 @@
       
 
       
-        <h2 id="chapter1:">chapter1:</h2><ol>
-<li>调用fork创建一个新进程，新进程是调用进程的一个副本，调用进程为”父进程”，创建的进程为“子进程”，fork对父进程返回子进程的进程id,对子进程返回0。fork创建一个新进程，被调用一次，返回两次(父进程一次子进程一次)。<a id="more"></a>
-</li>
-</ol>
-<h2 id="chapter8:">chapter8:</h2><ol>
-<li>fork并没有真正的返回两次，它依然返回了一次，只是OS对fork进行的操作使得我们看起来它返回了两次而已。系统调用fork()创建新进程后，在进程表里新建了一个新的表项，生成的子进程志父进程完全是相对独立的进程，生成子进程后会给父进程返回一个下整数。子进程在之后被调度，会得到一个为0的返回值，这个过程是两个进程来自于同一程序的两次执行。</li>
-<li><strong>fork之前的printf(“xxxxx”)没有加换行符会将输出内容重复输出一遍的原因</strong>：<blockquote>
-<p>因为这是 带缓存 的I/O，而缓存类型如果是连到终端设备，就是 行缓存 的，反之是全缓存。因为是行缓存，又因为这里没有了换行符，又又因为在fork之前一没有换行符二没有什么能让缓冲区满的语句，所以缓存中的数据在fork之前不会输出到终端 ，所以复制给子进程的缓存中就包含了before fork。</p>
-</blockquote>
-</li>
-</ol>
+        <p>今天在写一条SQL的时候，有排序的需求，order语句大致为</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> is_private <span class="keyword">DESC</span> , is_preview <span class="keyword">DESC</span> , id <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<p>结果explain该sql发现用到了filesort。因为该查询是在网站首页所以担心频繁进行该sql的查询会导致DB的负载变高(不考虑cache的情况)。于是就想先把结果集取出在代码层面进行排序。<br></p>
+<p>因为这里的排序条件多，所以情况较复杂。一开始想用usort，也就是自定义排序函数，很快写完后发现可以正常运行，但是测试性能发现很不理想。虚拟了10万个数据的排序用时将近3s，所以该方案被否定。<br><br><a id="more"></a><br>后来发现php有个array_multisort函数，可对二维数组进行排序。原型如下：</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bool array_multisort<span class="function"> (</span><span class="instruction"> array </span>&amp;$array1 <span class="keyword">[</span>, mixed $array1_sort_order = SORT_ASC <span class="keyword">[</span>, mixed $array1_sort_flags = SORT_REGULAR <span class="keyword">[</span>, mixed $... ]]] <span class="function">)</span></span><br></pre></td></tr></table></figure>
+<p>该函数第一个参数必须为array，后面可以跟一些排序标志：</p>
+<ul>
+<li>SORT_ASC：按照上升顺序排序</li>
+<li>SORT_DESC：按照下降顺序排序</li>
+</ul>
+<p>还有一些类型限定： </p>
+<ul>
+<li>SORT_REGULAR - compare items normally (don’t change types)</li>
+<li>SORT_NUMERIC - compare items numerically</li>
+<li>SORT_STRING - compare items as strings</li>
+<li>SORT_LOCALE_STRING - compare items as strings, based on the current locale. It uses the locale, which can be changed using setlocale()</li>
+<li>SORT_NATURAL - compare items as strings using “natural ordering” like natsort()</li>
+<li>SORT_FLAG_CASE - can be combined (bitwise OR) with SORT_STRING or SORT_NATURAL to sort strings case-insensitively</li>
+</ul>
+<p>有了这个函数，就可以直接对结果集进行排序了。简化的表结构如下：</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">      id|<span class="string"> is_private </span>|<span class="string"> is_preview </span><br><span class="line"> 7572183</span>|<span class="string">     0      </span>|<span class="string">     0</span><br><span class="line">10197788</span>|<span class="string">     0      </span>|<span class="string">     0</span><br><span class="line">10207211</span>|<span class="string">     0      </span>|<span class="string">     0</span><br><span class="line"> 8202855</span>|<span class="string">     0      </span>|<span class="string">     1</span><br><span class="line"> 7237758</span>|<span class="string">     1      </span>|<span class="string">     0</span></span><br></pre></td></tr></table></figure>
+<p>因为原数据是结果集，所以还需要在代码里面处理，而is_private和is_preview两个字段，可以合并成字符串来操作排序。核心实现代码如下:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$media</span> = <span class="keyword">array</span>();</span><br><span class="line"><span class="variable">$pre</span> = <span class="keyword">array</span>();</span><br><span class="line"><span class="variable">$body</span> = <span class="keyword">array</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="variable">$row</span> = <span class="variable">$stmt</span>-&gt;fetch(PDO::FETCH_ASSOC)) </span><br><span class="line">&#123;</span><br><span class="line">  <span class="variable">$key</span> = <span class="variable">$row</span>[<span class="string">'is_preview'</span>] . <span class="string">'_'</span> . <span class="variable">$row</span>[<span class="string">'is_private'</span>];</span><br><span class="line">  <span class="variable">$pre</span>[] = <span class="variable">$key</span>;</span><br><span class="line">  <span class="variable">$media</span>[] = <span class="variable">$row</span>[<span class="string">'id'</span>];</span><br><span class="line">  <span class="variable">$body</span>[] = <span class="variable">$row</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(count(<span class="variable">$media</span>) &gt; <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">  array_multisort(<span class="variable">$pre</span>, SORT_DESC, SORT_STRING,</span><br><span class="line">    <span class="variable">$media</span>, SORT_DESC, SORT_NUMERIC,   <span class="comment">//此处一定要加SORT_NUMERIC,不然会以字符串来处理，结果会出错</span></span><br><span class="line">    <span class="variable">$body</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> array_combine(<span class="variable">$media</span>, <span class="variable">$body</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
 
     <div class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/apue/"> #apue </a>
-          
-            <a href="/tags/读书笔记/"> #读书笔记 </a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/16/python类的可变类型成员和不可变类型成员的区别/">python类的可变类型成员和不可变类型成员的区别</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/16/输入两个数m-n-输出m个数，每个数都在-0-n-之间/">[编程珠玑]输入两个数m,n,输出m个数，每个数都在[0,n)之间</a>
+              <a href="/2015/12/29/OSX执行sed-i指令时提示extra-characters-at-the-end-of-command失败/">OSX执行sed -i指令时提示extra characters at the end of command失败</a>
             
           </div>
         </div>
@@ -277,8 +279,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/07/16/APUE-FORK机制简谈/"
-               data-title="[APUE]FORK机制简谈" data-url="http://yoursite.com/2015/07/16/APUE-FORK机制简谈/">
+          <div class="ds-thread" data-thread-key="2016/01/25/php二维数组排序array-multisort，实现sql中的order-by/"
+               data-title="php二维数组排序array_multisort，实现sql中的order by" data-url="http://yoursite.com/2016/01/25/php二维数组排序array-multisort，实现sql中的order-by/">
           </div>
         
       </div>
@@ -373,7 +375,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter1:"><span class="nav-number">1.</span> <span class="nav-text">chapter1:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter8:"><span class="nav-number">2.</span> <span class="nav-text">chapter8:</span></a></li></ol></div>
+              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

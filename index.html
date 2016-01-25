@@ -180,6 +180,90 @@
           
           
             
+              <a class="post-title-link" href="/2016/01/25/php二维数组排序array-multisort，实现sql中的order-by/">
+                php二维数组排序array_multisort，实现sql中的order by
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on 2016-01-25
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/php/">php</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/01/25/php二维数组排序array-multisort，实现sql中的order-by/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/25/php二维数组排序array-multisort，实现sql中的order-by/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>今天在写一条SQL的时候，有排序的需求，order语句大致为</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> is_private <span class="keyword">DESC</span> , is_preview <span class="keyword">DESC</span> , id <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<p>结果explain该sql发现用到了filesort。因为该查询是在网站首页所以担心频繁进行该sql的查询会导致DB的负载变高(不考虑cache的情况)。于是就想先把结果集取出在代码层面进行排序。<br></p>
+<p>因为这里的排序条件多，所以情况较复杂。一开始想用usort，也就是自定义排序函数，很快写完后发现可以正常运行，但是测试性能发现很不理想。虚拟了10万个数据的排序用时将近3s，所以该方案被否定。<br><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/01/25/php二维数组排序array-multisort，实现sql中的order-by/#more">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/12/29/OSX执行sed-i指令时提示extra-characters-at-the-end-of-command失败/">
                 OSX执行sed -i指令时提示extra characters at the end of command失败
               </a>
@@ -905,88 +989,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/02/win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法/">
-                win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on 2015-09-02
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; In
-            
-              <a href="/categories/linux/">linux</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/09/02/win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/02/win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>公司办公发的电脑总是联想的e系列，自带window，要自己装linux会遇到很多问题。</p>
-<h3 id="装完fedora后引导页选择win8会报cannot_load_image">装完fedora后引导页选择win8会报cannot load image</h3><p><em>以前在win7装双系统不会出现这个问题，win8装双系统后要进bios设置引导</em><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/02/win8装fedora双系统后无法启动及linux下vitrualbox无法启动修改bios的方法/#more">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -1025,7 +1027,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1080,7 +1082,7 @@
         <div class="copyright">
   
   &copy; &nbsp; 
-  2015
+  2016
   <span class="with-love">
     <i class="icon-heart"></i>
   </span>
