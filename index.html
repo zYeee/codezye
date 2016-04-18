@@ -180,6 +180,87 @@
           
           
             
+              <a class="post-title-link" href="/2016/04/15/scrapy入门-一个爬取书籍网站的实例/">
+                [scrapy]入门一个爬取书籍网站的实例
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on 2016-04-15
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/python/">python</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/04/15/scrapy入门-一个爬取书籍网站的实例/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/15/scrapy入门-一个爬取书籍网站的实例/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>以前读大学的时候为了抓一些淘宝的数据，写过一些简单的php脚本来实现自己的需求，当时只是为了盲目完成需求去随意地写这样的脚本，甚至不知道“爬虫”这个概念。后来学习了python，也接触了scrapy。这是一个专门用来爬取网站数据的一个应用框架。实现了分析url，发送请求，接受数据，解析数据整个流程。使用Twisted这个异步网络库来实现异步网络请求。网上借用的架构图如下:<br><img src="http://7xt0z7.com2.z0.glb.clouddn.com/scrapy_backbone.png" alt="image"><br>最近发现一个能够下电子书资源的网站readcolor，里面有很多的书籍信息。于是就有一个想法把这些书的信息都保存下来，刚好也能练习scrapy的使用。<br><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/15/scrapy入门-一个爬取书籍网站的实例/#more">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2016/01/25/php二维数组排序array-multisort，实现sql中的order-by/">
                 php二维数组排序array_multisort，实现sql中的order by
               </a>
@@ -803,7 +884,7 @@
 
       
         
-          <h3 id="复制原理">复制原理</h3><p>mysql支持<strong>2</strong>种复制方式：<strong>基于行</strong>的复制方式和<strong>基于语句</strong>的复制方式。这两种方式都是通过在主库上记录二进制日志，在备库重放日志的方式来实现异步的数据复制。大致原理如图所示。<br><img src="http://i13.tietuku.com/11c72b4f5d0d5e13s.jpg" alt="image"><br>
+          <h3 id="复制原理">复制原理</h3><p>mysql支持<strong>2</strong>种复制方式：<strong>基于行</strong>的复制方式和<strong>基于语句</strong>的复制方式。这两种方式都是通过在主库上记录二进制日志，在备库重放日志的方式来实现异步的数据复制。大致原理如图所示。<br><img src="http://7xt0z7.com2.z0.glb.clouddn.com/11c72b4f5d0d5e13s.jpg" alt="image"><br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/10/02/mysql主从复制/#more">
               Read more &raquo;
@@ -908,87 +989,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/23/linux分区并挂载空白磁盘的方法/">
-                linux分区并挂载空白磁盘的方法
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on 2015-09-23
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; In
-            
-              <a href="/categories/linux/">linux</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/09/23/linux分区并挂载空白磁盘的方法/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/23/linux分区并挂载空白磁盘的方法/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>最近打算自己搞一个最新的fedora22的vagrant_box作为开发环境。但是官网下的box文件，分配给根目录/的大小只有3G，所以原先想找办法对/进行扩容，但是弄了很久都没有成功，因为该box精简过很多命令文件，像pvcreate之类的都无法使用。所以想到一个新的办法。就是把/目录下的/var，/home之类占空间的文件夹，挂载新分配的空闲磁盘。弄了好久总算成功了，记录一下：<br><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/23/linux分区并挂载空白磁盘的方法/#more">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -1027,7 +1027,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1041,7 +1041,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
