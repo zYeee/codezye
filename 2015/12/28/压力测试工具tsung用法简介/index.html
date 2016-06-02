@@ -221,7 +221,7 @@
       
 
       
-        <h4 id="简介">简介</h4><p>最近参与开发了公司的评论和点赞的系统，该系统是作为symfony的一个独立plugin，可能会被其它很多系统使用，比如说图片，视频，newsfeed等等，都有可能直接嵌入，所以该独立模块做的尽可能通用，对性能也有一定要求。最终采用以mysql作为储存方案，以redis作为缓存方案的设计。接口开发完后想对接口进行性能负载测试，了解该系统的读写性能的上限。<br><br>了解了几个常用的测试工具和与公司之前所用的测试工具进行对比后，最终选定tsung进行测试工具：<br><br>tsung是erlang开发的一个开源的多协议分布式负载测试工具，它能用来压力测试HTTP, WebDAV, SOAP, PostgreSQL, MySQL, LDAP 和 Jabber/XMPP的服务器。它可以分布在多个客户机，并能轻松够模拟成千上万的虚拟用户数并发。</p>
+        <h4 id="简介">简介</h4><p>最近参与开发了公司的评论和点赞的系统，该系统是作为symfony的一个独立plugin，可能会被其它很多系统使用，比如说图片，视频，newsfeed等等，都有可能直接嵌入，所以该独立模块做的尽可能通用，对性能也有一定要求。最终采用以mysql作为储存方案，以redis作为缓存方案的设计。接口开发完后想对接口进行性能负载测试，估算该系统的读写性能的上限。<br><br>了解了几个常用的测试工具和与公司之前所用的测试工具进行对比后，最终选定tsung进行测试工具：<br><br>tsung是erlang开发的一个开源的多协议分布式负载测试工具，它能用来压力测试HTTP, WebDAV, SOAP, PostgreSQL, MySQL, LDAP 和 Jabber/XMPP的服务器。它可以分布在多个客户机，并能轻松够模拟成千上万的虚拟用户数并发。</p>
 <h4 id="安装">安装</h4><p>首先是安装tsung，因为最新的tsung是1.6.0版的，系统自带的源可能没有最新版本，所以到官网<a href="http://tsung.erlang-projects.org/" target="_blank" rel="external">http://tsung.erlang-projects.org/</a> 下载源码包来编译，configure &amp;&amp; make &amp;&amp; make install完成。<br><a id="more"></a></p>
 <h4 id="配置文件">配置文件</h4><p>tsung是根据xml配置文件里的参数内容来进行压测。默认tsung会加载配置文件：~/.tsung/tsung.xml<br><br>如果该文件夹下初始为空，则在/usr/share/doc/tsung/examples下有样例的xml文件，http的配置是http_simple.xml<br><br>下面来讲几个关键的配置</p>
 <h5 id="clients">clients</h5><p>用户产生的方式</p>
