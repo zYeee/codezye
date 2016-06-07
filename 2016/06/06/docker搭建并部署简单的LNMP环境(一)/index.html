@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="mysql," />
+  <meta name="keywords" content="docker," />
 
 
 
@@ -49,7 +49,7 @@
 
 
 
-  <title> mysql主从复制 // hello world </title>
+  <title> docker搭建并部署LNMP环境(一) // hello world </title>
 </head>
 
 <body>
@@ -178,7 +178,7 @@
           
           
             
-              mysql主从复制
+              docker搭建并部署LNMP环境(一)
             
           
         </h1>
@@ -186,14 +186,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Posted on 2015-10-02
+          Posted on 2016-06-06
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; In
             
-              <a href="/categories/运维/">运维</a>
+              <a href="/categories/linux/">linux</a>
 
               
               
@@ -206,8 +206,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/10/02/mysql主从复制/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/02/mysql主从复制/"></span>
+            <a href="/2016/06/06/docker搭建并部署简单的LNMP环境(一)/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/06/docker搭建并部署简单的LNMP环境(一)/"></span>
             </a>
           </span>
           
@@ -221,29 +221,32 @@
       
 
       
-        <h3 id="复制原理">复制原理</h3><p>mysql支持<strong>2</strong>种复制方式：<strong>基于行</strong>的复制方式和<strong>基于语句</strong>的复制方式。这两种方式都是通过在主库上记录二进制日志，在备库重放日志的方式来实现异步的数据复制。大致原理如图所示。<br><img src="http://7xt0z7.com2.z0.glb.clouddn.com/11c72b4f5d0d5e13s.jpg" alt="image"><br><a id="more"></a></p>
-<h3 id="实验机器配置">实验机器配置</h3><p>采用vitrualbox启动虚拟机的方式开两台主机。<br><br>主库IP:192.168.5.24<br><br>从库IP:182.168.5.25<br></p>
-<h3 id="复制步骤">复制步骤</h3><ul>
-<li>登陆主服务器，建立新账号</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">'master'</span>@<span class="number">192.168</span>.5.24 <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'123456'</span>;</span></span><br></pre></td></tr></table></figure>
+        <p>　　作为开发一直都想要一个自动化的集成环境解决方案，这样可以省去很多部署环境的时间，尽可能消除不同操作系统之间的差异。为了达到这个目的以前一直用的都是vagrant这套工具，但是vagrant从本质上说还是操作系统级别的虚拟机，只适合跑在本地。而且在繁琐地配置了几台vps后，更迫切地需要一个更轻量级的方案来优化一些开发工作。<br>　　docker作为一个能够提供容器级别的虚拟化的工具，可以很好的达到我的目的。docker作为一个前几年的新兴技术已经有越来越火的趋势，也有越来越多的公司把docker用于生产环境。于是就有了一个动手搭建一套基于docker的LNMP环境，下面做一些简单的记录和介绍：<br>　　docker官方所推崇的理念是单一进程容器，是与传统的把多个服务放在一个宿主机内的概念相对的一个思想。所以这一套最简单的LNMP架构，也可以拆分成三个不同的容器，并进行连接。官方也提供了相应的镜象。<br><a id="more"></a></p>
+<h3 id="Nginx">Nginx</h3><p>一句最简单的命令就可以让nginx跑起来:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span> -<span class="keyword">d</span> -p 80:80 nginx</span><br></pre></td></tr></table></figure>
 <ul>
-<li>给账户赋予权限</li>
+<li>-d 参数表示以后台守护进程的方式来运行这个容器</li>
+<li>-p 80:80表示将容器内部的80端口映射到宿主机的80端口</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">GRANT</span> REPLICATION <span class="keyword">SLAVE</span>, REPLICATION CLIENT <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="keyword">master</span>@<span class="string">'192.168.5.24'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'123456'</span></span></span><br></pre></td></tr></table></figure>
+<p>通过<code>docker inspect container_id</code>可以观察ports状态：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"Ports"</span>: &#123;</span><br><span class="line">	<span class="string">"443/tcp"</span>: <span class="literal">null</span>,</span><br><span class="line">	<span class="string">"80/tcp"</span>: [</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="string">"HostIp"</span>: <span class="string">"0.0.0.0"</span>,</span><br><span class="line">			<span class="string">"HostPort"</span>: <span class="string">"80"</span></span><br><span class="line">        &#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以发现80端口已经被成功映射。</p>
+<p>因为我本地是在osx上以boot2docker的方式来运行docker,所以要用<code>boot2docker ip</code>这个命令来得到docker宿主机的 ip，因为已经通过命令将端口映射，所以只需要在浏览器内输入ip就可以看到nginx的访问页了。<br>当然仅仅这样肯定是不够的，还需要加入自己的一些配置，通过从dockerfile构建镜象的方法，我的Dockerfile如下:  </p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">FROM</span> nginx</span><br><span class="line"></span><br><span class="line"><span class="built_in">ADD</span> <span class="bash">nginx.conf  /etc/nginx/nginx.conf</span><br><span class="line"></span><span class="built_in">ADD</span> <span class="bash">php.conf  /etc/nginx/php.conf</span><br><span class="line"></span><span class="built_in">ADD</span> <span class="bash">common.conf  /etc/nginx/common.conf</span><br><span class="line"></span><span class="built_in">ADD</span> <span class="bash">vhosts  /etc/nginx/vhosts/</span></span><br></pre></td></tr></table></figure>
+<p>该文件表示把本地的一些配置文件添加到镜像当中去，以构建自己的镜像:</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">docker</span> <span class="keyword">build </span>-t zyeee/nginx .</span><br></pre></td></tr></table></figure>
+<p>运行一个容器的时候还有一个注意点就是<strong>数据卷挂载</strong>，因为在本地开发的时候项目代码应该是放在本地目录，这样才能进行实时调试。docker有两种方式可以挂载本地数据卷。</p>
 <ul>
-<li>在主库上打开binlog</li>
+<li>在Dockerfile里添加VOLUME[]命令挂载本地数据卷</li>
+<li>执行docker run指令的时候通过-v参数添加本地数据卷挂载</li>
 </ul>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在<span class="keyword">my</span>.cnf中加入：</span><br><span class="line">log_bin=mysql-bin</span><br></pre></td></tr></table></figure>
-<p>备库也要增加类似配置并重启服务器</p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">log_bin =</span> mysql-bin</span><br><span class="line"><span class="variable">server_id =</span> <span class="number">3</span></span><br><span class="line"><span class="variable">relay_log =</span> /var/lib/mysql/mysql-relay-bin</span><br><span class="line"><span class="variable">log_slave_updates =</span> <span class="number">1</span>   <span class="comment">#允许备库将其重放的事件也记录到自身的二进制日志中</span></span><br><span class="line"><span class="variable">read_only =</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>输入开始复制的基本命令 </p>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [(none)]&gt; CHANGE MASTER TO MASTER_HOST='192.168.5.24',</span><br><span class="line">    -<span class="ruby">&gt; <span class="constant">MASTER_USER</span>=<span class="string">'master'</span>,</span><br><span class="line"></span>    -<span class="ruby">&gt; <span class="constant">MASTER_PASSWORD</span>=<span class="string">'123456'</span>,</span><br><span class="line"></span>    -<span class="ruby">&gt; <span class="constant">MASTER_LOG_FILE</span>=<span class="string">'mysql-bin.000004'</span>,</span><br><span class="line"></span>    -<span class="ruby">&gt; <span class="constant">MASTER_LOG_POS</span>=<span class="number">0</span>;</span><br><span class="line"></span>    </span><br><span class="line">MariaDB [(none)]&gt; start slave;</span><br></pre></td></tr></table></figure>
-<p>若成功开始复制，那么show slave stauts时，<strong>Slave_IO_State</strong>,<strong>Slave_IO_Running</strong>,<strong>Slave_SQL_Running</strong>这三个字段一定是打开的，如果不打开肯定没有正常运行。<br><br>这时候show slave status\G发现并没有正常启动,Slave_IO_State和Slave_SQL_Running并没有运行起来。</p>
-<blockquote>
-<p>Last_IO_Error: Got fatal error 1236 from master when reading data from binary log: ‘Misconfigured master - server id was not set’</p>
-</blockquote>
-<p>查原因发现是主库上的server_id没有设置，正常设置后即可成功复制了。</p>
+<p>这两种方式是有区别的，我研究了一下：<br>在Dockerfile里加入VOLUME[‘/tmp’]后运行容器，通过inspect发现，mounting信息是这样的：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="string">"Mounts"</span>: [</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"Name"</span>: <span class="string">"28eb16a76e45d341128a5c6549a85d5eb6fc88b342c4763ddacc1392ffd76349"</span>,</span><br><span class="line">		<span class="string">"Source"</span>: <span class="string">"/mnt/sda1/var/lib/docker/volumes/28eb16a76e45d341128a5c6549a85d5eb6fc88b342c4763ddacc1392ffd76349/_data"</span>,</span><br><span class="line">		<span class="string">"Destination"</span>: <span class="string">"/tmp"</span>,</span><br><span class="line">		<span class="string">"Driver"</span>: <span class="string">"local"</span>,</span><br><span class="line">		<span class="string">"Mode"</span>: <span class="string">""</span>,</span><br><span class="line">		<span class="string">"RW"</span>: <span class="literal">true</span>,</span><br><span class="line">		<span class="string">"Propagation"</span>: <span class="string">""</span></span><br><span class="line">	&#125;</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+<p>docker run 的时候加入-v /tmp:/tmp参数，inspect it:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"Mounts"</span>: [</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"Source"</span>: <span class="string">"/tmp"</span>,</span><br><span class="line">		<span class="string">"Destination"</span>: <span class="string">"/tmp"</span>,</span><br><span class="line">		<span class="string">"Mode"</span>: <span class="string">""</span>,</span><br><span class="line">		<span class="string">"RW"</span>: <span class="literal">true</span>,</span><br><span class="line">		<span class="string">"Propagation"</span>: <span class="string">"rprivate"</span></span><br><span class="line">	&#125;</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+<p>从这里可以看出：Dockerfile里的VOLUME是把宿主机的/mnt/sda1/var/lib/docker/volumes/…文件夹挂载到container中去，并不能在宿主机上修改，但是能作为一个本地卷可以让多个声明挂载了该卷的cantainer共享。<br>而<code>docker run</code>的<code>-v</code>参数就可以使容器挂载指定的本地目录。这个目录的文件可以在宿主机上被修改，也可以被所有的container所共享。<br>通过运行</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span> -<span class="keyword">d</span> -p 80:80 -v /opt:/opt -v /logs:/<span class="keyword">var</span>/<span class="keyword">log</span>/nginx zyeee/nginx</span><br></pre></td></tr></table></figure>
+<p>一个基本满足开发需求的nginx server就起来了。通过数据卷映射也把nginx的log文件放到了宿主机。</p>
 
       
     </div>
@@ -252,7 +255,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/mysql/"> #mysql </a>
+            <a href="/tags/docker/"> #docker </a>
           
         </div>
       
@@ -261,13 +264,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/31/CSRF漏洞的攻击和防御/">CSRF漏洞的攻击和防御</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/01/nginx负载均衡配置纪录/">nginx负载均衡配置纪录</a>
+              <a href="/2016/04/15/scrapy入门-一个爬取书籍网站的实例/">scrapy入门:一个爬取书籍网站的实例</a>
             
           </div>
         </div>
@@ -287,8 +288,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/10/02/mysql主从复制/"
-               data-title="mysql主从复制" data-url="http://yoursite.com/2015/10/02/mysql主从复制/">
+          <div class="ds-thread" data-thread-key="2016/06/06/docker搭建并部署简单的LNMP环境(一)/"
+               data-title="docker搭建并部署LNMP环境(一)" data-url="http://yoursite.com/2016/06/06/docker搭建并部署简单的LNMP环境(一)/">
           </div>
         
       </div>
@@ -383,7 +384,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#复制原理"><span class="nav-number">1.</span> <span class="nav-text">复制原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验机器配置"><span class="nav-number">2.</span> <span class="nav-text">实验机器配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制步骤"><span class="nav-number">3.</span> <span class="nav-text">复制步骤</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx"><span class="nav-number">1.</span> <span class="nav-text">Nginx</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
