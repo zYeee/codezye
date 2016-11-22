@@ -231,43 +231,12 @@
 <blockquote>
 <p>There should never be more than one reason for a class to change<br>有且仅有一个原因引起类的变更。</p>
 </blockquote>
-<p>对于接口，我们在设计的时候一定要做到功能单一，但是对于实现类就需要做更多的考虑了。单一职责原则同时也适用于方法。</p>
-<h2 id="2-里氏替换原则">2.里氏替换原则</h2><p><strong>Liskov Substitution Principle</strong>，简称LSP原则。</p>
-<blockquote>
-<p>If for each object o1 of type S there is an object o2 of type T such that for all programs P defined in terms of T, the behavior of P is unchanged when o1 is substituted for o2 then S is a subtype of T.<br>（如果对每一个类型为s的对象O1，都有类型为T的对象O2，使得以T定义的所有程序P在所有的对象O1都代换成O2时，程序P的行为没有发生变化，那么类型S是类型T的子类型）</p>
-</blockquote>
-<h2 id="3-依赖倒置原则">3.依赖倒置原则</h2><p><strong>Dependence Inversion Principle</strong>, 简称DIP原则。</p>
-<blockquote>
-<p>High level modules should not depend upon low level modules. Both should depend upon abstractions. Abstractions should not depend upon details. Details should depend upon abstractions.</p>
-</blockquote>
-<ul>
-<li>高层模块不应该依赖低层模块，两者都 应该依赖其抽象。</li>
-<li>抽象不应该依赖细节。</li>
-<li>细节应该依赖抽象。</li>
-</ul>
-<p><em>抽象：接口或抽象类，不能被实例化的</em><br><em>细节：实现类，能被实例化</em></p>
-<p>依赖倒置原则可以减少类间的耦合性，提高系统的稳定性，降低并行开发引起的风险。</p>
-<p>依赖有三种写法：  </p>
-<ol>
-<li>构造函数传递依赖对象  </li>
-<li>setter方法传递依赖对象  </li>
-<li>接口声明依赖对象（接口注入）  </li>
-</ol>
-<h2 id="4-接口隔离原则">4.接口隔离原则</h2><p><strong>Clients should not be forced to depend upon interfaces that they don’t use</strong><br><strong>The dependency of one class to another one should depend on the smallest possible interface</strong></p>
-<ol>
-<li>接口要尽量小</li>
-<li>接口要高内聚</li>
-<li>定制服务</li>
-<li>接口设计是有限度的</li>
-</ol>
-<h2 id="5-迪米特法则">5.迪米特法则</h2><p><strong>Law of Demeter</strong>, 简称LoD原则。</p>
-<blockquote>
-<p>Only talk to your immediate friends</p>
-</blockquote>
-<h2 id="6-开闭原则">6.开闭原则</h2><blockquote>
-<p>Software entities like classes,modules and functions should be open for extension but closed for modifications<br>（一个软件实体类，应该对扩展开放，对修改关闭）</p>
-</blockquote>
-
+<p>对于接口，我们在设计的时候一定要做到功能单一，但是对于实现类就需要做更多的考虑了。单一职责原则同时也适用于方法。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/21/设计模式6大原则/#more">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
