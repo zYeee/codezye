@@ -180,6 +180,89 @@
           
           
             
+              <a class="post-title-link" href="/2015/10/31/CSRF漏洞的攻击和防御/">
+                CSRF漏洞的攻击和防御
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on 2015-10-31
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/安全/">安全</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/10/31/CSRF漏洞的攻击和防御/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/31/CSRF漏洞的攻击和防御/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>最近因为公司测试发现公司站点的有些请求接口存在csrf漏洞，我负责去修复这些漏洞，将漏洞修复好后我在此做一个总结。</p>
+<blockquote>
+<p>CSRF(cross-site request forgery)跨站请示伪造，是一种对网站的恶意利用，与XSS不同，XSS利用的是站点内的信任用户，而CSRF则通过伪装来自受信任用户的请示来利用受信任的网站。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/10/31/CSRF漏洞的攻击和防御/#more">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/10/02/mysql主从复制/">
                 mysql主从复制
               </a>
@@ -905,87 +988,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/07/16/python类的可变类型成员和不可变类型成员的区别/">
-                python类的可变类型成员和不可变类型成员的区别
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on 2015-07-16
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; In
-            
-              <a href="/categories/python/">python</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/07/16/python类的可变类型成员和不可变类型成员的区别/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/16/python类的可变类型成员和不可变类型成员的区别/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h3 id="可变属性和不可变属性">可变属性和不可变属性</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">foo1</span><span class="params">(object)</span>:</span></span><br><span class="line">x = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">foo2</span><span class="params">(object)</span>:</span></span><br><span class="line">x = &#123;<span class="string">"100"</span>:<span class="number">2</span>&#125;</span><br><span class="line"></span><br><span class="line">f1 = foo1()</span><br><span class="line">f2 = foo2()</span><br><span class="line"></span><br><span class="line">f1.x = <span class="number">3</span></span><br><span class="line"><span class="keyword">print</span> f1.x</span><br><span class="line"><span class="keyword">print</span> foo1.x</span><br><span class="line"></span><br><span class="line">f2.x[<span class="string">'101'</span>] = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> f2.x</span><br><span class="line"><span class="keyword">print</span> foo2.x</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/16/python类的可变类型成员和不可变类型成员的区别/#more">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -1024,7 +1026,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

@@ -180,6 +180,123 @@
           
           
             
+              <a class="post-title-link" href="/2016/11/21/设计模式6大原则/">
+                设计模式6大原则
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on 2016-11-21
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/thinking-in-programming/">thinking in programming</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/11/21/设计模式6大原则/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/21/设计模式6大原则/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>看了很久的设计模式，23种都是初步了解但是距实际熟练运用还是有距离，毕竟这方面的经验来自于实战。但是不论设计模式如何千变万化，它们的原则都是不变的，万变不离其宗。在此记录下这些原则，也是OOP编程需要掌握的一些原则。</p>
+<h2 id="1-单一职责原则">1.单一职责原则</h2><p><strong>Single Responsibility Principle</strong>, 简称SRP原则。</p>
+<blockquote>
+<p>There should never be more than one reason for a class to change<br>有且仅有一个原因引起类的变更。</p>
+</blockquote>
+<p>对于接口，我们在设计的时候一定要做到功能单一，但是对于实现类就需要做更多的考虑了。单一职责原则同时也适用于方法。</p>
+<h2 id="2-里氏替换原则">2.里氏替换原则</h2><p><strong>Liskov Substitution Principle</strong>，简称LSP原则。</p>
+<blockquote>
+<p>If for each object o1 of type S there is an object o2 of type T such that for all programs P defined in terms of T, the behavior of P is unchanged when o1 is substituted for o2 then S is a subtype of T.<br>（如果对每一个类型为s的对象O1，都有类型为T的对象O2，使得以T定义的所有程序P在所有的对象O1都代换成O2时，程序P的行为没有发生变化，那么类型S是类型T的子类型）</p>
+</blockquote>
+<h2 id="3-依赖倒置原则">3.依赖倒置原则</h2><p><strong>Dependence Inversion Principle</strong>, 简称DIP原则。</p>
+<blockquote>
+<p>High level modules should not depend upon low level modules. Both should depend upon abstractions. Abstractions should not depend upon details. Details should depend upon abstractions.</p>
+</blockquote>
+<ul>
+<li>高层模块不应该依赖低层模块，两者都 应该依赖其抽象。</li>
+<li>抽象不应该依赖细节。</li>
+<li>细节应该依赖抽象。</li>
+</ul>
+<p><em>抽象：接口或抽象类，不能被实例化的</em><br><em>细节：实现类，能被实例化</em></p>
+<p>依赖倒置原则可以减少类间的耦合性，提高系统的稳定性，降低并行开发引起的风险。</p>
+<p>依赖有三种写法：  </p>
+<ol>
+<li>构造函数传递依赖对象  </li>
+<li>setter方法传递依赖对象  </li>
+<li>接口声明依赖对象（接口注入）  </li>
+</ol>
+<h2 id="4-接口隔离原则">4.接口隔离原则</h2><p><strong>Clients should not be forced to depend upon interfaces that they don’t use</strong><br><strong>The dependency of one class to another one should depend on the smallest possible interface</strong></p>
+<ol>
+<li>接口要尽量小</li>
+<li>接口要高内聚</li>
+<li>定制服务</li>
+<li>接口设计是有限度的</li>
+</ol>
+<h2 id="5-迪米特法则">5.迪米特法则</h2><p><strong>Law of Demeter</strong>, 简称LoD原则。</p>
+<blockquote>
+<p>Only talk to your immediate friends</p>
+</blockquote>
+<h2 id="6-开闭原则">6.开闭原则</h2><blockquote>
+<p>Software entities like classes,modules and functions should be open for extension but closed for modifications<br>（一个软件实体类，应该对扩展开放，对修改关闭）</p>
+</blockquote>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2016/06/14/docker搭建并部署简单的LNMP环境(二)/">
                 docker搭建并部署LNMP环境(二)
               </a>
@@ -906,89 +1023,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/10/31/CSRF漏洞的攻击和防御/">
-                CSRF漏洞的攻击和防御
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on 2015-10-31
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; In
-            
-              <a href="/categories/安全/">安全</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/10/31/CSRF漏洞的攻击和防御/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/31/CSRF漏洞的攻击和防御/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>最近因为公司测试发现公司站点的有些请求接口存在csrf漏洞，我负责去修复这些漏洞，将漏洞修复好后我在此做一个总结。</p>
-<blockquote>
-<p>CSRF(cross-site request forgery)跨站请示伪造，是一种对网站的恶意利用，与XSS不同，XSS利用的是站点内的信任用户，而CSRF则通过伪装来自受信任用户的请示来利用受信任的网站。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/31/CSRF漏洞的攻击和防御/#more">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -1027,7 +1061,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
