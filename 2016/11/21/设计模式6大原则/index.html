@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="docker," />
+  <meta name="keywords" content="设计模式," />
 
 
 
@@ -49,7 +49,7 @@
 
 
 
-  <title> docker搭建并部署LNMP环境(一) // hello world </title>
+  <title> 设计模式6大原则 // hello world </title>
 </head>
 
 <body>
@@ -178,7 +178,7 @@
           
           
             
-              docker搭建并部署LNMP环境(一)
+              设计模式6大原则
             
           
         </h1>
@@ -186,14 +186,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Posted on 2016-06-06
+          Posted on 2016-11-21
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; In
             
-              <a href="/categories/linux/">linux</a>
+              <a href="/categories/thinking-in-programming/">thinking in programming</a>
 
               
               
@@ -206,8 +206,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2016/06/06/docker搭建并部署简单的LNMP环境(一)/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/06/docker搭建并部署简单的LNMP环境(一)/"></span>
+            <a href="/2016/11/21/设计模式6大原则/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/21/设计模式6大原则/"></span>
             </a>
           </span>
           
@@ -221,32 +221,47 @@
       
 
       
-        <p>　　作为开发一直都想要一个自动化的集成环境解决方案，这样可以省去很多部署环境的时间，尽可能消除不同操作系统之间的差异。为了达到这个目的以前一直用的都是vagrant这套工具，但是vagrant从本质上说还是操作系统级别的虚拟机，只适合跑在本地。而且在繁琐地配置了几台vps后，更迫切地需要一个更轻量级的方案来优化一些开发工作。<br>　　docker作为一个能够提供容器级别的虚拟化的工具，可以很好的达到我的目的。docker作为一个前几年的新兴技术已经有越来越火的趋势，也有越来越多的公司把docker用于生产环境。于是就有了一个动手搭建一套基于docker的LNMP环境，下面做一些简单的记录和介绍：<br>　　docker官方所推崇的理念是单一进程容器，是与传统的把多个服务放在一个宿主机内的概念相对的一个思想。所以这一套最简单的LNMP架构，也可以拆分成三个不同的容器，并进行连接。官方也提供了相应的镜象。<br><a id="more"></a></p>
-<h3 id="Nginx">Nginx</h3><p>一句最简单的命令就可以让nginx跑起来:</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span> -<span class="keyword">d</span> -p 80:80 nginx</span><br></pre></td></tr></table></figure>
+        <p>看了很久的设计模式，23种都是初步了解但是距实际熟练运用还是有距离，毕竟这方面的经验来自于实战。但是不论设计模式如何千变万化，它们的原则都是不变的，万变不离其宗。在此记录下这些原则，也是OOP编程需要掌握的一些原则。</p>
+<h2 id="1-单一职责原则">1.单一职责原则</h2><p><strong>Single Responsibility Principle</strong>, 简称SRP原则。</p>
+<blockquote>
+<p>There should never be more than one reason for a class to change<br>有且仅有一个原因引起类的变更。</p>
+</blockquote>
+<p>对于接口，我们在设计的时候一定要做到功能单一，但是对于实现类就需要做更多的考虑了。单一职责原则同时也适用于方法。</p>
+<h2 id="2-里氏替换原则">2.里氏替换原则</h2><p><strong>Liskov Substitution Principle</strong>，简称LSP原则。</p>
+<blockquote>
+<p>If for each object o1 of type S there is an object o2 of type T such that for all programs P defined in terms of T, the behavior of P is unchanged when o1 is substituted for o2 then S is a subtype of T.<br>（如果对每一个类型为s的对象O1，都有类型为T的对象O2，使得以T定义的所有程序P在所有的对象O1都代换成O2时，程序P的行为没有发生变化，那么类型S是类型T的子类型）</p>
+</blockquote>
+<h2 id="3-依赖倒置原则">3.依赖倒置原则</h2><p><strong>Dependence Inversion Principle</strong>, 简称DIP原则。</p>
+<blockquote>
+<p>High level modules should not depend upon low level modules. Both should depend upon abstractions. Abstractions should not depend upon details. Details should depend upon abstractions.</p>
+</blockquote>
 <ul>
-<li>-d 参数表示以后台守护进程的方式来运行这个容器</li>
-<li>-p 80:80表示将容器内部的80端口映射到宿主机的80端口</li>
+<li>高层模块不应该依赖低层模块，两者都 应该依赖其抽象。</li>
+<li>抽象不应该依赖细节。</li>
+<li>细节应该依赖抽象。</li>
 </ul>
-<p>通过<code>docker inspect container_id</code>可以观察ports状态：</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"Ports"</span>: &#123;</span><br><span class="line">	<span class="string">"443/tcp"</span>: <span class="literal">null</span>,</span><br><span class="line">	<span class="string">"80/tcp"</span>: [</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="string">"HostIp"</span>: <span class="string">"0.0.0.0"</span>,</span><br><span class="line">			<span class="string">"HostPort"</span>: <span class="string">"80"</span></span><br><span class="line">        &#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以发现80端口已经被成功映射。</p>
-<p>因为我本地是在osx上以boot2docker的方式来运行docker,所以要用<code>boot2docker ip</code>这个命令来得到docker宿主机的 ip，因为已经通过命令将端口映射，所以只需要在浏览器内输入ip就可以看到nginx的访问页了。<br>当然仅仅这样肯定是不够的，还需要加入自己的一些配置，通过从dockerfile构建镜象的方法，我的Dockerfile如下:  </p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">FROM</span> nginx</span><br><span class="line"></span><br><span class="line"><span class="built_in">ADD</span> <span class="bash">nginx.conf  /etc/nginx/nginx.conf</span><br><span class="line"></span><span class="built_in">ADD</span> <span class="bash">php.conf  /etc/nginx/php.conf</span><br><span class="line"></span><span class="built_in">ADD</span> <span class="bash">common.conf  /etc/nginx/common.conf</span><br><span class="line"></span><span class="built_in">ADD</span> <span class="bash">vhosts  /etc/nginx/vhosts/</span></span><br></pre></td></tr></table></figure>
-<p>该文件表示把本地的一些配置文件添加到镜像当中去，以构建自己的镜像:</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">docker</span> <span class="keyword">build </span>-t zyeee/nginx .</span><br></pre></td></tr></table></figure>
-<p>运行一个容器的时候还有一个注意点就是<strong>数据卷挂载</strong>，因为在本地开发的时候项目代码应该是放在本地目录，这样才能进行实时调试。docker有两种方式可以挂载本地数据卷。</p>
-<ul>
-<li>在Dockerfile里添加VOLUME[]命令挂载本地数据卷</li>
-<li>执行docker run指令的时候通过-v参数添加本地数据卷挂载</li>
-</ul>
-<p>这两种方式是有区别的，我研究了一下：<br>在Dockerfile里加入VOLUME[‘/tmp’]后运行容器，通过inspect发现，mounting信息是这样的：</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="string">"Mounts"</span>: [</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"Name"</span>: <span class="string">"28eb16a76e45d341128a5c6549a85d5eb6fc88b342c4763ddacc1392ffd76349"</span>,</span><br><span class="line">		<span class="string">"Source"</span>: <span class="string">"/mnt/sda1/var/lib/docker/volumes/28eb16a76e45d341128a5c6549a85d5eb6fc88b342c4763ddacc1392ffd76349/_data"</span>,</span><br><span class="line">		<span class="string">"Destination"</span>: <span class="string">"/tmp"</span>,</span><br><span class="line">		<span class="string">"Driver"</span>: <span class="string">"local"</span>,</span><br><span class="line">		<span class="string">"Mode"</span>: <span class="string">""</span>,</span><br><span class="line">		<span class="string">"RW"</span>: <span class="literal">true</span>,</span><br><span class="line">		<span class="string">"Propagation"</span>: <span class="string">""</span></span><br><span class="line">	&#125;</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
-<p>docker run 的时候加入-v /tmp:/tmp参数，inspect it:</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"Mounts"</span>: [</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"Source"</span>: <span class="string">"/tmp"</span>,</span><br><span class="line">		<span class="string">"Destination"</span>: <span class="string">"/tmp"</span>,</span><br><span class="line">		<span class="string">"Mode"</span>: <span class="string">""</span>,</span><br><span class="line">		<span class="string">"RW"</span>: <span class="literal">true</span>,</span><br><span class="line">		<span class="string">"Propagation"</span>: <span class="string">"rprivate"</span></span><br><span class="line">	&#125;</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
-<p>从这里可以看出：Dockerfile里的VOLUME是把宿主机的/mnt/sda1/var/lib/docker/volumes/…文件夹挂载到container中去，并不能在宿主机上修改，但是能作为一个本地卷可以让多个声明挂载了该卷的cantainer共享。<br>而<code>docker run</code>的<code>-v</code>参数就可以使容器挂载指定的本地目录。这个目录的文件可以在宿主机上被修改，也可以被所有的container所共享。<br>通过运行</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span> -<span class="keyword">d</span> -p 80:80 -v /opt:/opt -v /logs:/<span class="keyword">var</span>/<span class="keyword">log</span>/nginx zyeee/nginx</span><br></pre></td></tr></table></figure>
-<p>一个基本满足开发需求的nginx server就起来了。通过数据卷映射也把nginx的log文件放到了宿主机。</p>
+<p><em>抽象：接口或抽象类，不能被实例化的</em><br><em>细节：实现类，能被实例化</em></p>
+<p>依赖倒置原则可以减少类间的耦合性，提高系统的稳定性，降低并行开发引起的风险。</p>
+<p>依赖有三种写法：  </p>
+<ol>
+<li>构造函数传递依赖对象  </li>
+<li>setter方法传递依赖对象  </li>
+<li>接口声明依赖对象（接口注入）  </li>
+</ol>
+<h2 id="4-接口隔离原则">4.接口隔离原则</h2><p><strong>Clients should not be forced to depend upon interfaces that they don’t use</strong><br><strong>The dependency of one class to another one should depend on the smallest possible interface</strong></p>
+<ol>
+<li>接口要尽量小</li>
+<li>接口要高内聚</li>
+<li>定制服务</li>
+<li>接口设计是有限度的</li>
+</ol>
+<h2 id="5-迪米特法则">5.迪米特法则</h2><p><strong>Law of Demeter</strong>, 简称LoD原则。</p>
+<blockquote>
+<p>Only talk to your immediate friends</p>
+</blockquote>
+<h2 id="6-开闭原则">6.开闭原则</h2><blockquote>
+<p>Software entities like classes,modules and functions should be open for extension but closed for modifications<br>（一个软件实体类，应该对扩展开放，对修改关闭）</p>
+</blockquote>
 
       
     </div>
@@ -255,7 +270,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/docker/"> #docker </a>
+            <a href="/tags/设计模式/"> #设计模式 </a>
           
         </div>
       
@@ -264,13 +279,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/06/14/docker搭建并部署简单的LNMP环境(二)/">docker搭建并部署LNMP环境(二)</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/15/scrapy入门-一个爬取书籍网站的实例/">scrapy入门:一个爬取书籍网站的实例</a>
+              <a href="/2016/06/14/docker搭建并部署简单的LNMP环境(二)/">docker搭建并部署LNMP环境(二)</a>
             
           </div>
         </div>
@@ -290,8 +303,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2016/06/06/docker搭建并部署简单的LNMP环境(一)/"
-               data-title="docker搭建并部署LNMP环境(一)" data-url="http://yoursite.com/2016/06/06/docker搭建并部署简单的LNMP环境(一)/">
+          <div class="ds-thread" data-thread-key="2016/11/21/设计模式6大原则/"
+               data-title="设计模式6大原则" data-url="http://yoursite.com/2016/11/21/设计模式6大原则/">
           </div>
         
       </div>
@@ -386,7 +399,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx"><span class="nav-number">1.</span> <span class="nav-text">Nginx</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-单一职责原则"><span class="nav-number">1.</span> <span class="nav-text">1.单一职责原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-里氏替换原则"><span class="nav-number">2.</span> <span class="nav-text">2.里氏替换原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-依赖倒置原则"><span class="nav-number">3.</span> <span class="nav-text">3.依赖倒置原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-接口隔离原则"><span class="nav-number">4.</span> <span class="nav-text">4.接口隔离原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-迪米特法则"><span class="nav-number">5.</span> <span class="nav-text">5.迪米特法则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-开闭原则"><span class="nav-number">6.</span> <span class="nav-text">6.开闭原则</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
