@@ -180,6 +180,89 @@
           
           
             
+              <a class="post-title-link" href="/2017/02/16/redis源码学习：字典的实现-一/">
+                redis源码学习：字典的实现(一)
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on 2017-02-16
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/redis/">redis</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2017/02/16/redis源码学习：字典的实现-一/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/redis源码学习：字典的实现-一/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>字典是一种数据结构。可以用来保存key-value形式的键值对。redis作为非关系型数据库就很依赖这种形式的映射字典，它有一套自己的实现方法。在这里我就学习并记录一下它的依赖于hash表的底层实现方法。</p>
+<h3 id="基本数据结构">基本数据结构</h3><p>hash表数据结构的定义都在dict.h头文件下:</p>
+<h4 id="hash表">hash表</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> dictht &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 哈希表数组</span></span><br><span class="line">    dictEntry **table;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 哈希表大小</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> size;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 哈希表大小掩码，用于计算索引值</span></span><br><span class="line">    <span class="comment">// 总是等于 size - 1</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> sizemask;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 该哈希表已有节点的数量</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> used;</span><br><span class="line"></span><br><span class="line">&#125; dictht;</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/02/16/redis源码学习：字典的实现-一/#more">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2016/11/21/设计模式6大原则/">
                 设计模式6大原则
               </a>
@@ -910,93 +993,11 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/11/01/vim项目全局搜索的方法比较/">
-                vim项目全局搜索的方法比较
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on 2015-11-01
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; In
-            
-              <a href="/categories/linux/">linux</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/11/01/vim项目全局搜索的方法比较/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/01/vim项目全局搜索的方法比较/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>到目前为止我用vim应该有四年了，除了以前写acm时使用的dev-c++，确实觉得还不太想用ide。用了这么久算不上资深也算的上熟悉了吧。vim可以挖掘的东西有那么多，直到现在还经常有“哇原来还可以这样用诶”的感叹。<br><br>我的vimrc：<em>github.com/zYeee/dev/blob/master/.vimrc</em><br></p>
-<p>现在拿到的有项目代码文件很多，vim又天生无法实现很好的代码跳转，ctags的跳转有时候会让人无语，所以之前在找一个需要的string的时候都是退出到shell，然后执行原生的grep指令来找，虽然可以但是随着要找的次数越来越多，这样的方法也显得很挫和浪费时间，于是想找找有没有快一点的全局搜索方案，找了下有不少，个人也比对了一下，总结如下：<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/11/01/vim项目全局搜索的方法比较/#more">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
   <div class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
   </div>
 
 
@@ -1030,21 +1031,21 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">categories</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -1085,7 +1086,7 @@
         <div class="copyright">
   
   &copy; &nbsp; 
-  2016
+  2017
   <span class="with-love">
     <i class="icon-heart"></i>
   </span>
