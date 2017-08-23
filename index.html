@@ -180,8 +180,89 @@
           
           
             
+              <a class="post-title-link" href="/2017/08/23/redis用作访问流量限制时遇到的问题/">
+                redis用作访问流量限制时遇到的问题
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on 2017-08-23
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/redis/">redis</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2017/08/23/redis用作访问流量限制时遇到的问题/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/23/redis用作访问流量限制时遇到的问题/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>最近公司有新的需求是记录登陆用户在给定时间段内所发起的请求次数，如果超过了设定好的上限，就触发警告，屏蔽之类的惩罚行为。我们采用redis的string类型来进行计数操作。<br>最早的代码版本如下，第一个用户请求都会触发userRequestManager类下的计数方法，调用counter类的record()方法来给当前用户对应的key进行自增操作，这里的逻辑是，如果原key不存在，那么在创建这个key后赋予它过期时间，若存在，则只进行自增操作，不去改变原有的过期时间，直到该key自动过期，重新计数。通过isExceeded()方法判断当前计数是否已经过超过设定的上限，如果超过了，就清0并执行惩罚操作。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/08/23/redis用作访问流量限制时遇到的问题/#more">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2017/02/16/redis源码学习：字典的实现-一/">
-                redis源码学习：字典的实现(一)
+                redis源码学习：字典的实现
               </a>
             
           
@@ -912,87 +993,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/11/18/设计模式-工厂模式和ioc控制反转（一）/">
-                [设计模式]工厂模式和ioc控制反转（一）
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on 2015-11-18
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; In
-            
-              <a href="/categories/thinking-in-programming/">thinking in programming</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/11/18/设计模式-工厂模式和ioc控制反转（一）/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/18/设计模式-工厂模式和ioc控制反转（一）/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>设计模式断断续续一直在看，但是因为实际项目中没有接触过，所以也一直都是纸上谈兵，处于一个看了就忘，忘了再看的阶段。最近在看新公司的框架代码，用的是symfony，但是做过大幅度修改，加入了很多自己的特性和优化。而且继承关系嵌套很复杂，越看越让人觉得以前的自己根本不会写代码ToT。比如说这个框架里实现了java spring里的interceptor方法，看了一天的代码才勉强看明白。里面应该是用了ioc控制反转这个设计模式。之前我从来没有了解过这个，了解后一下子想到了工厂模式，因为没有什么设计模式方面的经验，所以甚至很容易把两者混淆，于是想写点总结记录一下两者异同，也便加深自己的理解。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/11/18/设计模式-工厂模式和ioc控制反转（一）/#more">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -1031,7 +1031,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
