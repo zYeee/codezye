@@ -49,7 +49,7 @@
 
 
 
-  <title> redis源码学习：字典的实现(一) // hello world </title>
+  <title> redis源码学习：字典的实现 // hello world </title>
 </head>
 
 <body>
@@ -178,7 +178,7 @@
           
           
             
-              redis源码学习：字典的实现(一)
+              redis源码学习：字典的实现
             
           
         </h1>
@@ -234,7 +234,7 @@
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">dictEntry *dictFind(dict *<span class="keyword">d</span>, <span class="keyword">const</span> void *key)</span><br><span class="line">&#123;</span><br><span class="line">    dictEntry *<span class="keyword">he</span>;</span><br><span class="line">    unsigned int <span class="keyword">h</span>, idx, <span class="keyword">table</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">d</span>-&gt;ht[0].size == 0) <span class="keyword">return</span> NULL; <span class="comment">/* We don't have a table at all */</span></span><br><span class="line">    <span class="keyword">if</span> (dictIsRehashing(<span class="keyword">d</span>)) _dictRehashStep(<span class="keyword">d</span>);<span class="comment">//若在rehash状态，则执行rehash操作</span></span><br><span class="line">    <span class="keyword">h</span> = dictHashKey(<span class="keyword">d</span>, key);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">table</span> = 0; <span class="keyword">table</span> &lt;= 1; <span class="keyword">table</span>++) &#123;</span><br><span class="line">        idx = <span class="keyword">h</span> &amp; <span class="keyword">d</span>-&gt;ht[<span class="keyword">table</span>].sizemask;</span><br><span class="line">        <span class="keyword">he</span> = <span class="keyword">d</span>-&gt;ht[<span class="keyword">table</span>].<span class="keyword">table</span>[idx];</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">he</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (dictCompareKeys(<span class="keyword">d</span>, key, <span class="keyword">he</span>-&gt;key))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">he</span>;</span><br><span class="line">            <span class="keyword">he</span> = <span class="keyword">he</span>-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!dictIsRehashing(<span class="keyword">d</span>)) <span class="keyword">return</span> NULL; <span class="comment">//如果不在rehash中，则没有必要去查找ht[1]了。key肯定不存在。</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> NULL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>dictFind函数可以找到指定key的节点，先通过hash函数和sizemask值算出index，然后扫描一遍链表结构找到匹配的节点并返回。</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">static int dictGenericDelete(dict *<span class="keyword">d</span>, <span class="keyword">const</span> void *key, int nofree)</span><br><span class="line">&#123;</span><br><span class="line">    unsigned int <span class="keyword">h</span>, idx;</span><br><span class="line">    dictEntry *<span class="keyword">he</span>, *prevHe;</span><br><span class="line">    int <span class="keyword">table</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">d</span>-&gt;ht[0].size == 0) <span class="keyword">return</span> DICT_ERR; <span class="comment">/* d-&gt;ht[0].table is NULL */</span></span><br><span class="line">    <span class="keyword">if</span> (dictIsRehashing(<span class="keyword">d</span>)) _dictRehashStep(<span class="keyword">d</span>);</span><br><span class="line">    <span class="keyword">h</span> = dictHashKey(<span class="keyword">d</span>, key);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">table</span> = 0; <span class="keyword">table</span> &lt;= 1; <span class="keyword">table</span>++) &#123;</span><br><span class="line">        idx = <span class="keyword">h</span> &amp; <span class="keyword">d</span>-&gt;ht[<span class="keyword">table</span>].sizemask;</span><br><span class="line">        <span class="keyword">he</span> = <span class="keyword">d</span>-&gt;ht[<span class="keyword">table</span>].<span class="keyword">table</span>[idx];</span><br><span class="line">        prevHe = NULL;</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">he</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (dictCompareKeys(<span class="keyword">d</span>, key, <span class="keyword">he</span>-&gt;key)) &#123;</span><br><span class="line">                <span class="comment">/* Unlink the element from the list */</span></span><br><span class="line">                <span class="keyword">if</span> (prevHe)</span><br><span class="line">                    prevHe-&gt;next = <span class="keyword">he</span>-&gt;next;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    <span class="keyword">d</span>-&gt;ht[<span class="keyword">table</span>].<span class="keyword">table</span>[idx] = <span class="keyword">he</span>-&gt;next;</span><br><span class="line">                <span class="keyword">if</span> (!nofree) &#123;</span><br><span class="line">                    dictFreeKey(<span class="keyword">d</span>, <span class="keyword">he</span>);</span><br><span class="line">                    dictFreeVal(<span class="keyword">d</span>, <span class="keyword">he</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                zfree(<span class="keyword">he</span>);</span><br><span class="line">                <span class="keyword">d</span>-&gt;ht[<span class="keyword">table</span>].used--;</span><br><span class="line">                <span class="keyword">return</span> DICT_OK;</span><br><span class="line">            &#125;</span><br><span class="line">            prevHe = <span class="keyword">he</span>;</span><br><span class="line">            <span class="keyword">he</span> = <span class="keyword">he</span>-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!dictIsRehashing(<span class="keyword">d</span>)) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> DICT_ERR; <span class="comment">/* not found */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>dictGenericDelete函数用来删除节点上的值并释放空间。<br>几个简单操作的核心代码就在这里了。接下来会介绍一下具体rehash的操作。</p>
+<p>dictGenericDelete函数用来删除节点上的值并释放空间。<br>几个简单操作的核心代码就在这里了。</p>
 
       
     </div>
@@ -253,6 +253,8 @@
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/23/redis用作访问流量限制时遇到的问题/">redis用作访问流量限制时遇到的问题</a>
             
           </div>
 
@@ -279,7 +281,7 @@
       <div class="comments" id="comments">
         
           <div class="ds-thread" data-thread-key="2017/02/16/redis源码学习：字典的实现-一/"
-               data-title="redis源码学习：字典的实现(一)" data-url="http://yoursite.com/2017/02/16/redis源码学习：字典的实现-一/">
+               data-title="redis源码学习：字典的实现" data-url="http://yoursite.com/2017/02/16/redis源码学习：字典的实现-一/">
           </div>
         
       </div>
@@ -326,7 +328,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
