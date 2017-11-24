@@ -180,6 +180,89 @@
           
           
             
+              <a class="post-title-link" href="/2015/11/19/设计模式-工厂模式和ioc控制反转（二）/">
+                [设计模式]工厂模式和ioc控制反转（二）
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on 2015-11-19
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/thinking-in-programming/">thinking in programming</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/11/19/设计模式-工厂模式和ioc控制反转（二）/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/19/设计模式-工厂模式和ioc控制反转（二）/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>控制反转是一个抽象的概念。说白了就是<strong>一个对象如何去获取他所依赖的对象的引用的方法</strong>。依赖注入(<em>Dependency Injection</em>)是一个常用的方法。</p>
+<p>通过下面的例子来简单引入控制反转这个概念。<br>程序内有需求去调用一个低层对象的方法，比如数据库操作，最简单的方法可能是这样的：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">business</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$db_adapter</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="variable">$this</span>-&gt;db_adapter = <span class="keyword">new</span> mysqlAdapter();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getResult</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="variable">$this</span>-&gt;db_adapter-&gt;getResult();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">mysqlAdapter</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getResult</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="keyword">__METHOD__</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$bis</span> = <span class="keyword">new</span> business();</span><br><span class="line"><span class="variable">$bis</span>-&gt;getResult();</span></span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/11/19/设计模式-工厂模式和ioc控制反转（二）/#more">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/11/18/设计模式-工厂模式和ioc控制反转（一）/">
                 [设计模式]工厂模式和ioc控制反转（一）
               </a>
@@ -906,88 +989,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/07/16/APUE-常见信号/">
-                [APUE]常见信号
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on 2015-07-16
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; In
-            
-              <a href="/categories/linux/">linux</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/07/16/APUE-常见信号/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/16/APUE-常见信号/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>某个信号出现时，内核有<strong>3种</strong>处理方式。<br><br>1.忽略信号(SIGKILL和SIGSTOP不能被忽略)<br><br>2.捕捉信号(SIGKILL和SIGSTOP不能被捕捉)<br><br>3.执行系统默认动作<br></p>
-<hr>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/16/APUE-常见信号/#more">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -1026,7 +1027,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1040,7 +1041,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
