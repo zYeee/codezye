@@ -180,6 +180,88 @@
           
           
             
+              <a class="post-title-link" href="/2017/11/24/长连接（persistent-connection）和php-fpm的关系/">
+                长连接（persistent_connection）和php-fpm的关系
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on 2017-11-24
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/php/">php</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2017/11/24/长连接（persistent-connection）和php-fpm的关系/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2017/11/24/长连接（persistent-connection）和php-fpm的关系/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>项目原本连接memcache用的是php的memcache扩展，现在为了与php7兼容，打算更换到<strong>memcached</strong>扩展。在更换的时候，因为原来有长连接的需求，在memcache扩展里只要用pconnect方法就可以了，但是memcached的长连接是这样实现的</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public Memcached::__construct ([ string $persistent_id ] )</span><br><span class="line"></span><br><span class="line">persistent_id</span><br><span class="line">By default the Memcached instances are destroyed at the <span class="operator"><span class="keyword">end</span> <span class="keyword">of</span> the request. <span class="keyword">To</span> <span class="keyword">create</span> an instance that persists <span class="keyword">between</span> requests, <span class="keyword">use</span> persistent_id <span class="keyword">to</span> specify a <span class="keyword">unique</span> ID <span class="keyword">for</span> the instance. <span class="keyword">All</span> instances created <span class="keyword">with</span> the same persistent_id will <span class="keyword">share</span> the same <span class="keyword">connection</span>.</span></span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/11/24/长连接（persistent-connection）和php-fpm的关系/#more">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2017/08/23/redis用作访问流量限制时遇到的问题/">
                 redis用作访问流量限制时遇到的问题
               </a>
@@ -910,89 +992,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/11/19/设计模式-工厂模式和ioc控制反转（二）/">
-                [设计模式]工厂模式和ioc控制反转（二）
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on 2015-11-19
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; In
-            
-              <a href="/categories/thinking-in-programming/">thinking in programming</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/11/19/设计模式-工厂模式和ioc控制反转（二）/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/19/设计模式-工厂模式和ioc控制反转（二）/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>控制反转是一个抽象的概念。说白了就是<strong>一个对象如何去获取他所依赖的对象的引用的方法</strong>。依赖注入(<em>Dependency Injection</em>)是一个常用的方法。</p>
-<p>通过下面的例子来简单引入控制反转这个概念。<br>程序内有需求去调用一个低层对象的方法，比如数据库操作，最简单的方法可能是这样的：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">business</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$db_adapter</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="variable">$this</span>-&gt;db_adapter = <span class="keyword">new</span> mysqlAdapter();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getResult</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="variable">$this</span>-&gt;db_adapter-&gt;getResult();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">mysqlAdapter</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getResult</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="keyword">__METHOD__</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$bis</span> = <span class="keyword">new</span> business();</span><br><span class="line"><span class="variable">$bis</span>-&gt;getResult();</span></span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/11/19/设计模式-工厂模式和ioc控制反转（二）/#more">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -1031,7 +1030,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1045,7 +1044,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
