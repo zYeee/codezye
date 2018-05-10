@@ -22,8 +22,6 @@
 <link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
 
 
-    <meta name="description" content="此情可待成追忆，只是当时已惘然" />
-
 
 
   <meta name="keywords" content="技术心得," />
@@ -233,9 +231,7 @@
 <p>When using persistent connections, it is important to not re-add servers.<br>This is what you do not want to do:</p>
 </blockquote>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line"><span class="variable">$mc</span> = <span class="keyword">new</span> Memcached(<span class="string">'mc'</span>);</span><br><span class="line"><span class="variable">$mc</span>-&gt;setOption(Memcached::OPT_LIBKETAMA_COMPATIBLE, <span class="keyword">true</span>);</span><br><span class="line"><span class="variable">$mc</span>-&gt;addServers(<span class="keyword">array</span>(</span><br><span class="line">    <span class="keyword">array</span>(<span class="string">'mc1.example.com'</span>,<span class="number">11211</span>),</span><br><span class="line">    <span class="keyword">array</span>(<span class="string">'mc2.example.com'</span>,<span class="number">11211</span>),</span><br><span class="line">));</span><br><span class="line"><span class="preprocessor">?&gt;</span></span></span><br></pre></td></tr></table></figure>
-<blockquote>
 <p>Every time the page is loaded those servers will be appended to the list resulting in many simultaneous open connections to the same server. The addServer/addServers functions to not check for existing references to the specified servers.<br>A better approach is something like:</p>
-</blockquote>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line"><span class="variable">$mc</span> = <span class="keyword">new</span> Memcached(<span class="string">'mc'</span>);</span><br><span class="line"><span class="variable">$mc</span>-&gt;setOption(Memcached::OPT_LIBKETAMA_COMPATIBLE, <span class="keyword">true</span>);</span><br><span class="line"><span class="keyword">if</span> (!count(<span class="variable">$mc</span>-&gt;getServerList())) &#123;</span><br><span class="line">    <span class="variable">$mc</span>-&gt;addServers(<span class="keyword">array</span>(</span><br><span class="line">        <span class="keyword">array</span>(<span class="string">'mc1.example.com'</span>,<span class="number">11211</span>),</span><br><span class="line">        <span class="keyword">array</span>(<span class="string">'mc2.example.com'</span>,<span class="number">11211</span>),</span><br><span class="line">    ));</span><br><span class="line">&#125;</span><br><span class="line"><span class="preprocessor">?&gt;</span></span></span><br></pre></td></tr></table></figure>
 
       
@@ -322,7 +318,7 @@
           <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460" alt="zhuye" />
           <p class="site-author-name">zhuye</p>
         </div>
-        <p class="site-description motion-element">此情可待成追忆，只是当时已惘然</p>
+        <p class="site-description motion-element"></p>
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
@@ -392,7 +388,7 @@
         <div class="copyright">
   
   &copy; &nbsp; 
-  2017
+  2018
   <span class="with-love">
     <i class="icon-heart"></i>
   </span>
