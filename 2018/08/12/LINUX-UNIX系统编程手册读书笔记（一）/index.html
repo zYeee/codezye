@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="vim插件," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,19 +79,46 @@
 
 
 
-<meta name="description" content="到目前为止我用vim应该有四年了，除了以前写acm时使用的dev-c++，确实觉得还不太想用ide。用了这么久算不上资深也算的上熟悉了吧。vim可以挖掘的东西有那么多，直到现在还经常有“哇原来还可以这样用诶”的感叹。我的vimrc：github.com/zYeee/dev/blob/master/.vimrc
-现在拿到的有项目代码文件很多，vim又天生无法实现很好的代码跳转，ctags的跳转有时候">
+<meta name="description" content="第二章：基本概念内核用户态——-&amp;gt;内核态  
+
+系统调用
+异常
+外围设备中断
+
+进程组成(段)
+文件
+数据
+堆
+栈">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vim项目全局搜索的方法比较">
-<meta property="og:url" content="http://yoursite.com/2015/11/01/vim项目全局搜索的方法比较/index.html">
+<meta property="og:title" content="LINUX/UNIX系统编程手册读书笔记（一）">
+<meta property="og:url" content="http://yoursite.com/2018/08/12/LINUX-UNIX系统编程手册读书笔记（一）/index.html">
 <meta property="og:site_name" content="hello world">
-<meta property="og:description" content="到目前为止我用vim应该有四年了，除了以前写acm时使用的dev-c++，确实觉得还不太想用ide。用了这么久算不上资深也算的上熟悉了吧。vim可以挖掘的东西有那么多，直到现在还经常有“哇原来还可以这样用诶”的感叹。我的vimrc：github.com/zYeee/dev/blob/master/.vimrc
-现在拿到的有项目代码文件很多，vim又天生无法实现很好的代码跳转，ctags的跳转有时候">
-<meta property="og:updated_time" content="2015-11-01T14:13:00.000Z">
+<meta property="og:description" content="第二章：基本概念内核用户态——-&amp;gt;内核态  
+
+系统调用
+异常
+外围设备中断
+
+进程组成(段)
+文件
+数据
+堆
+栈">
+<meta property="og:updated_time" content="2018-08-12T08:48:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vim项目全局搜索的方法比较">
-<meta name="twitter:description" content="到目前为止我用vim应该有四年了，除了以前写acm时使用的dev-c++，确实觉得还不太想用ide。用了这么久算不上资深也算的上熟悉了吧。vim可以挖掘的东西有那么多，直到现在还经常有“哇原来还可以这样用诶”的感叹。我的vimrc：github.com/zYeee/dev/blob/master/.vimrc
-现在拿到的有项目代码文件很多，vim又天生无法实现很好的代码跳转，ctags的跳转有时候">
+<meta name="twitter:title" content="LINUX/UNIX系统编程手册读书笔记（一）">
+<meta name="twitter:description" content="第二章：基本概念内核用户态——-&amp;gt;内核态  
+
+系统调用
+异常
+外围设备中断
+
+进程组成(段)
+文件
+数据
+堆
+栈">
 
 
 
@@ -121,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/11/01/vim项目全局搜索的方法比较/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/12/LINUX-UNIX系统编程手册读书笔记（一）/"/>
 
 
 
 
 
-  <title>vim项目全局搜索的方法比较 | hello world</title>
+  <title>LINUX/UNIX系统编程手册读书笔记（一） | hello world</title>
   
 
 
@@ -274,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/11/01/vim项目全局搜索的方法比较/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/12/LINUX-UNIX系统编程手册读书笔记（一）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhuye">
@@ -291,7 +318,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">vim项目全局搜索的方法比较</h1>
+          <h1 class="post-title" itemprop="name headline">LINUX/UNIX系统编程手册读书笔记（一）</h1>
         
 
         <div class="post-meta">
@@ -303,8 +330,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-01T00:07:07+08:00">
-                2015-11-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-12T16:43:37+08:00">
+                2018-08-12
               </time>
             
 
@@ -344,9 +371,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/11/01/vim项目全局搜索的方法比较/#comments" itemprop="discussionUrl">
+                <a href="/2018/08/12/LINUX-UNIX系统编程手册读书笔记（一）/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/11/01/vim项目全局搜索的方法比较/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/08/12/LINUX-UNIX系统编程手册读书笔记（一）/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -354,7 +381,7 @@
 
           
           
-             <span id="/2015/11/01/vim项目全局搜索的方法比较/" class="leancloud_visitors" data-flag-title="vim项目全局搜索的方法比较">
+             <span id="/2018/08/12/LINUX-UNIX系统编程手册读书笔记（一）/" class="leancloud_visitors" data-flag-title="LINUX/UNIX系统编程手册读书笔记（一）">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -385,20 +412,101 @@
       
 
       
-        <p>到目前为止我用vim应该有四年了，除了以前写acm时使用的dev-c++，确实觉得还不太想用ide。用了这么久算不上资深也算的上熟悉了吧。vim可以挖掘的东西有那么多，直到现在还经常有“哇原来还可以这样用诶”的感叹。<br><br>我的vimrc：<em>github.com/zYeee/dev/blob/master/.vimrc</em><br></p>
-<p>现在拿到的有项目代码文件很多，vim又天生无法实现很好的代码跳转，ctags的跳转有时候会让人无语，所以之前在找一个需要的string的时候都是退出到shell，然后执行原生的grep指令来找，虽然可以但是随着要找的次数越来越多，这样的方法也显得很挫和浪费时间，于是想找找有没有快一点的全局搜索方案，找了下有不少，个人也比对了一下，总结如下：<br><a id="more"></a></p>
-<h2 id="命令">命令</h2><h3 id="vimgrep:在文件和目录中查找匹配的字符串">vimgrep:在文件和目录中查找匹配的字符串</h3><p>之前一直以为vim没有这个功能，都是到项目文件夹里执行grep xxx来查找自己想要的字符串，了解了下，居然有vimgrep这个命令，这样子查找起来就方便多了。<br></p>
-<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">; 在当前的文件夹下查找字符串<span class="keyword">*</span><span class="keyword">*</span>test<span class="keyword">*</span><span class="keyword">*</span>:</span><br><span class="line">vimgrep /test/ <span class="keyword">*</span></span><br><span class="line">; 在当前的文件夹和子文件夹下查找字符串<span class="keyword">*</span><span class="keyword">*</span>test<span class="keyword">*</span><span class="keyword">*</span>:</span><br><span class="line">vimgrep /test/ <span class="keyword">*</span><span class="keyword">*</span>/<span class="keyword">*</span>.<span class="keyword">*</span></span><br></pre></td></tr></table></figure>
-<p>结束后可用copen来打开结果列表。</p>
-<h2 id="插件">插件</h2><h3 id="easygrep：一个有快速grep功能的插件">easygrep：一个有快速grep功能的插件</h3><p>该插件内置的是vimgrep命令。可以用Bundle来安装。基本用法如下：</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;Leader&gt;vv  - Grep <span class="keyword">for</span> <span class="operator">the</span> <span class="built_in">word</span> under <span class="operator">the</span> cursor, match all occurences,</span><br><span class="line">              like <span class="string">'g*'</span>.  See <span class="string">":help gstar"</span>.</span><br><span class="line">&lt;Leader&gt;vV  - Grep <span class="keyword">for</span> <span class="operator">the</span> <span class="built_in">word</span> under <span class="operator">the</span> cursor, match <span class="keyword">whole</span> <span class="built_in">word</span>, like</span><br><span class="line">              <span class="string">'*'</span>.  See <span class="string">":help star"</span>.</span><br><span class="line">&lt;Leader&gt;va  - Like vv, but <span class="built_in">add</span> <span class="built_in">to</span> existing list.</span><br><span class="line">&lt;Leader&gt;vA  - Like vV, but <span class="built_in">add</span> <span class="built_in">to</span> existing list.</span><br><span class="line">&lt;Leader&gt;vr  - Perform <span class="operator">a</span> <span class="built_in">global</span> search <span class="command"><span class="keyword">on</span> <span class="title">the</span> <span class="title">word</span> <span class="title">under</span> <span class="title">the</span> <span class="title">cursor</span></span></span><br><span class="line">              <span class="operator">and</span> prompt <span class="keyword">for</span> <span class="operator">a</span> pattern <span class="operator">with</span> which <span class="built_in">to</span> <span class="built_in">replace</span> <span class="keyword">it</span>.</span><br><span class="line">&lt;Leader&gt;vR  - Like vr, but match <span class="keyword">whole</span> <span class="built_in">word</span>.</span><br></pre></td></tr></table></figure>
-<p>在vimrc内加入</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">g:EasyGrepRecursive</span>=<span class="number">1</span> //可以使默认模式改为递归</span><br><span class="line"><span class="keyword">let</span> <span class="variable">g:EasyGrepMode</span>=<span class="number">2</span> //<span class="keyword">grep</span>指定文件</span><br></pre></td></tr></table></figure>
-<p>虽然这个插件用起来方便，但是在用了ack.vim这个插件后还是觉得ack更加强大一些，所以还是用ack来做全局搜索了。下面介绍：</p>
-<h3 id="ack-vim：">ack.vim：</h3><p>虽然easygrep把搜索功能已经做的很方便了，但是在遇到一些大的项目的时候，依然会有速度很慢甚至崩溃等问题出现。Ack这个插件是系统的ack指令作为支持，是perl实现的，所以效率要比grep要高，而且会自动过滤一些.git等无用的目录。首先系统要有ack这个命令，据说大多数的linux发行版上都有，但是我的fedora 22上没有这个命令，def source也没有， 所以要自己去<a href="http://beyondgrep.com/install/" target="_blank" rel="external">官网</a>下载，ack.vim这个插件可以通过Bundle来下载。<br><br>用法和系统的ack命令相同。可以通过man ack来查看。<br><br>基本用法已经能够满足大部分需求：</p>
-<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">:Ack</span> <span class="collection">[options]</span> <span class="collection">&#123;pattern&#125;</span> <span class="collection">[<span class="collection">&#123;directories&#125;</span>]</span></span><br></pre></td></tr></table></figure>
-<p>默认是大小写敏感的，加入参数-i可以使大小写不敏感。</p>
-
+        <h2 id="第二章：基本概念">第二章：基本概念</h2><h3 id="内核">内核</h3><p>用户态——-&gt;内核态  </p>
+<ol>
+<li>系统调用</li>
+<li>异常</li>
+<li>外围设备中断</li>
+</ol>
+<h3 id="进程">进程</h3><h4 id="组成(段)">组成(段)</h4><ul>
+<li>文件</li>
+<li>数据</li>
+<li>堆</li>
+<li>栈<a id="more"></a>
+</li>
+</ul>
+<h4 id="进程间通信(IPC)">进程间通信(IPC)</h4><ul>
+<li>信号<ul>
+<li>用户键入中断字符</li>
+<li>进程的子进程之一终止</li>
+<li>进程设定的定时器到期</li>
+<li>进程尝试访问无效地址</li>
+</ul>
+</li>
+<li>管道和FIFO</li>
+<li>套接字</li>
+<li>文件锁定</li>
+<li>消息对列</li>
+<li>信号量</li>
+<li>共享内存</li>
+</ul>
+<h2 id="第四章:文件I/O">第四章:文件I/O</h2><table>
+<thead>
+<tr>
+<th>文件描述符</th>
+<th style="text-align:center">用途</th>
+<th style="text-align:right">POSIX名称</th>
+<th style="text-align:right">stdio流</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td style="text-align:center">标准输入</td>
+<td style="text-align:right">STDIN_FILENO</td>
+<td style="text-align:right">stdin</td>
+</tr>
+<tr>
+<td>1</td>
+<td style="text-align:center">标准输出</td>
+<td style="text-align:right">STDOUT_FILENO</td>
+<td style="text-align:right">stdout</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">标准错误</td>
+<td style="text-align:right">STDERR_FILENO</td>
+<td style="text-align:right">stderr</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> <span class="keyword">open</span>(const char *pathname, <span class="keyword">int</span> flags, mode_t <span class="built_in">mode</span>); //returns <span class="keyword">file</span> description <span class="keyword">on</span> success, <span class="built_in">or</span> -<span class="number">1</span> <span class="keyword">on</span> error</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssize_t <span class="keyword">read</span>(<span class="keyword">int</span> fd, void *<span class="keyword">buffer</span>, size_t <span class="built_in">count</span>); //returns <span class="keyword">number</span> of bytes <span class="keyword">read</span>, <span class="number">0</span> <span class="keyword">on</span> EOF, <span class="built_in">or</span> -<span class="number">1</span> <span class="keyword">on</span> error</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssize_t <span class="keyword">write</span>(<span class="keyword">int</span> fd, void *<span class="keyword">buffer</span>, size_t <span class="built_in">count</span>); //returns <span class="keyword">number</span> of bytes written, <span class="built_in">or</span> -<span class="number">1</span> <span class="keyword">on</span> error</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> <span class="keyword">close</span>(<span class="keyword">int</span> fd);  //returns <span class="number">0</span> <span class="keyword">on</span> success, <span class="built_in">or</span> -<span class="number">1</span> <span class="keyword">on</span> error</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">off_t lseek(<span class="keyword">int</span> fd, off_t offset, <span class="keyword">int</span> whence); //returns <span class="keyword">new</span> <span class="keyword">file</span> offset <span class="keyword">if</span> successful, <span class="built_in">or</span> -<span class="number">1</span> <span class="keyword">on</span> error</span><br></pre></td></tr></table></figure>
+<p>whence参数</p>
+<ul>
+<li>SEEK_SET 将偏移位设置从文件头开始的offset个字节。</li>
+<li>SEEK_CUR 相对当前调整offset个字节。</li>
+<li>SEEK_END 将文件偏移量设置为起始于尾部的offset个字节。</li>
+</ul>
+<h2 id="第五章：深入文件I/O">第五章：深入文件I/O</h2><p>内核维护的<strong>三</strong>个文件结构：</p>
+<ul>
+<li>进程级的文件描述符表 (open file descriptor)<ul>
+<li>文件描述符</li>
+<li>指针</li>
+</ul>
+</li>
+<li>系统级的打开文件表(open file table)<ul>
+<li>当前文件偏移量(read,write时更新，lseek修改)</li>
+<li>打开文件时的状态标志(open()时的flags参数)</li>
+<li>文件访问模式(read-only, write-only or read &amp; write)</li>
+<li>与信号驱动I/O相关的设置</li>
+<li>对该文件i-node对象的引用</li>
+</ul>
+</li>
+<li>文件系统的i-node表<ul>
+<li>文件类型</li>
+<li>指向锁列表的指针</li>
+<li>文件属性</li>
+</ul>
+</li>
+</ul>
+<p>两个不同的文件描述符，若指向同一打开的句柄，将共享同一文件偏移量。(一个改了，另一个也会被改变)</p>
+<h4 id="复制文件描述符">复制文件描述符</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> dup(<span class="keyword">int</span> oldfd); //<span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">file</span> descriptor <span class="keyword">on</span> success</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> dup2(<span class="keyword">int</span> oldfd, <span class="keyword">int</span> newfd); <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">file</span> descriptor <span class="keyword">on</span> success</span><br></pre></td></tr></table></figure>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dup3</span><span class="params">(<span class="keyword">int</span> oldfd, <span class="keyword">int</span> newfd, <span class="keyword">int</span> flags)</span></span>;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -413,12 +521,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/vim插件/" rel="tag"># vim插件</a>
-          
-        </div>
-      
 
       
       
@@ -428,8 +530,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/31/CSRF漏洞的攻击和防御/" rel="next" title="CSRF漏洞的攻击和防御">
-                <i class="fa fa-chevron-left"></i> CSRF漏洞的攻击和防御
+              <a href="/2017/11/24/长连接（persistent-connection）和php-fpm的关系/" rel="next" title="长连接（persistent_connection）和php-fpm的关系">
+                <i class="fa fa-chevron-left"></i> 长连接（persistent_connection）和php-fpm的关系
               </a>
             
           </div>
@@ -437,10 +539,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/18/设计模式-工厂模式和ioc控制反转（一）/" rel="prev" title="[设计模式]工厂模式和ioc控制反转（一）">
-                [设计模式]工厂模式和ioc控制反转（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -596,7 +694,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#命令"><span class="nav-number">1.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vimgrep:在文件和目录中查找匹配的字符串"><span class="nav-number">1.1.</span> <span class="nav-text">vimgrep:在文件和目录中查找匹配的字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插件"><span class="nav-number">2.</span> <span class="nav-text">插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#easygrep：一个有快速grep功能的插件"><span class="nav-number">2.1.</span> <span class="nav-text">easygrep：一个有快速grep功能的插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ack-vim："><span class="nav-number">2.2.</span> <span class="nav-text">ack.vim：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章：基本概念"><span class="nav-number">1.</span> <span class="nav-text">第二章：基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内核"><span class="nav-number">1.1.</span> <span class="nav-text">内核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程"><span class="nav-number">1.2.</span> <span class="nav-text">进程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#组成(段)"><span class="nav-number">1.2.1.</span> <span class="nav-text">组成(段)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程间通信(IPC)"><span class="nav-number">1.2.2.</span> <span class="nav-text">进程间通信(IPC)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章:文件I/O"><span class="nav-number">2.</span> <span class="nav-text">第四章:文件I/O</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章：深入文件I/O"><span class="nav-number">3.</span> <span class="nav-text">第五章：深入文件I/O</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#复制文件描述符"><span class="nav-number">3.0.1.</span> <span class="nav-text">复制文件描述符</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -764,9 +862,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2015/11/01/vim项目全局搜索的方法比较/';
-          this.page.identifier = '2015/11/01/vim项目全局搜索的方法比较/';
-          this.page.title = 'vim项目全局搜索的方法比较';
+          this.page.url = 'http://yoursite.com/2018/08/12/LINUX-UNIX系统编程手册读书笔记（一）/';
+          this.page.identifier = '2018/08/12/LINUX-UNIX系统编程手册读书笔记（一）/';
+          this.page.title = 'LINUX/UNIX系统编程手册读书笔记（一）';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://codezye.disqus.com/embed.js';
