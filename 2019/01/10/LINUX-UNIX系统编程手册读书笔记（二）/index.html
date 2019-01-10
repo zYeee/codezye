@@ -79,46 +79,31 @@
 
 
 
-<meta name="description" content="第二章：基本概念内核用户态——-&amp;gt;内核态  
+<meta name="description" content="第六章：进程每个进程所分配的内存会由很多部分组成，被称为“段（segment）”
 
-系统调用
-异常
-外围设备中断
-
-进程组成(段)
-文件
-数据
-堆
-栈">
+文本段:进程运行的语言指令，只读
+初始化数据段：显式初始化的全局变量和静态变量。
+未初始化数据段：未显式初始化的全局变量和静态变量。程序启动前，本段内存会被初始化为0，也称为BSS(block started by symbol)段。运行时再为其分配空间。
+栈（stack）是一个动态增长和收缩的段，由栈帧（stac">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LINUX/UNIX系统编程手册读书笔记（一）">
-<meta property="og:url" content="http://yoursite.com/2018/08/12/LINUX-UNIX系统编程手册读书笔记（一）/index.html">
+<meta property="og:title" content="LINUX-UNIX系统编程手册读书笔记（二）">
+<meta property="og:url" content="http://yoursite.com/2019/01/10/LINUX-UNIX系统编程手册读书笔记（二）/index.html">
 <meta property="og:site_name" content="hello world">
-<meta property="og:description" content="第二章：基本概念内核用户态——-&amp;gt;内核态  
+<meta property="og:description" content="第六章：进程每个进程所分配的内存会由很多部分组成，被称为“段（segment）”
 
-系统调用
-异常
-外围设备中断
-
-进程组成(段)
-文件
-数据
-堆
-栈">
-<meta property="og:updated_time" content="2018-08-12T08:53:08.000Z">
+文本段:进程运行的语言指令，只读
+初始化数据段：显式初始化的全局变量和静态变量。
+未初始化数据段：未显式初始化的全局变量和静态变量。程序启动前，本段内存会被初始化为0，也称为BSS(block started by symbol)段。运行时再为其分配空间。
+栈（stack）是一个动态增长和收缩的段，由栈帧（stac">
+<meta property="og:updated_time" content="2019-01-10T00:52:28.034Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LINUX/UNIX系统编程手册读书笔记（一）">
-<meta name="twitter:description" content="第二章：基本概念内核用户态——-&amp;gt;内核态  
+<meta name="twitter:title" content="LINUX-UNIX系统编程手册读书笔记（二）">
+<meta name="twitter:description" content="第六章：进程每个进程所分配的内存会由很多部分组成，被称为“段（segment）”
 
-系统调用
-异常
-外围设备中断
-
-进程组成(段)
-文件
-数据
-堆
-栈">
+文本段:进程运行的语言指令，只读
+初始化数据段：显式初始化的全局变量和静态变量。
+未初始化数据段：未显式初始化的全局变量和静态变量。程序启动前，本段内存会被初始化为0，也称为BSS(block started by symbol)段。运行时再为其分配空间。
+栈（stack）是一个动态增长和收缩的段，由栈帧（stac">
 
 
 
@@ -148,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/12/LINUX-UNIX系统编程手册读书笔记（一）/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/01/10/LINUX-UNIX系统编程手册读书笔记（二）/"/>
 
 
 
 
 
-  <title>LINUX/UNIX系统编程手册读书笔记（一） | hello world</title>
+  <title>LINUX-UNIX系统编程手册读书笔记（二） | hello world</title>
   
 
 
@@ -301,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/12/LINUX-UNIX系统编程手册读书笔记（一）/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/10/LINUX-UNIX系统编程手册读书笔记（二）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhuye">
@@ -318,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LINUX/UNIX系统编程手册读书笔记（一）</h1>
+          <h1 class="post-title" itemprop="name headline">LINUX-UNIX系统编程手册读书笔记（二）</h1>
         
 
         <div class="post-meta">
@@ -330,8 +315,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-12T16:43:37+08:00">
-                2018-08-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-10T08:47:44+08:00">
+                2019-01-10
               </time>
             
 
@@ -371,9 +356,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/12/LINUX-UNIX系统编程手册读书笔记（一）/#comments" itemprop="discussionUrl">
+                <a href="/2019/01/10/LINUX-UNIX系统编程手册读书笔记（二）/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/08/12/LINUX-UNIX系统编程手册读书笔记（一）/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2019/01/10/LINUX-UNIX系统编程手册读书笔记（二）/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -381,7 +366,7 @@
 
           
           
-             <span id="/2018/08/12/LINUX-UNIX系统编程手册读书笔记（一）/" class="leancloud_visitors" data-flag-title="LINUX/UNIX系统编程手册读书笔记（一）">
+             <span id="/2019/01/10/LINUX-UNIX系统编程手册读书笔记（二）/" class="leancloud_visitors" data-flag-title="LINUX-UNIX系统编程手册读书笔记（二）">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -412,101 +397,34 @@
       
 
       
-        <h2 id="第二章：基本概念">第二章：基本概念</h2><h3 id="内核">内核</h3><p>用户态——-&gt;内核态  </p>
-<ol>
-<li>系统调用</li>
-<li>异常</li>
-<li>外围设备中断</li>
-</ol>
-<h3 id="进程">进程</h3><h4 id="组成(段)">组成(段)</h4><ul>
-<li>文件</li>
-<li>数据</li>
-<li>堆</li>
-<li>栈<a id="more"></a>
-</li>
-</ul>
-<h4 id="进程间通信(IPC)">进程间通信(IPC)</h4><ul>
-<li>信号<ul>
-<li>用户键入中断字符</li>
-<li>进程的子进程之一终止</li>
-<li>进程设定的定时器到期</li>
-<li>进程尝试访问无效地址</li>
-</ul>
-</li>
-<li>管道和FIFO</li>
-<li>套接字</li>
-<li>文件锁定</li>
-<li>消息对列</li>
-<li>信号量</li>
-<li>共享内存</li>
-</ul>
-<h2 id="第四章:文件I/O">第四章:文件I/O</h2><table>
-<thead>
-<tr>
-<th>文件描述符</th>
-<th style="text-align:center">用途</th>
-<th style="text-align:right">POSIX名称</th>
-<th style="text-align:right">stdio流</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td style="text-align:center">标准输入</td>
-<td style="text-align:right">STDIN_FILENO</td>
-<td style="text-align:right">stdin</td>
-</tr>
-<tr>
-<td>1</td>
-<td style="text-align:center">标准输出</td>
-<td style="text-align:right">STDOUT_FILENO</td>
-<td style="text-align:right">stdout</td>
-</tr>
-<tr>
-<td>2</td>
-<td style="text-align:center">标准错误</td>
-<td style="text-align:right">STDERR_FILENO</td>
-<td style="text-align:right">stderr</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> <span class="keyword">open</span>(const char *pathname, <span class="keyword">int</span> flags, mode_t <span class="built_in">mode</span>); //returns <span class="keyword">file</span> description <span class="keyword">on</span> success, <span class="built_in">or</span> -<span class="number">1</span> <span class="keyword">on</span> error</span><br></pre></td></tr></table></figure>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssize_t <span class="keyword">read</span>(<span class="keyword">int</span> fd, void *<span class="keyword">buffer</span>, size_t <span class="built_in">count</span>); //returns <span class="keyword">number</span> of bytes <span class="keyword">read</span>, <span class="number">0</span> <span class="keyword">on</span> EOF, <span class="built_in">or</span> -<span class="number">1</span> <span class="keyword">on</span> error</span><br></pre></td></tr></table></figure>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssize_t <span class="keyword">write</span>(<span class="keyword">int</span> fd, void *<span class="keyword">buffer</span>, size_t <span class="built_in">count</span>); //returns <span class="keyword">number</span> of bytes written, <span class="built_in">or</span> -<span class="number">1</span> <span class="keyword">on</span> error</span><br></pre></td></tr></table></figure>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> <span class="keyword">close</span>(<span class="keyword">int</span> fd);  //returns <span class="number">0</span> <span class="keyword">on</span> success, <span class="built_in">or</span> -<span class="number">1</span> <span class="keyword">on</span> error</span><br></pre></td></tr></table></figure>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">off_t lseek(<span class="keyword">int</span> fd, off_t offset, <span class="keyword">int</span> whence); //returns <span class="keyword">new</span> <span class="keyword">file</span> offset <span class="keyword">if</span> successful, <span class="built_in">or</span> -<span class="number">1</span> <span class="keyword">on</span> error</span><br></pre></td></tr></table></figure>
-<p>whence参数</p>
+        <h2 id="第六章：进程">第六章：进程</h2><p>每个进程所分配的内存会由很多部分组成，被称为“段（segment）”</p>
 <ul>
-<li>SEEK_SET 将偏移位设置从文件头开始的offset个字节。</li>
-<li>SEEK_CUR 相对当前调整offset个字节。</li>
-<li>SEEK_END 将文件偏移量设置为起始于尾部的offset个字节。</li>
+<li>文本段:进程运行的语言指令，只读</li>
+<li>初始化数据段：<strong>显式初始化</strong>的<strong>全局变量</strong>和<strong>静态变量</strong>。</li>
+<li>未初始化数据段：<strong>未显式初始化</strong>的<strong>全局变量</strong>和<strong>静态变量</strong>。程序启动前，本段内存会被初始化为0，也称为BSS(block started by symbol)段。运行时再为其分配空间。</li>
+<li>栈（stack）是一个动态增长和收缩的<strong>段</strong>，由栈帧（stack frames）组成。存储了函数的<strong>局部变量，实参，返回值。</strong></li>
+<li>堆（heap）是在运行时为变量动态进行内存分配的一块区域。始于未初始化数据段的末尾。<a id="more"></a>
+<h2 id="第七章：内存分配">第七章：内存分配</h2></li>
 </ul>
-<h2 id="第五章：深入文件I/O">第五章：深入文件I/O</h2><p>内核维护的<strong>三</strong>个文件结构：</p>
+<h3 id="在堆上分配内存">在堆上分配内存</h3><p>堆的内存边界称为(program break)<br>在堆上分配size字节的内存，并返回指向新分配内存起始处的指针。<br>可以随意释放内存块，被释放后就会被维护于一张空闲内存的表中。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> *<span class="built_in">malloc</span>(<span class="keyword">size_t</span> size);</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">free</span> <span class="params">(<span class="keyword">void</span> *ptr)</span></span>;</span><br></pre></td></tr></table></figure>
+<p><strong>malloc是基于8字节或16字节的字节边界来分配内存的</strong><br>free不会降低program break的位置，而是将它置于空闲内存的列表中。<br>free过一次的地址不能再被free。<br>malloc()分配内存的时候会额外分配几个字节来存放这块内存的大小，记于内存的起始处，返回给调用者的地址在这一记录字节之后。  </p>
+<p>分配内存的其它方法： </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> *<span class="built_in">calloc</span>(<span class="keyword">size_t</span> numitems, <span class="keyword">size_t</span> size);<span class="comment">//会分配size大小的numitems个连续内存（数组）</span></span><br><span class="line"><span class="keyword">void</span> *realloc(<span class="keyword">void</span> *ptr, <span class="keyword">size_t</span> size);</span><br></pre></td></tr></table></figure>
+<p>calloc()和malloc的不同点是：calloc()会将分配的内存初始化为0而malloc()不会<br>使用calloc()或realloc()分配的内存应该使用free()来释放。</p>
+<h2 id="第二十章：信号:基本概念">第二十章：信号:基本概念</h2><p>发往进程的信号，通常源于内核。信号到达后，进程会进行如下操作之一：</p>
 <ul>
-<li>进程级的文件描述符表 (open file descriptor)<ul>
-<li>文件描述符</li>
-<li>指针</li>
+<li>忽略信号</li>
+<li>终止进程</li>
+<li>产生核心转储文件</li>
+<li>停止进程</li>
+<li>恢复进程执行  </li>
 </ul>
-</li>
-<li>系统级的打开文件表(open file table)<ul>
-<li>当前文件偏移量(read,write时更新，lseek修改)</li>
-<li>打开文件时的状态标志(open()时的flags参数)</li>
-<li>文件访问模式(read-only, write-only or read &amp; write)</li>
-<li>与信号驱动I/O相关的设置</li>
-<li>对该文件i-node对象的引用</li>
-</ul>
-</li>
-<li>文件系统的i-node表<ul>
-<li>文件类型</li>
-<li>指向锁列表的指针</li>
-<li>文件属性</li>
-</ul>
-</li>
-</ul>
-<p>两个不同的文件描述符，若指向同一打开的句柄，将共享同一文件偏移量。(一个改了，另一个也会被改变)</p>
-<h4 id="复制文件描述符">复制文件描述符</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> dup(<span class="keyword">int</span> oldfd); //<span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">file</span> descriptor <span class="keyword">on</span> success</span><br></pre></td></tr></table></figure>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> dup2(<span class="keyword">int</span> oldfd, <span class="keyword">int</span> newfd); <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">file</span> descriptor <span class="keyword">on</span> success</span><br></pre></td></tr></table></figure>
-<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dup3</span><span class="params">(<span class="keyword">int</span> oldfd, <span class="keyword">int</span> newfd, <span class="keyword">int</span> flags)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="改变信号的处置">改变信号的处置</h3><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void <span class="list">(<span class="keyword">*signal</span><span class="list">(<span class="keyword">int</span> sig, void<span class="list">(<span class="keyword">*handler</span>)</span><span class="list">(<span class="keyword">int</span>)</span>)</span>)</span></span><br></pre></td></tr></table></figure>
+<p>signal返回的是<strong>之前的信号处置</strong>，像handler一样指向一个带有一个整型参数且无返回值的函数，handler的整型参数就是该信号值。</p>
+<h3 id="发送信号">发送信号</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> kill(pid_t pid, <span class="keyword">int</span> <span class="keyword">sig</span>);</span><br><span class="line">//<span class="keyword">return</span> <span class="number">0</span> <span class="keyword">on</span> success, -<span class="number">1</span> <span class="keyword">on</span> error</span><br></pre></td></tr></table></figure>
+<p>如果pid&gt;0，那么会发送信号给pid指定的进程<br>如果pid=0，那么会发送信号给调用进程同组的每个进程，包括调用进程自身。<br>如果pid&lt;0，那会向组id等于该pid绝对值的进程组内所有<strong>下属进程</strong>发信号。<br>如果pid=-1，调用进程有权将信号发往每个目标进程，除去init和调用进程自身。（广播进程）  </p>
+
       
     </div>
     
@@ -536,8 +454,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/24/长连接（persistent-connection）和php-fpm的关系/" rel="next" title="长连接（persistent_connection）和php-fpm的关系">
-                <i class="fa fa-chevron-left"></i> 长连接（persistent_connection）和php-fpm的关系
+              <a href="/2018/08/12/LINUX-UNIX系统编程手册读书笔记（一）/" rel="next" title="LINUX/UNIX系统编程手册读书笔记（一）">
+                <i class="fa fa-chevron-left"></i> LINUX/UNIX系统编程手册读书笔记（一）
               </a>
             
           </div>
@@ -545,10 +463,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/10/LINUX-UNIX系统编程手册读书笔记（二）/" rel="prev" title="LINUX-UNIX系统编程手册读书笔记（二）">
-                LINUX-UNIX系统编程手册读书笔记（二） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -704,7 +618,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章：基本概念"><span class="nav-number">1.</span> <span class="nav-text">第二章：基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内核"><span class="nav-number">1.1.</span> <span class="nav-text">内核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程"><span class="nav-number">1.2.</span> <span class="nav-text">进程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#组成(段)"><span class="nav-number">1.2.1.</span> <span class="nav-text">组成(段)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程间通信(IPC)"><span class="nav-number">1.2.2.</span> <span class="nav-text">进程间通信(IPC)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章:文件I/O"><span class="nav-number">2.</span> <span class="nav-text">第四章:文件I/O</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章：深入文件I/O"><span class="nav-number">3.</span> <span class="nav-text">第五章：深入文件I/O</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#复制文件描述符"><span class="nav-number">3.0.1.</span> <span class="nav-text">复制文件描述符</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章：进程"><span class="nav-number">1.</span> <span class="nav-text">第六章：进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第七章：内存分配"><span class="nav-number">2.</span> <span class="nav-text">第七章：内存分配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在堆上分配内存"><span class="nav-number">2.1.</span> <span class="nav-text">在堆上分配内存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十章：信号:基本概念"><span class="nav-number">3.</span> <span class="nav-text">第二十章：信号:基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#改变信号的处置"><span class="nav-number">3.1.</span> <span class="nav-text">改变信号的处置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发送信号"><span class="nav-number">3.2.</span> <span class="nav-text">发送信号</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -872,9 +786,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/08/12/LINUX-UNIX系统编程手册读书笔记（一）/';
-          this.page.identifier = '2018/08/12/LINUX-UNIX系统编程手册读书笔记（一）/';
-          this.page.title = 'LINUX/UNIX系统编程手册读书笔记（一）';
+          this.page.url = 'http://yoursite.com/2019/01/10/LINUX-UNIX系统编程手册读书笔记（二）/';
+          this.page.identifier = '2019/01/10/LINUX-UNIX系统编程手册读书笔记（二）/';
+          this.page.title = 'LINUX-UNIX系统编程手册读书笔记（二）';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://codezye.disqus.com/embed.js';
