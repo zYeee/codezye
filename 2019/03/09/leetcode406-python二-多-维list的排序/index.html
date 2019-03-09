@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="leetcode," />
 
 
 
@@ -79,15 +79,19 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="hello world">
-<meta property="og:url" content="http://yoursite.com/archives/2016/index.html">
+<meta name="description" content="题目地址在这里题意不难理解，理解后解法也很快能想出来，就是一个对二维数组排序后再进行遍历插入的操作。这里的排序是按子list的第一个元素的逆序排序，第一个元素相同时，按第二个元素的升序排。实现的时候有一个疑问点就是，二维list的排序用python来实现：  
+12original list: [[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]sorted lis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode406-python二(多)维list的排序">
+<meta property="og:url" content="http://yoursite.com/2019/03/09/leetcode406-python二-多-维list的排序/index.html">
 <meta property="og:site_name" content="hello world">
-<meta property="og:description">
+<meta property="og:description" content="题目地址在这里题意不难理解，理解后解法也很快能想出来，就是一个对二维数组排序后再进行遍历插入的操作。这里的排序是按子list的第一个元素的逆序排序，第一个元素相同时，按第二个元素的升序排。实现的时候有一个疑问点就是，二维list的排序用python来实现：  
+12original list: [[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]sorted lis">
+<meta property="og:updated_time" content="2019-03-09T08:20:34.665Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hello world">
-<meta name="twitter:description">
+<meta name="twitter:title" content="leetcode406-python二(多)维list的排序">
+<meta name="twitter:description" content="题目地址在这里题意不难理解，理解后解法也很快能想出来，就是一个对二维数组排序后再进行遍历插入的操作。这里的排序是按子list的第一个元素的逆序排序，第一个元素相同时，按第二个元素的升序排。实现的时候有一个疑问点就是，二维list的排序用python来实现：  
+12original list: [[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]sorted lis">
 
 
 
@@ -117,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2016/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/03/09/leetcode406-python二-多-维list的排序/"/>
 
 
 
 
 
-  <title>Archive | hello world</title>
+  <title>leetcode406-python二(多)维list的排序 | hello world</title>
   
 
 
@@ -152,7 +156,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -256,221 +260,200 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        OK! 36 posts in total. Keep on posting.
-      </span>
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/09/leetcode406-python二-多-维list的排序/">
 
-      
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhuye">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
 
         
         
+          <h1 class="post-title" itemprop="name headline">leetcode406-python二(多)维list的排序</h1>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-09T15:31:38+08:00">
+                2019-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2016">2016</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/21/设计模式6大原则/" itemprop="url">
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
               
-                <span itemprop="name">设计模式6大原则</span>
+                <span class="post-meta-item-text">In</span>
               
-            </a>
-        
-      </h2>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">algorithm</span>
+                  </a>
+                </span>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-21T08:31:35+08:00"
-              content="2016-11-21" >
-          11-21
-        </time>
-      </div>
+                
+                
+              
+            </span>
+          
 
-    </header>
-  </article>
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/09/leetcode406-python二-多-维list的排序/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/03/09/leetcode406-python二-多-维list的排序/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
+          
+          
+             <span id="/2019/03/09/leetcode406-python二-多-维list的排序/" class="leancloud_visitors" data-flag-title="leetcode406-python二(多)维list的排序">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2016/06/14/docker搭建并部署简单的LNMP环境(二)/" itemprop="url">
-              
-                <span itemprop="name">docker搭建并部署LNMP环境(二)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-14T22:50:34+08:00"
-              content="2016-06-14" >
-          06-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2016/06/06/docker搭建并部署简单的LNMP环境(一)/" itemprop="url">
-              
-                <span itemprop="name">docker搭建并部署LNMP环境(一)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-06T23:59:59+08:00"
-              content="2016-06-06" >
-          06-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>题目地址在<a href="https://leetcode.com/problems/queue-reconstruction-by-height/" target="_blank" rel="external">这里</a><br>题意不难理解，理解后解法也很快能想出来，就是一个对二维数组排序后再进行遍历插入的操作。这里的排序是按子list的第一个元素的<strong>逆序</strong>排序，第一个元素相同时，按第二个元素的<strong>升序</strong>排。实现的时候有一个疑问点就是，二维list的排序用python来实现：  </p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">original list: <span class="comment">[<span class="comment">[7,0]</span>, <span class="comment">[4,4]</span>, <span class="comment">[7,1]</span>, <span class="comment">[5,0]</span>, <span class="comment">[6,1]</span>, <span class="comment">[5,2]</span>]</span></span><br><span class="line">sorted list: <span class="comment">[<span class="comment">[7,0]</span>, <span class="comment">[7,1]</span>, <span class="comment">[6,1]</span>, <span class="comment">[5,0]</span>, <span class="comment">[5,2]</span>, <span class="comment">[4,4]</span>]</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>像之前用的cpp,php甚至是python 2.x，sort方法都可以自己define一个compare function，来进行自定义的排序。但是python3开始把cmp方法给取消了，python3.x对于list的排序是<strong>l.sort(key=None, reverse=None)</strong>或者<strong>sorted(l, key=None, reverse=None)</strong>，因为有一个key参数的存在，也可以自定义一些排序方法，但是按照这题的需求，对两个不同值是要一个按升序一个按降序的，并不能统一,故很难在一句里面完成。<br>通过查了官方<a href="https://docs.python.org/3.4/howto/sorting.html#sort-stability-and-complex-sorts" target="_blank" rel="external">文档</a>，里面说明，python现在的sort算法是保证稳定（stable）的，也就是说，如果有相同的key存在，他们在排序前后的相对位置是不变的。</p>
+<blockquote>
+<p>Sorts are guaranteed to be stable. That means that when multiple records have the same key, their original order is preserved.</p>
+</blockquote>
+<p>如果有这样的前题，那实现这样一个排序就变得很简单了。直接上代码:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">people.<span class="function"><span class="title">sort</span><span class="params">(key=lambda x: x[<span class="number">1</span>])</span></span></span><br><span class="line">people.<span class="function"><span class="title">sort</span><span class="params">(key=lambda x: x[<span class="number">0</span>], reverse=True)</span></span></span><br></pre></td></tr></table></figure>
+<p>可以先按第二个元素排序，再按第一个排序。</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2016/04/15/scrapy入门-一个爬取书籍网站的实例/" itemprop="url">
-              
-                <span itemprop="name">scrapy入门:一个爬取书籍网站的实例</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-04-15T21:54:00+08:00"
-              content="2016-04-15" >
-          04-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2016/01/25/php二维数组排序array-multisort，实现sql中的order-by/" itemprop="url">
-              
-                <span itemprop="name">php二维数组排序array_multisort，实现sql中的order by</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-01-25T22:31:09+08:00"
-              content="2016-01-25" >
-          01-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/10/LINUX-UNIX系统编程手册读书笔记（二）/" rel="next" title="LINUX-UNIX系统编程手册读书笔记（二）">
+                <i class="fa fa-chevron-left"></i> LINUX-UNIX系统编程手册读书笔记（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -478,6 +461,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -711,6 +708,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -728,6 +729,18 @@
       <script id="dsq-count-scr" src="https://codezye.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/03/09/leetcode406-python二-多-维list的排序/';
+          this.page.identifier = '2019/03/09/leetcode406-python二-多-维list的排序/';
+          this.page.title = 'leetcode406-python二(多)维list的排序';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://codezye.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
