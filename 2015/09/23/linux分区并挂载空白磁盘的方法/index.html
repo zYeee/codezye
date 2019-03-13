@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="default">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -85,6 +85,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/09/23/linux分区并挂载空白磁盘的方法/index.html">
 <meta property="og:site_name" content="hello world">
 <meta property="og:description" content="最近打算自己搞一个最新的fedora22的vagrant_box作为开发环境。但是官网下的box文件，分配给根目录/的大小只有3G，所以原先想找办法对/进行扩容，但是弄了很久都没有成功，因为该box精简过很多命令文件，像pvcreate之类的都无法使用。所以想到一个新的办法。就是把/目录下的/var，/home之类占空间的文件夹，挂载新分配的空闲磁盘。弄了好久总算成功了，记录一下：">
+<meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2015-09-23T14:57:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux分区并挂载空白磁盘的方法">
@@ -118,7 +119,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/09/23/linux分区并挂载空白磁盘的方法/"/>
+  <link rel="canonical" href="http://yoursite.com/2015/09/23/linux分区并挂载空白磁盘的方法/">
 
 
 
@@ -139,7 +140,7 @@
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -153,7 +154,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -162,7 +163,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">hello world</span>
         <span class="logo-line-after"><i></i></span>
@@ -192,7 +193,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
           </a>
@@ -202,7 +203,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             About
           </a>
@@ -212,7 +213,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             Tags
           </a>
@@ -222,7 +223,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             Categories
           </a>
@@ -232,7 +233,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             Archives
           </a>
@@ -275,7 +276,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhuye">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460">
     </span>
 
@@ -311,7 +312,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -342,8 +343,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2015/09/23/linux分区并挂载空白磁盘的方法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/09/23/linux分区并挂载空白磁盘的方法/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/23/linux分区并挂载空白磁盘的方法/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -383,27 +383,27 @@
 
       
         <p>最近打算自己搞一个最新的fedora22的vagrant_box作为开发环境。但是官网下的box文件，分配给根目录/的大小只有3G，所以原先想找办法对/进行扩容，但是弄了很久都没有成功，因为该box精简过很多命令文件，像pvcreate之类的都无法使用。所以想到一个新的办法。就是把/目录下的/var，/home之类占空间的文件夹，挂载新分配的空闲磁盘。弄了好久总算成功了，记录一下：<br><br><a id="more"></a></p>
-<h3 id="查看分区">查看分区</h3><p>通过执行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk <span class="operator">-l</span></span><br></pre></td></tr></table></figure>
+<h3 id="查看分区"><a href="#查看分区" class="headerlink" title="查看分区"></a>查看分区</h3><p>通过执行</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">fdisk -l</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Disk /dev/sda: 40 GiB, 42949672960 bytes, 83886080 sectors<br><br>Units: sectors of 1 <em> 512 = 512 bytes<br><br>Sector size (logical/physical): 512 bytes / 512 bytes<br><br>I/O size (minimum/optimal): 512 bytes / 512 bytes<br><br>Disklabel type: dos<br><br>Disk identifier: 0xe02b2711<br><br><br><br>Device Boot Start     End Sectors Size Id Type<br><br>/dev/sda1  </em>     2048 6146047 6144000   3G 83 Linux</p>
 </blockquote>
 <p>发现/dev/sda有个磁盘有40G空间而/只占用了其中的3G，于是打算把/dev/sda多出的空间给分出来。</p>
-<h3 id="新建分区">新建分区</h3><p>执行</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk <span class="regexp">/dev/</span>sda</span><br></pre></td></tr></table></figure>
+<h3 id="新建分区"><a href="#新建分区" class="headerlink" title="新建分区"></a>新建分区</h3><p>执行</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk <span class="regexp">/dev/</span>sda</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Changes will remain in memory only, until you decide to write them.<br><br>Be careful before using the write command.<br><br><br><br>Command (m for help): <strong>n</strong><br><br>Partition type<br><br>   p   primary (1 primary, 0 extended, 3 free)<br><br>   e   extended (container for logical partitions)<br><br>Select (default p): <strong>p</strong><br><br>Partition number (2-4, default 2):<br><br>First sector (6146048-83886079, default 6146048):<br><br>Last sector, +sectors or +size{K,M,G,T,P} (6146048-83886079, default 83886079):<br><br><br><br>Created a new partition 2 of type ‘Linux’ and of size 37.1 GiB.<br><br><br><br>Command (m for help): <strong>w</strong><br><br>The partition table has been altered.<br><br>Calling ioctl() to re-read partition table.<br></p>
 </blockquote>
 <p>成功后重启</p>
-<h3 id="挂载分区">挂载分区</h3><p>直接执行</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount <span class="regexp">/dev/</span>sda2 <span class="regexp">/mnt</span></span><br></pre></td></tr></table></figure>
+<h3 id="挂载分区"><a href="#挂载分区" class="headerlink" title="挂载分区"></a>挂载分区</h3><p>直接执行</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount <span class="string">/dev/sda2</span> <span class="string">/mnt</span></span><br></pre></td></tr></table></figure>
 <p>有可能会提示</p>
 <blockquote>
 <p>mount: /dev/sda2 is write-protected, mounting read-only<br><br>mount: unknown filesystem type<br><br>所以要格式化该磁盘<br><br>执行</p>
 </blockquote>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfs<span class="class">.ext3</span> /dev/sda2</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfs<span class="selector-class">.ext3</span> /dev/sda2</span><br></pre></td></tr></table></figure>
 <p>成功后就可以正常挂载了。<br>注意这样的挂载<strong>并不是持久化</strong>的挂载，如果要让系统每次都自动挂载，那么就应该修改/etc/fstab文件：<br>在后面添加：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/dev/</span>sda2   /mnt   ext3  <span class="keyword">default</span>   <span class="number">0</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dev/sda2   /mnt   ext3 <span class="built_in"> default </span>  0 0</span><br></pre></td></tr></table></figure>
 <p>对于该文件的说明：</p>
 <blockquote>
 <ol>
@@ -413,9 +413,9 @@
 </ol>
 </blockquote>
 <p>然后把/var复制到/mnt目录下。<br>在/etc/fstab中添加新的挂载信息：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/mnt/<span class="tag">var</span>  /<span class="tag">var</span>    <span class="attribute">none</span>  rw,bind  <span class="number">1</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/mnt/<span class="selector-tag">var</span>  /<span class="selector-tag">var</span>    <span class="attribute">none</span>  rw,bind  <span class="number">1</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
 <p>最后/etc/fstab中是这样的：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/dev/sda2        /mnt	ext3	defaults	<span class="number">1</span> <span class="number">2</span></span><br><span class="line">/mnt/<span class="tag">var</span>  /<span class="tag">var</span>    <span class="attribute">none</span>  rw,bind  <span class="number">1</span> <span class="number">1</span></span><br><span class="line">/mnt/workplace  /workplace    <span class="attribute">none</span>  rw,bind  <span class="number">1</span> <span class="number">2</span></span><br><span class="line">/mnt/home  /home    <span class="attribute">none</span>  rw,bind  <span class="number">1</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">/dev/sda2</span>        <span class="string">/mnt</span>	ext3	defaults	1 2</span><br><span class="line"><span class="string">/mnt/var</span>  <span class="string">/var</span>    none  rw,bind  1 1</span><br><span class="line"><span class="string">/mnt/workplace</span>  <span class="string">/workplace</span>    none  rw,bind  1 2</span><br><span class="line"><span class="string">/mnt/home</span>  <span class="string">/home</span>    none  rw,bind  1 2</span><br></pre></td></tr></table></figure>
 <p><strong>/usr文件夹不能重新挂载，会出错导致进不了系统！！！</strong></p>
 
       
@@ -529,9 +529,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460"
-                alt="zhuye" />
+              <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460" alt="zhuye">
             
               <p class="site-author-name" itemprop="name">zhuye</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -544,7 +542,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -925,7 +923,24 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 

@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="default">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="爬虫," />
+  <meta name="keywords" content="爬虫,">
 
 
 
@@ -80,16 +80,19 @@
 
 
 <meta name="description" content="以前读大学的时候为了抓一些淘宝的数据，写过一些简单的php脚本来实现自己的需求，当时只是为了盲目完成需求去随意地写这样的脚本，甚至不知道“爬虫”这个概念。后来学习了python，也接触了scrapy。这是一个专门用来爬取网站数据的一个应用框架。实现了分析url，发送请求，接受数据，解析数据整个流程。使用Twisted这个异步网络库来实现异步网络请求。网上借用的架构图如下:最近发现一个能够下电子书资">
+<meta name="keywords" content="爬虫">
 <meta property="og:type" content="article">
 <meta property="og:title" content="scrapy入门:一个爬取书籍网站的实例">
 <meta property="og:url" content="http://yoursite.com/2016/04/15/scrapy入门-一个爬取书籍网站的实例/index.html">
 <meta property="og:site_name" content="hello world">
 <meta property="og:description" content="以前读大学的时候为了抓一些淘宝的数据，写过一些简单的php脚本来实现自己的需求，当时只是为了盲目完成需求去随意地写这样的脚本，甚至不知道“爬虫”这个概念。后来学习了python，也接触了scrapy。这是一个专门用来爬取网站数据的一个应用框架。实现了分析url，发送请求，接受数据，解析数据整个流程。使用Twisted这个异步网络库来实现异步网络请求。网上借用的架构图如下:最近发现一个能够下电子书资">
+<meta property="og:locale" content="default">
 <meta property="og:image" content="http://i2.bvimg.com/520266/041c2e597820453d.png">
-<meta property="og:updated_time" content="2019-03-09T07:17:19.948Z">
+<meta property="og:updated_time" content="2019-03-09T07:17:19.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="scrapy入门:一个爬取书籍网站的实例">
 <meta name="twitter:description" content="以前读大学的时候为了抓一些淘宝的数据，写过一些简单的php脚本来实现自己的需求，当时只是为了盲目完成需求去随意地写这样的脚本，甚至不知道“爬虫”这个概念。后来学习了python，也接触了scrapy。这是一个专门用来爬取网站数据的一个应用框架。实现了分析url，发送请求，接受数据，解析数据整个流程。使用Twisted这个异步网络库来实现异步网络请求。网上借用的架构图如下:最近发现一个能够下电子书资">
+<meta name="twitter:image" content="http://i2.bvimg.com/520266/041c2e597820453d.png">
 
 
 
@@ -119,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/04/15/scrapy入门-一个爬取书籍网站的实例/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/04/15/scrapy入门-一个爬取书籍网站的实例/">
 
 
 
@@ -140,7 +143,7 @@
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -154,7 +157,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -163,7 +166,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">hello world</span>
         <span class="logo-line-after"><i></i></span>
@@ -193,7 +196,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
           </a>
@@ -203,7 +206,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             About
           </a>
@@ -213,7 +216,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             Tags
           </a>
@@ -223,7 +226,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             Categories
           </a>
@@ -233,7 +236,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             Archives
           </a>
@@ -276,7 +279,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhuye">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460">
     </span>
 
@@ -312,7 +315,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -343,8 +346,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/04/15/scrapy入门-一个爬取书籍网站的实例/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/04/15/scrapy入门-一个爬取书籍网站的实例/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/04/15/scrapy入门-一个爬取书籍网站的实例/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -384,30 +386,30 @@
 
       
         <p>以前读大学的时候为了抓一些淘宝的数据，写过一些简单的php脚本来实现自己的需求，当时只是为了盲目完成需求去随意地写这样的脚本，甚至不知道“爬虫”这个概念。后来学习了python，也接触了scrapy。这是一个专门用来爬取网站数据的一个应用框架。实现了分析url，发送请求，接受数据，解析数据整个流程。使用Twisted这个异步网络库来实现异步网络请求。网上借用的架构图如下:<br><img src="http://i2.bvimg.com/520266/041c2e597820453d.png" alt="Markdown"><br>最近发现一个能够下电子书资源的网站readcolor，里面有很多的书籍信息。于是就有一个想法把这些书的信息都保存下来，刚好也能练习scrapy的使用。<br><br><a id="more"></a></p>
-<h3 id="安装和创建scrapy项目">安装和创建scrapy项目</h3><p>在linux(fedora)下pip安装scrapy，可能会有的依赖包：libffi-devel, openssl-devel, libxml2-devel, libxslt-devel<br><br>安装完成后，就可开始创建项目了。</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">scrapy</span> startproject book</span><br></pre></td></tr></table></figure>
-<h3 id="从0开始新建一个爬虫">从0开始新建一个爬虫</h3><p>自动生成的项目骨架：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">scrapy<span class="class">.cfg</span></span><br><span class="line">myproject/</span><br><span class="line">    __init__<span class="class">.py</span></span><br><span class="line">    items<span class="class">.py</span></span><br><span class="line">    pipelines<span class="class">.py</span></span><br><span class="line">    settings<span class="class">.py</span></span><br><span class="line">    spiders/</span><br><span class="line">        __init__<span class="class">.py</span></span><br><span class="line">        ...</span><br></pre></td></tr></table></figure>
+<h3 id="安装和创建scrapy项目"><a href="#安装和创建scrapy项目" class="headerlink" title="安装和创建scrapy项目"></a>安装和创建scrapy项目</h3><p>在linux(fedora)下pip安装scrapy，可能会有的依赖包：libffi-devel, openssl-devel, libxml2-devel, libxslt-devel<br><br>安装完成后，就可开始创建项目了。</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">scrapy startproject book</span></span><br></pre></td></tr></table></figure>
+<h3 id="从0开始新建一个爬虫"><a href="#从0开始新建一个爬虫" class="headerlink" title="从0开始新建一个爬虫"></a>从0开始新建一个爬虫</h3><p>自动生成的项目骨架：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">scrapy.cfg</span><br><span class="line">myproject/</span><br><span class="line">    __init__.py</span><br><span class="line">    items.py</span><br><span class="line">    pipelines.py</span><br><span class="line">    settings.py</span><br><span class="line">    spiders/</span><br><span class="line">        __init__.py</span><br><span class="line">        ...</span><br></pre></td></tr></table></figure>
 <ul>
 <li>spider文件夹下定义了具体的爬虫。</li>
 <li>items.py是一个定义了所有抓取字段的类</li>
 </ul>
-<h4 id="定义item类">定义item类</h4><p>我抓取的书籍信息如下定义item类：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class <span class="function"><span class="title">BookItem</span><span class="params">(Item)</span></span>:</span><br><span class="line">    name = <span class="function"><span class="title">Field</span><span class="params">()</span></span></span><br><span class="line">    auther = <span class="function"><span class="title">Field</span><span class="params">()</span></span></span><br><span class="line">    tag = <span class="function"><span class="title">Field</span><span class="params">()</span></span></span><br><span class="line">    url = <span class="function"><span class="title">Field</span><span class="params">()</span></span></span><br><span class="line">    category = <span class="function"><span class="title">Field</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
-<h4 id="编写提取数据的spider">编写提取数据的spider</h4><p>Spider是专门执行爬取操作的类。<br><br>其中有一个(一些)初始URL，还有分析这些url所包含的页面的方法。<br><br>一个spider应该定义以下三个基本属性：</p>
+<h4 id="定义item类"><a href="#定义item类" class="headerlink" title="定义item类"></a>定义item类</h4><p>我抓取的书籍信息如下定义item类：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">BookItem</span>(<span class="type">Item</span>):</span></span><br><span class="line"><span class="class">    name = <span class="type">Field</span>()</span></span><br><span class="line"><span class="class">    auther = <span class="type">Field</span>()</span></span><br><span class="line"><span class="class">    tag = <span class="type">Field</span>()</span></span><br><span class="line"><span class="class">    url = <span class="type">Field</span>()</span></span><br><span class="line"><span class="class">    category = <span class="type">Field</span>()</span></span><br></pre></td></tr></table></figure>
+<h4 id="编写提取数据的spider"><a href="#编写提取数据的spider" class="headerlink" title="编写提取数据的spider"></a>编写提取数据的spider</h4><p>Spider是专门执行爬取操作的类。<br><br>其中有一个(一些)初始URL，还有分析这些url所包含的页面的方法。<br><br>一个spider应该定义以下三个基本属性：</p>
 <ul>
 <li>name：该spider的名字，针对项目而言应该是唯一的。</li>
 <li>start_urls：spider在启动时进行爬取的初始url列表。</li>
 <li>parse()方法：每个url经过downloader生成的response对像会被作为一个唯一的参数传递给该函数。然后该函数解析后或生成提取后的数据(item)或生成要继续处理的request对像。</li>
 </ul>
-<h4 id="通过selector(选择器)提取数据">通过selector(选择器)提取数据</h4><p>scrapy自己的selectors可以通过xpath来选择并提取html文件中的某个部分。<br><br>关于xpath的写法不再缀述，<a href="http://www.w3school.com.cn/xpath/" target="_blank" rel="external">xpath</a>有详细教程。<br><br>以本项目为例，要提取的字段为name, url, auther, tag。 页面的大致结构如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"row thumbnails"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"span4"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"book thumbnail"</span> <span class="attribute">href</span>=<span class="value">"http://readcolor.com/books/5157047b82be9ce1e10003c9"</span> <span class="attribute">target</span>=<span class="value">"_blank"</span> <span class="attribute">title</span>=<span class="value">"百年孤独"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"row-fluid"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">img</span> <span class="attribute">alt</span>=<span class="value">"百年孤独"</span> <span class="attribute">class</span>=<span class="value">"span5"</span> <span class="attribute">src</span>=<span class="value">"http://img3.douban.com/mpic/s6384944.jpg"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"span7"</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="title">h4</span>&gt;</span>百年孤独<span class="tag">&lt;/<span class="title">h4</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"unstyled"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">li</span>&gt;</span>作者: [哥伦比亚] 加西亚·马尔克斯 <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">li</span>&gt;</span>标签: 百年孤独 加西亚·马尔克斯 拉美文学 小说 经典<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">li</span>&gt;</span>更新: 2016-04-17<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">li</span>&gt;</span>资源: <span class="tag">&lt;<span class="title">i</span> <span class="attribute">class</span>=<span class="value">"flag15"</span>&gt;</span><span class="tag">&lt;/<span class="title">i</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">footer</span> <span class="attribute">class</span>=<span class="value">"clearfix"</span> <span class="attribute">style</span>=<span class="value">"margin:5px 0;"</span>&gt;</span><span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"pull-right"</span>&gt;</span>豆瓣: <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"highlight"</span>&gt;</span>9.2<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span><span class="tag">&lt;<span class="title">i</span> <span class="attribute">class</span>=<span class="value">"icon-eye-open"</span>&gt;</span><span class="tag">&lt;/<span class="title">i</span>&gt;</span>&amp;nbsp;17321&amp;nbsp;&amp;nbsp;&amp;nbsp;<span class="tag">&lt;<span class="title">i</span> <span class="attribute">class</span>=<span class="value">"icon-download-alt"</span>&gt;</span><span class="tag">&lt;/<span class="title">i</span>&gt;</span>&amp;nbsp;4080<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">footer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"span4"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"book thumbnail"</span> <span class="attribute">href</span>=<span class="value">"http://readcolor.com/books/51e8a8ac3063e12a29000009"</span> <span class="attribute">target</span>=<span class="value">"_blank"</span> <span class="attribute">title</span>=<span class="value">"怦然心动的人生整理魔法"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"row-fluid"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">img</span> <span class="attribute">alt</span>=<span class="value">"怦然心动的人生整理魔法"</span> <span class="attribute">class</span>=<span class="value">"span5"</span> <span class="attribute">src</span>=<span class="value">"http://img3.douban.com/mpic/s24607181.jpg"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"span7"</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="title">h4</span>&gt;</span>怦然心动的人生整理魔法<span class="tag">&lt;/<span class="title">h4</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"unstyled"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">li</span>&gt;</span>作者: 近藤麻理惠 <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">li</span>&gt;</span>标签: 整理 生活 生活态度 砰然心动的人生整理魔法 日本<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">li</span>&gt;</span>更新: 2016-04-17<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">li</span>&gt;</span>资源: <span class="tag">&lt;<span class="title">i</span> <span class="attribute">class</span>=<span class="value">"flag15"</span>&gt;</span><span class="tag">&lt;/<span class="title">i</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">footer</span> <span class="attribute">class</span>=<span class="value">"clearfix"</span> <span class="attribute">style</span>=<span class="value">"margin:5px 0;"</span>&gt;</span><span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"pull-right"</span>&gt;</span>豆瓣: <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"highlight"</span>&gt;</span>7.8<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span><span class="tag">&lt;<span class="title">i</span> <span class="attribute">class</span>=<span class="value">"icon-eye-open"</span>&gt;</span><span class="tag">&lt;/<span class="title">i</span>&gt;</span>&amp;nbsp;13149&amp;nbsp;&amp;nbsp;&amp;nbsp;<span class="tag">&lt;<span class="title">i</span> <span class="attribute">class</span>=<span class="value">"icon-download-alt"</span>&gt;</span><span class="tag">&lt;/<span class="title">i</span>&gt;</span>&amp;nbsp;2754<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">footer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span>&gt;</span></span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="通过selector-选择器-提取数据"><a href="#通过selector-选择器-提取数据" class="headerlink" title="通过selector(选择器)提取数据"></a>通过selector(选择器)提取数据</h4><p>scrapy自己的selectors可以通过xpath来选择并提取html文件中的某个部分。<br><br>关于xpath的写法不再缀述，<a href="http://www.w3school.com.cn/xpath/" target="_blank" rel="noopener">xpath</a>有详细教程。<br><br>以本项目为例，要提取的字段为name, url, auther, tag。 页面的大致结构如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row thumbnails"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"span4"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"book thumbnail"</span> <span class="attr">href</span>=<span class="string">"http://readcolor.com/books/5157047b82be9ce1e10003c9"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">title</span>=<span class="string">"百年孤独"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row-fluid"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">alt</span>=<span class="string">"百年孤独"</span> <span class="attr">class</span>=<span class="string">"span5"</span> <span class="attr">src</span>=<span class="string">"http://img3.douban.com/mpic/s6384944.jpg"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"span7"</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">h4</span>&gt;</span>百年孤独<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"unstyled"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>作者: [哥伦比亚] 加西亚·马尔克斯 <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>标签: 百年孤独 加西亚·马尔克斯 拉美文学 小说 经典<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>更新: 2016-04-17<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>资源: <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"flag15"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">"clearfix"</span> <span class="attr">style</span>=<span class="string">"margin:5px 0;"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"pull-right"</span>&gt;</span>豆瓣: <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"highlight"</span>&gt;</span>9.2<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"icon-eye-open"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>&amp;nbsp;17321&amp;nbsp;&amp;nbsp;&amp;nbsp;<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"icon-download-alt"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>&amp;nbsp;4080<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"span4"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"book thumbnail"</span> <span class="attr">href</span>=<span class="string">"http://readcolor.com/books/51e8a8ac3063e12a29000009"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">title</span>=<span class="string">"怦然心动的人生整理魔法"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row-fluid"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">alt</span>=<span class="string">"怦然心动的人生整理魔法"</span> <span class="attr">class</span>=<span class="string">"span5"</span> <span class="attr">src</span>=<span class="string">"http://img3.douban.com/mpic/s24607181.jpg"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"span7"</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">h4</span>&gt;</span>怦然心动的人生整理魔法<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"unstyled"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>作者: 近藤麻理惠 <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>标签: 整理 生活 生活态度 砰然心动的人生整理魔法 日本<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>更新: 2016-04-17<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>资源: <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"flag15"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">"clearfix"</span> <span class="attr">style</span>=<span class="string">"margin:5px 0;"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"pull-right"</span>&gt;</span>豆瓣: <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"highlight"</span>&gt;</span>7.8<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"icon-eye-open"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>&amp;nbsp;13149&amp;nbsp;&amp;nbsp;&amp;nbsp;<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"icon-download-alt"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>&amp;nbsp;2754<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>对于这个页面，可以用<strong>sel.xpath(“//div[@class=’span4’]”)</strong>来拿到包含该页所有书籍信息的div块。该div的每一个子div都有一本书的全部信息，所以可以遍历这个对象sites，得到site子对像。</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">item[<span class="string">'name'</span>] = site.<span class="function"><span class="title">xpath</span><span class="params">(<span class="string">'a/div/div/h4/text()'</span>)</span></span>.<span class="function"><span class="title">extract</span><span class="params">()</span></span>[<span class="number">0</span>]</span><br><span class="line">item[<span class="string">'url'</span>] = site.<span class="function"><span class="title">xpath</span><span class="params">(<span class="string">'a/@href'</span>)</span></span>.<span class="function"><span class="title">extract</span><span class="params">()</span></span>[<span class="number">0</span>]</span><br><span class="line">infos = site.<span class="function"><span class="title">xpath</span><span class="params">(<span class="string">"a/div/div/ul[@class='unstyled']/li/text()"</span>)</span></span>.<span class="function"><span class="title">extract</span><span class="params">()</span></span></span><br><span class="line"><span class="keyword">for</span> index, info <span class="keyword">in</span> <span class="function"><span class="title">enumerate</span><span class="params">(infos)</span></span>:</span><br><span class="line">	<span class="function"><span class="title">if</span><span class="params">(index == <span class="number">0</span>)</span></span>:</span><br><span class="line">    	item[<span class="string">'auther'</span>] = info.<span class="function"><span class="title">replace</span><span class="params">(<span class="string">'作者: '</span>, <span class="string">''</span>)</span></span></span><br><span class="line">    <span class="function"><span class="title">if</span><span class="params">(index == <span class="number">1</span>)</span></span>:</span><br><span class="line">    	item[<span class="string">'tag'</span>] = info.<span class="function"><span class="title">replace</span><span class="params">(<span class="string">'标签: '</span>, <span class="string">''</span>)</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">item</span>[<span class="string">'name'</span>] = site.xpath(<span class="string">'a/div/div/h4/text()'</span>).extract()[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">item</span>[<span class="string">'url'</span>] = site.xpath(<span class="string">'a/@href'</span>).extract()[<span class="number">0</span>]</span><br><span class="line">infos = site.xpath(<span class="string">"a/div/div/ul[@class='unstyled']/li/text()"</span>).extract()</span><br><span class="line"><span class="keyword">for</span> index, info <span class="keyword">in</span> enumerate(infos):</span><br><span class="line">	<span class="keyword">if</span>(index == <span class="number">0</span>):</span><br><span class="line">    	<span class="keyword">item</span>[<span class="string">'auther'</span>] = info.<span class="built_in">replace</span>(<span class="string">'作者: '</span>, <span class="string">''</span>)</span><br><span class="line">    <span class="keyword">if</span>(index == <span class="number">1</span>):</span><br><span class="line">    	<span class="keyword">item</span>[<span class="string">'tag'</span>] = info.<span class="built_in">replace</span>(<span class="string">'标签: '</span>, <span class="string">''</span>)</span><br></pre></td></tr></table></figure>
 <p>以name字段为例，直接执行<strong>site.xpath(‘a/div/div/h4’)</strong>得到的返回结果是类似</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Selector xpath=<span class="string">"//div[@class='span4']/a/div/div/h4"</span> data=<span class="string">u'&lt;h4&gt;\u767e\u5e74\u5b64\u72ec&lt;/h4&gt;'</span>&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Selector xpath=<span class="string">"//div[@class='span4']/a/div/div/h4"</span> data=<span class="string">u'&lt;h4&gt;\u767e\u5e74\u5b64\u72ec&lt;/h4&gt;'</span>&gt;</span><br></pre></td></tr></table></figure>
 <p>这样的一个对象，data字段里有我想要的数据但是也包含了h标签，用text()方法可提出没有标签的文本。而extract()方法就可返回选择器（列表）对应的节点的字符串（列表）</p>
-<h4 id="保存数据">保存数据</h4><p>如果是想仅仅保存为json或xml格式的文件，那么在执行脚本时加入参数即可。这边我想把数据存入mysql，所以就要用到scrapy的pipeline。spider里返回的item对象都会被传入pipeline进行进一步处理，比如：</p>
+<h4 id="保存数据"><a href="#保存数据" class="headerlink" title="保存数据"></a>保存数据</h4><p>如果是想仅仅保存为json或xml格式的文件，那么在执行脚本时加入参数即可。这边我想把数据存入mysql，所以就要用到scrapy的pipeline。spider里返回的item对象都会被传入pipeline进行进一步处理，比如：</p>
 <ul>
 <li>清理HTML数据</li>
 <li>验证爬取的数据(检查item包含某些字段)</li>
@@ -415,25 +417,25 @@
 <li>将爬取结果保存到数据库中</li>
 </ul>
 <p>这里我要做的就是把数据存到数据库。预先生成好的piplines.py文件中有一个process_item方法，数据处理的核心就可以写在这个方法里。处理完后可以直接返回item对象或者throw DropItem exception。另外还提供了<strong>open_spider(self, spider)</strong>和<strong>close_spider(spider)</strong>方法，分别在打开和关闭spider时被调用。</p>
-<h4 id="执行爬虫">执行爬虫</h4><p>编写完代码后，就可以开始爬取数据了，执行如下命令就可以开始这个爬虫了。</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">scrapy</span> crawl readcolor</span><br></pre></td></tr></table></figure>
+<h4 id="执行爬虫"><a href="#执行爬虫" class="headerlink" title="执行爬虫"></a>执行爬虫</h4><p>编写完代码后，就可以开始爬取数据了，执行如下命令就可以开始这个爬虫了。</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">scrapy crawl readcolor</span></span><br></pre></td></tr></table></figure>
 <p>程序就可以正常地跑起来了；）速度很快，几分钟就把全站5万多本书的信息全抓下来了。</p>
-<h4 id="其它">其它</h4><p>settings.py里可以配置log级别，开发的时候可以定为debug，这样能查看到更多的信息，而正式在爬取的时候可以设置为<strong>LOG_LEVEL = ‘WARNING’</strong><br><br>第一次写好爬虫跑的时候，发现每次跑到2400条数据就停下来了，查看后发现原因是该网站只提供了前100页的浏览。然后就改变爬取方法，从主页面的分类逐个进入爬取，正好也能记录分类名。分类名可作为参数传给request对象的callback方法，通过lambda方法。</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yield scrapy.<span class="function"><span class="title">Request</span><span class="params">(url, callback=lambda response, category_name=category_name:self.parse_content(response, category_name)</span></span>)</span><br></pre></td></tr></table></figure>
-<h3 id="遇到的坑">遇到的坑</h3><ul>
+<h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><p>settings.py里可以配置log级别，开发的时候可以定为debug，这样能查看到更多的信息，而正式在爬取的时候可以设置为<strong>LOG_LEVEL = ‘WARNING’</strong><br><br>第一次写好爬虫跑的时候，发现每次跑到2400条数据就停下来了，查看后发现原因是该网站只提供了前100页的浏览。然后就改变爬取方法，从主页面的分类逐个进入爬取，正好也能记录分类名。分类名可作为参数传给request对象的callback方法，通过lambda方法。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yield scrapy.Request(url, <span class="attribute">callback</span>=lambda response, <span class="attribute">category_name</span>=category_name:self.parse_content(response, category_name))</span><br></pre></td></tr></table></figure>
+<h3 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h3><ul>
 <li>开始执行爬虫后报错：</li>
 </ul>
-<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UnicodeDecodeError: <span class="attribute">'ascii</span>' codec can<span class="attribute">'t</span> decode byte <span class="number">0</span>xe4 <span class="keyword">in</span> position <span class="number">0</span>: ordinal <span class="keyword">not</span> <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">128</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UnicodeDecodeError: <span class="symbol">'ascii</span>' codec can<span class="symbol">'t</span> decode byte <span class="number">0</span>xe4 <span class="keyword">in</span> position <span class="number">0</span>: ordinal <span class="keyword">not</span> <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">128</span>)</span><br></pre></td></tr></table></figure>
 <p>因为python2.7的默认编码是ascii编码，和unicode编码有冲突，所以要用<strong>sys.setdefaultencoding(‘utf-8’)</strong>方法来指定系统编码为utf8。要注意的是调用这个方法之前要加入<strong>reload(sys)</strong>。因为python运行加载site.py模块的时候会删除sys模块中setdefaultencoding()方法，所以要reload sys这个模块。</p>
 <ul>
 <li>执行脚本的时候报错：</li>
 </ul>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">2016-04-18 05:07:26 [boto] <span class="keyword">ERROR</span>: Caught exception reading instance data</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"/usr/lib/python2.7/site-packages/boto/utils.py"</span>, <span class="keyword">line</span> 210, <span class="keyword">in</span> retry_url</span><br><span class="line">    r = opener.<span class="keyword">open</span>(req, timeout=timeout)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"/usr/lib64/python2.7/urllib2.py"</span>, <span class="keyword">line</span> 431, <span class="keyword">in</span> <span class="keyword">open</span></span><br><span class="line">    response = self._open(req, data)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"/usr/lib64/python2.7/urllib2.py"</span>, <span class="keyword">line</span> 449, <span class="keyword">in</span> _open</span><br><span class="line">    '_open', req)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"/usr/lib64/python2.7/urllib2.py"</span>, <span class="keyword">line</span> 409, <span class="keyword">in</span> _call_chain</span><br><span class="line">    result = func(*<span class="keyword">args</span>)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"/usr/lib64/python2.7/urllib2.py"</span>, <span class="keyword">line</span> 1229, <span class="keyword">in</span> http_open</span><br><span class="line">    <span class="keyword">return</span> self.do_open(httplib.HTTPConnection, req)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"/usr/lib64/python2.7/urllib2.py"</span>, <span class="keyword">line</span> 1199, <span class="keyword">in</span> do_open</span><br><span class="line">    raise URLError(<span class="keyword">err</span>)</span><br><span class="line">URLError: &lt;urlopen <span class="keyword">error</span> timed <span class="keyword">out</span>&gt;</span><br><span class="line">2016-04-18 05:07:26 [boto] <span class="keyword">ERROR</span>: Unable to <span class="keyword">read</span> instance data, giving up</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">2016-04-18 05:07:26 [boto] ERROR: Caught exception reading instance data</span><br><span class="line">Traceback (most recent <span class="keyword">call</span> <span class="keyword">last</span>):</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"/usr/lib/python2.7/site-packages/boto/utils.py"</span>, line <span class="number">210</span>, <span class="keyword">in</span> retry_url</span><br><span class="line">    r = opener.open(req, <span class="keyword">timeout</span>=<span class="keyword">timeout</span>)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"/usr/lib64/python2.7/urllib2.py"</span>, line <span class="number">431</span>, <span class="keyword">in</span> <span class="keyword">open</span></span><br><span class="line">    response = self._open(req, <span class="keyword">data</span>)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"/usr/lib64/python2.7/urllib2.py"</span>, line <span class="number">449</span>, <span class="keyword">in</span> _open</span><br><span class="line">    <span class="string">'_open'</span>, req)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"/usr/lib64/python2.7/urllib2.py"</span>, line <span class="number">409</span>, <span class="keyword">in</span> _call_chain</span><br><span class="line">    <span class="keyword">result</span> = func(*args)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"/usr/lib64/python2.7/urllib2.py"</span>, line <span class="number">1229</span>, <span class="keyword">in</span> http_open</span><br><span class="line">    <span class="keyword">return</span> self.do_open(httplib.HTTPConnection, req)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"/usr/lib64/python2.7/urllib2.py"</span>, line <span class="number">1199</span>, <span class="keyword">in</span> do_open</span><br><span class="line">    <span class="keyword">raise</span> URLError(err)</span><br><span class="line">URLError: &lt;urlopen <span class="keyword">error</span> timed <span class="keyword">out</span>&gt;</span><br><span class="line"><span class="number">2016</span><span class="number">-04</span><span class="number">-18</span> <span class="number">05</span>:<span class="number">07</span>:<span class="number">26</span> [boto] <span class="keyword">ERROR</span>: Unable <span class="keyword">to</span> <span class="keyword">read</span> <span class="keyword">instance</span> <span class="keyword">data</span>, giving up</span><br></pre></td></tr></table></figure>
 <p>在settings.py里加入一行</p>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DOWNLOAD_HANDLERS <span class="subst">=</span> &#123;<span class="string">'s3'</span>: <span class="literal">None</span>, &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">DOWNLOAD_HANDLERS</span> = &#123;<span class="string">'s3'</span>: None, &#125;</span><br></pre></td></tr></table></figure>
 <p>把s3.download给禁用掉就好了</p>
 <p>综上一个简单的爬虫就完成了，当然还有很多爬虫的高级应用没有提到和用到，以后遇到的时候再作记录。</p>
-<p><strong>完整项目代码已上传至<a href="https://github.com/zYeee/bookSpider" target="_blank" rel="external">github</a></strong></p>
+<p><strong>完整项目代码已上传至<a href="https://github.com/zYeee/bookSpider" target="_blank" rel="noopener">github</a></strong></p>
 
       
     </div>
@@ -552,9 +554,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460"
-                alt="zhuye" />
+              <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460" alt="zhuye">
             
               <p class="site-author-name" itemprop="name">zhuye</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -567,7 +567,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -632,7 +632,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装和创建scrapy项目"><span class="nav-number">1.</span> <span class="nav-text">安装和创建scrapy项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从0开始新建一个爬虫"><span class="nav-number">2.</span> <span class="nav-text">从0开始新建一个爬虫</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义item类"><span class="nav-number">2.1.</span> <span class="nav-text">定义item类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编写提取数据的spider"><span class="nav-number">2.2.</span> <span class="nav-text">编写提取数据的spider</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过selector(选择器)提取数据"><span class="nav-number">2.3.</span> <span class="nav-text">通过selector(选择器)提取数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#保存数据"><span class="nav-number">2.4.</span> <span class="nav-text">保存数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行爬虫"><span class="nav-number">2.5.</span> <span class="nav-text">执行爬虫</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其它"><span class="nav-number">2.6.</span> <span class="nav-text">其它</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遇到的坑"><span class="nav-number">3.</span> <span class="nav-text">遇到的坑</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装和创建scrapy项目"><span class="nav-number">1.</span> <span class="nav-text">安装和创建scrapy项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从0开始新建一个爬虫"><span class="nav-number">2.</span> <span class="nav-text">从0开始新建一个爬虫</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义item类"><span class="nav-number">2.1.</span> <span class="nav-text">定义item类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编写提取数据的spider"><span class="nav-number">2.2.</span> <span class="nav-text">编写提取数据的spider</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过selector-选择器-提取数据"><span class="nav-number">2.3.</span> <span class="nav-text">通过selector(选择器)提取数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#保存数据"><span class="nav-number">2.4.</span> <span class="nav-text">保存数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行爬虫"><span class="nav-number">2.5.</span> <span class="nav-text">执行爬虫</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其它"><span class="nav-number">2.6.</span> <span class="nav-text">其它</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遇到的坑"><span class="nav-number">3.</span> <span class="nav-text">遇到的坑</span></a></li></ol></div>
             
 
           </div>
@@ -948,7 +948,24 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 

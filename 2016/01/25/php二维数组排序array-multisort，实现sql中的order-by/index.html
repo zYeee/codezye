@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="default">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,25 +79,17 @@
 
 
 
-<meta name="description" content="今天在写一条SQL的时候，有排序的需求，order语句大致为
-1order by ORDER BY is_private DESC , is_preview DESC , id DESC
-结果explain该sql发现用到了filesort。因为该查询是在网站首页所以担心频繁进行该sql的查询会导致DB的负载变高(不考虑cache的情况)。于是就想先把结果集取出在代码层面进行排序。
-因为这里的排序">
+<meta name="description" content="今天在写一条SQL的时候，有排序的需求，order语句大致为 1order by ORDER BY is_private DESC , is_preview DESC , id DESC 结果explain该sql发现用到了filesort。因为该查询是在网站首页所以担心频繁进行该sql的查询会导致DB的负载变高(不考虑cache的情况)。于是就想先把结果集取出在代码层面进行排序。 因为这里的排序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="php二维数组排序array_multisort，实现sql中的order by">
 <meta property="og:url" content="http://yoursite.com/2016/01/25/php二维数组排序array-multisort，实现sql中的order-by/index.html">
 <meta property="og:site_name" content="hello world">
-<meta property="og:description" content="今天在写一条SQL的时候，有排序的需求，order语句大致为
-1order by ORDER BY is_private DESC , is_preview DESC , id DESC
-结果explain该sql发现用到了filesort。因为该查询是在网站首页所以担心频繁进行该sql的查询会导致DB的负载变高(不考虑cache的情况)。于是就想先把结果集取出在代码层面进行排序。
-因为这里的排序">
+<meta property="og:description" content="今天在写一条SQL的时候，有排序的需求，order语句大致为 1order by ORDER BY is_private DESC , is_preview DESC , id DESC 结果explain该sql发现用到了filesort。因为该查询是在网站首页所以担心频繁进行该sql的查询会导致DB的负载变高(不考虑cache的情况)。于是就想先把结果集取出在代码层面进行排序。 因为这里的排序">
+<meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2016-01-25T14:32:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php二维数组排序array_multisort，实现sql中的order by">
-<meta name="twitter:description" content="今天在写一条SQL的时候，有排序的需求，order语句大致为
-1order by ORDER BY is_private DESC , is_preview DESC , id DESC
-结果explain该sql发现用到了filesort。因为该查询是在网站首页所以担心频繁进行该sql的查询会导致DB的负载变高(不考虑cache的情况)。于是就想先把结果集取出在代码层面进行排序。
-因为这里的排序">
+<meta name="twitter:description" content="今天在写一条SQL的时候，有排序的需求，order语句大致为 1order by ORDER BY is_private DESC , is_preview DESC , id DESC 结果explain该sql发现用到了filesort。因为该查询是在网站首页所以担心频繁进行该sql的查询会导致DB的负载变高(不考虑cache的情况)。于是就想先把结果集取出在代码层面进行排序。 因为这里的排序">
 
 
 
@@ -127,7 +119,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/01/25/php二维数组排序array-multisort，实现sql中的order-by/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/01/25/php二维数组排序array-multisort，实现sql中的order-by/">
 
 
 
@@ -148,7 +140,7 @@
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -162,7 +154,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -171,7 +163,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">hello world</span>
         <span class="logo-line-after"><i></i></span>
@@ -201,7 +193,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
           </a>
@@ -211,7 +203,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             About
           </a>
@@ -221,7 +213,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             Tags
           </a>
@@ -231,7 +223,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             Categories
           </a>
@@ -241,7 +233,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             Archives
           </a>
@@ -284,7 +276,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhuye">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460">
     </span>
 
@@ -320,7 +312,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -351,8 +343,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/01/25/php二维数组排序array-multisort，实现sql中的order-by/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/01/25/php二维数组排序array-multisort，实现sql中的order-by/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/01/25/php二维数组排序array-multisort，实现sql中的order-by/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -395,7 +386,7 @@
 <figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> is_private <span class="keyword">DESC</span> , is_preview <span class="keyword">DESC</span> , id <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
 <p>结果explain该sql发现用到了filesort。因为该查询是在网站首页所以担心频繁进行该sql的查询会导致DB的负载变高(不考虑cache的情况)。于是就想先把结果集取出在代码层面进行排序。<br></p>
 <p>因为这里的排序条件多，所以情况较复杂。一开始想用usort，也就是自定义排序函数，很快写完后发现可以正常运行，但是测试性能发现很不理想。虚拟了10万个数据的排序用时将近3s，所以该方案被否定。<br><br><a id="more"></a><br>后来发现php有个array_multisort函数，可对二维数组进行排序。原型如下：</p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bool array_multisort<span class="function"> (</span><span class="instruction"> array </span>&amp;$array1 <span class="keyword">[</span>, mixed $array1_sort_order = SORT_ASC <span class="keyword">[</span>, mixed $array1_sort_flags = SORT_REGULAR <span class="keyword">[</span>, mixed $... ]]] <span class="function">)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bool array_multisort (<span class="built_in"> array </span>&amp;$array1 [, mixed $array1_sort_order = SORT_ASC [, mixed $array1_sort_flags = SORT_REGULAR [, mixed $... ]]] )</span><br></pre></td></tr></table></figure>
 <p>该函数第一个参数必须为array，后面可以跟一些排序标志：</p>
 <ul>
 <li>SORT_ASC：按照上升顺序排序</li>
@@ -411,9 +402,9 @@
 <li>SORT_FLAG_CASE - can be combined (bitwise OR) with SORT_STRING or SORT_NATURAL to sort strings case-insensitively</li>
 </ul>
 <p>有了这个函数，就可以直接对结果集进行排序了。简化的表结构如下：</p>
-<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">      id|<span class="string"> is_private </span>|<span class="string"> is_preview </span><br><span class="line"> 7572183</span>|<span class="string">     0      </span>|<span class="string">     0</span><br><span class="line">10197788</span>|<span class="string">     0      </span>|<span class="string">     0</span><br><span class="line">10207211</span>|<span class="string">     0      </span>|<span class="string">     0</span><br><span class="line"> 8202855</span>|<span class="string">     0      </span>|<span class="string">     1</span><br><span class="line"> 7237758</span>|<span class="string">     1      </span>|<span class="string">     0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">      id| is_private | is_preview </span><br><span class="line"> <span class="number">7572183</span>|     <span class="number">0</span>      |     <span class="number">0</span></span><br><span class="line"><span class="number">10197788</span>|     <span class="number">0</span>      |     <span class="number">0</span></span><br><span class="line"><span class="number">10207211</span>|     <span class="number">0</span>      |     <span class="number">0</span></span><br><span class="line"> <span class="number">8202855</span>|     <span class="number">0</span>      |     <span class="number">1</span></span><br><span class="line"> <span class="number">7237758</span>|     <span class="number">1</span>      |     <span class="number">0</span></span><br></pre></td></tr></table></figure>
 <p>因为原数据是结果集，所以还需要在代码里面处理，而is_private和is_preview两个字段，可以合并成字符串来操作排序。核心实现代码如下:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$media</span> = <span class="keyword">array</span>();</span><br><span class="line"><span class="variable">$pre</span> = <span class="keyword">array</span>();</span><br><span class="line"><span class="variable">$body</span> = <span class="keyword">array</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="variable">$row</span> = <span class="variable">$stmt</span>-&gt;fetch(PDO::FETCH_ASSOC)) </span><br><span class="line">&#123;</span><br><span class="line">  <span class="variable">$key</span> = <span class="variable">$row</span>[<span class="string">'is_preview'</span>] . <span class="string">'_'</span> . <span class="variable">$row</span>[<span class="string">'is_private'</span>];</span><br><span class="line">  <span class="variable">$pre</span>[] = <span class="variable">$key</span>;</span><br><span class="line">  <span class="variable">$media</span>[] = <span class="variable">$row</span>[<span class="string">'id'</span>];</span><br><span class="line">  <span class="variable">$body</span>[] = <span class="variable">$row</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(count(<span class="variable">$media</span>) &gt; <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">  array_multisort(<span class="variable">$pre</span>, SORT_DESC, SORT_STRING,</span><br><span class="line">    <span class="variable">$media</span>, SORT_DESC, SORT_NUMERIC,   <span class="comment">//此处一定要加SORT_NUMERIC,不然会以字符串来处理，结果会出错</span></span><br><span class="line">    <span class="variable">$body</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> array_combine(<span class="variable">$media</span>, <span class="variable">$body</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$media = <span class="keyword">array</span>();</span><br><span class="line">$pre = <span class="keyword">array</span>();</span><br><span class="line">$body = <span class="keyword">array</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>($row = $stmt-&gt;fetch(PDO::FETCH_ASSOC)) </span><br><span class="line">&#123;</span><br><span class="line">  $key = $row[<span class="string">'is_preview'</span>] . <span class="string">'_'</span> . $row[<span class="string">'is_private'</span>];</span><br><span class="line">  $pre[] = $key;</span><br><span class="line">  $media[] = $row[<span class="string">'id'</span>];</span><br><span class="line">  $body[] = $row;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(count($media) &gt; <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">  array_multisort($pre, SORT_DESC, SORT_STRING,</span><br><span class="line">    $media, SORT_DESC, SORT_NUMERIC,   <span class="comment">//此处一定要加SORT_NUMERIC,不然会以字符串来处理，结果会出错</span></span><br><span class="line">    $body);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> array_combine($media, $body);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -517,9 +508,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460"
-                alt="zhuye" />
+              <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460" alt="zhuye">
             
               <p class="site-author-name" itemprop="name">zhuye</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -532,7 +521,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -897,7 +886,24 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 

@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="default">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="docker," />
+  <meta name="keywords" content="docker,">
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="作为开发一直都想要一个自动化的集成环境解决方案，这样可以省去很多部署环境的时间，尽可能消除不同操作系统之间的差异。为了达到这个目的以前一直用的都是vagrant这套工具，但是vagrant从本质上说还是操作系统级别的虚拟机，只适合跑在本地。而且在繁琐地配置了几台vps后，更迫切地需要一个更轻量级的方案来优化一些开发工作。　　docker作为一个能够提供容器级别的虚拟化的工具，可以很好的达到我的目的">
+<meta name="description" content="作为开发一直都想要一个自动化的集成环境解决方案，这样可以省去很多部署环境的时间，尽可能消除不同操作系统之间的差异。为了达到这个目的以前一直用的都是vagrant这套工具，但是vagrant从本质上说还是操作系统级别的虚拟机，只适合跑在本地。而且在繁琐地配置了几台vps后，更迫切地需要一个更轻量级的方案来优化一些开发工作。　　docker作为一个能够提供容器级别的虚拟化的工具，可以很好的达到我的">
+<meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker搭建并部署LNMP环境(一)">
 <meta property="og:url" content="http://yoursite.com/2016/06/06/docker搭建并部署简单的LNMP环境(一)/index.html">
 <meta property="og:site_name" content="hello world">
-<meta property="og:description" content="作为开发一直都想要一个自动化的集成环境解决方案，这样可以省去很多部署环境的时间，尽可能消除不同操作系统之间的差异。为了达到这个目的以前一直用的都是vagrant这套工具，但是vagrant从本质上说还是操作系统级别的虚拟机，只适合跑在本地。而且在繁琐地配置了几台vps后，更迫切地需要一个更轻量级的方案来优化一些开发工作。　　docker作为一个能够提供容器级别的虚拟化的工具，可以很好的达到我的目的">
+<meta property="og:description" content="作为开发一直都想要一个自动化的集成环境解决方案，这样可以省去很多部署环境的时间，尽可能消除不同操作系统之间的差异。为了达到这个目的以前一直用的都是vagrant这套工具，但是vagrant从本质上说还是操作系统级别的虚拟机，只适合跑在本地。而且在繁琐地配置了几台vps后，更迫切地需要一个更轻量级的方案来优化一些开发工作。　　docker作为一个能够提供容器级别的虚拟化的工具，可以很好的达到我的">
+<meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2016-06-07T14:08:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker搭建并部署LNMP环境(一)">
-<meta name="twitter:description" content="作为开发一直都想要一个自动化的集成环境解决方案，这样可以省去很多部署环境的时间，尽可能消除不同操作系统之间的差异。为了达到这个目的以前一直用的都是vagrant这套工具，但是vagrant从本质上说还是操作系统级别的虚拟机，只适合跑在本地。而且在繁琐地配置了几台vps后，更迫切地需要一个更轻量级的方案来优化一些开发工作。　　docker作为一个能够提供容器级别的虚拟化的工具，可以很好的达到我的目的">
+<meta name="twitter:description" content="作为开发一直都想要一个自动化的集成环境解决方案，这样可以省去很多部署环境的时间，尽可能消除不同操作系统之间的差异。为了达到这个目的以前一直用的都是vagrant这套工具，但是vagrant从本质上说还是操作系统级别的虚拟机，只适合跑在本地。而且在繁琐地配置了几台vps后，更迫切地需要一个更轻量级的方案来优化一些开发工作。　　docker作为一个能够提供容器级别的虚拟化的工具，可以很好的达到我的">
 
 
 
@@ -118,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/06/06/docker搭建并部署简单的LNMP环境(一)/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/06/06/docker搭建并部署简单的LNMP环境(一)/">
 
 
 
@@ -139,7 +141,7 @@
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -153,7 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -162,7 +164,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">hello world</span>
         <span class="logo-line-after"><i></i></span>
@@ -192,7 +194,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
           </a>
@@ -202,7 +204,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             About
           </a>
@@ -212,7 +214,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             Tags
           </a>
@@ -222,7 +224,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             Categories
           </a>
@@ -232,7 +234,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             Archives
           </a>
@@ -275,7 +277,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhuye">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460">
     </span>
 
@@ -311,7 +313,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -342,8 +344,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/06/06/docker搭建并部署简单的LNMP环境(一)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/06/06/docker搭建并部署简单的LNMP环境(一)/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/06/docker搭建并部署简单的LNMP环境(一)/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -383,19 +384,19 @@
 
       
         <p>　　作为开发一直都想要一个自动化的集成环境解决方案，这样可以省去很多部署环境的时间，尽可能消除不同操作系统之间的差异。为了达到这个目的以前一直用的都是vagrant这套工具，但是vagrant从本质上说还是操作系统级别的虚拟机，只适合跑在本地。而且在繁琐地配置了几台vps后，更迫切地需要一个更轻量级的方案来优化一些开发工作。<br>　　docker作为一个能够提供容器级别的虚拟化的工具，可以很好的达到我的目的。docker作为一个前几年的新兴技术已经有越来越火的趋势，也有越来越多的公司把docker用于生产环境。于是就有了一个动手搭建一套基于docker的LNMP环境，下面做一些简单的记录和介绍：<br>　　docker官方所推崇的理念是单一进程容器，是与传统的把多个服务放在一个宿主机内的概念相对的一个思想。所以这一套最简单的LNMP架构，也可以拆分成三个不同的容器，并进行连接。官方也提供了相应的镜象。<br><a id="more"></a></p>
-<h3 id="Nginx">Nginx</h3><p>一句最简单的命令就可以让nginx跑起来:</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span> -<span class="keyword">d</span> -p 80:80 nginx</span><br></pre></td></tr></table></figure>
+<h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><p>一句最简单的命令就可以让nginx跑起来:</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="bash"> -d -p 80:80 nginx</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>-d 参数表示以后台守护进程的方式来运行这个容器</li>
 <li>-p 80:80表示将容器内部的80端口映射到宿主机的80端口</li>
 </ul>
 <p>通过<code>docker inspect container_id</code>可以观察ports状态：</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"Ports"</span>: &#123;</span><br><span class="line">	<span class="string">"443/tcp"</span>: <span class="literal">null</span>,</span><br><span class="line">	<span class="string">"80/tcp"</span>: [</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="string">"HostIp"</span>: <span class="string">"0.0.0.0"</span>,</span><br><span class="line">			<span class="string">"HostPort"</span>: <span class="string">"80"</span></span><br><span class="line">        &#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"Ports"</span>: &#123;</span><br><span class="line">	<span class="string">"443/tcp"</span>: null,</span><br><span class="line">	<span class="string">"80/tcp"</span>: [</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="string">"HostIp"</span>: <span class="string">"0.0.0.0"</span>,</span><br><span class="line">			<span class="string">"HostPort"</span>: <span class="string">"80"</span></span><br><span class="line">        &#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以发现80端口已经被成功映射。</p>
 <p>因为我本地是在osx上以boot2docker的方式来运行docker,所以要用<code>boot2docker ip</code>这个命令来得到docker宿主机的 ip，因为已经通过命令将端口映射，所以只需要在浏览器内输入ip就可以看到nginx的访问页了。<br>当然仅仅这样肯定是不够的，还需要加入自己的一些配置，通过从dockerfile构建镜象的方法，我的Dockerfile如下:  </p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">FROM</span> nginx</span><br><span class="line"></span><br><span class="line"><span class="built_in">ADD</span> <span class="bash">nginx.conf  /etc/nginx/nginx.conf</span><br><span class="line"></span><span class="built_in">ADD</span> <span class="bash">php.conf  /etc/nginx/php.conf</span><br><span class="line"></span><span class="built_in">ADD</span> <span class="bash">common.conf  /etc/nginx/common.conf</span><br><span class="line"></span><span class="built_in">ADD</span> <span class="bash">vhosts  /etc/nginx/vhosts/</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> nginx</span><br><span class="line"></span><br><span class="line"><span class="keyword">ADD</span><span class="bash"> nginx.conf  /etc/nginx/nginx.conf</span></span><br><span class="line"><span class="bash">ADD php.conf  /etc/nginx/php.conf</span></span><br><span class="line"><span class="bash">ADD common.conf  /etc/nginx/common.conf</span></span><br><span class="line"><span class="bash">ADD vhosts  /etc/nginx/vhosts/</span></span><br></pre></td></tr></table></figure>
 <p>该文件表示把本地的一些配置文件添加到镜像当中去，以构建自己的镜像:</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">docker</span> <span class="keyword">build </span>-t zyeee/nginx .</span><br></pre></td></tr></table></figure>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">docker</span> <span class="keyword">build </span>-t zyeee/nginx .</span><br></pre></td></tr></table></figure>
 <p>运行一个容器的时候还有一个注意点就是<strong>数据卷挂载</strong>，因为在本地开发的时候项目代码应该是放在本地目录，这样才能进行实时调试。docker有两种方式可以挂载本地数据卷。</p>
 <ul>
 <li>在Dockerfile里添加VOLUME[]命令挂载本地数据卷</li>
@@ -406,7 +407,7 @@
 <p>docker run 的时候加入-v /tmp:/tmp参数，inspect it:</p>
 <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"Mounts"</span>: [</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"Source"</span>: <span class="string">"/tmp"</span>,</span><br><span class="line">		<span class="string">"Destination"</span>: <span class="string">"/tmp"</span>,</span><br><span class="line">		<span class="string">"Mode"</span>: <span class="string">""</span>,</span><br><span class="line">		<span class="string">"RW"</span>: <span class="literal">true</span>,</span><br><span class="line">		<span class="string">"Propagation"</span>: <span class="string">"rprivate"</span></span><br><span class="line">	&#125;</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
 <p>从这里可以看出：Dockerfile里的VOLUME是把宿主机的/mnt/sda1/var/lib/docker/volumes/…文件夹挂载到container中去，并不能在宿主机上修改，但是能作为一个本地卷可以让多个声明挂载了该卷的cantainer共享。<br>而<code>docker run</code>的<code>-v</code>参数就可以使容器挂载指定的本地目录。这个目录的文件可以在宿主机上被修改，也可以被所有的container所共享。<br>通过运行</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span> -<span class="keyword">d</span> -p 80:80 -v /opt:/opt -v /logs:/<span class="keyword">var</span>/<span class="keyword">log</span>/nginx zyeee/nginx</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -<span class="keyword">p</span> <span class="number">80</span>:<span class="number">80</span> -v /op<span class="variable">t:</span>/<span class="keyword">opt</span> -v /<span class="built_in">log</span><span class="variable">s:</span>/var/<span class="built_in">log</span>/nginx zyeee/nginx</span><br></pre></td></tr></table></figure>
 <p>一个基本满足开发需求的nginx server就起来了。通过数据卷映射也把nginx的log文件放到了宿主机。</p>
 
       
@@ -526,9 +527,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460"
-                alt="zhuye" />
+              <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460" alt="zhuye">
             
               <p class="site-author-name" itemprop="name">zhuye</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -541,7 +540,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -922,7 +921,24 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 

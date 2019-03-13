@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="default">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="技术心得," />
+  <meta name="keywords" content="技术心得,">
 
 
 
@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="项目原本连接memcache用的是php的memcache扩展，现在为了与php7兼容，打算更换到memcached扩展。在更换的时候，因为原来有长连接的需求，在memcache扩展里只要用pconnect方法就可以了，但是memcached的长连接是这样实现的
-1234public Memcached::__construct ([ string $persistent_id ] )persis">
+<meta name="description" content="项目原本连接memcache用的是php的memcache扩展，现在为了与php7兼容，打算更换到memcached扩展。在更换的时候，因为原来有长连接的需求，在memcache扩展里只要用pconnect方法就可以了，但是memcached的长连接是这样实现的 1234public Memcached::__construct ([ string $persistent_id ] )persis">
+<meta name="keywords" content="技术心得">
 <meta property="og:type" content="article">
 <meta property="og:title" content="长连接（persistent_connection）和php-fpm的关系">
 <meta property="og:url" content="http://yoursite.com/2017/11/24/长连接（persistent-connection）和php-fpm的关系/index.html">
 <meta property="og:site_name" content="hello world">
-<meta property="og:description" content="项目原本连接memcache用的是php的memcache扩展，现在为了与php7兼容，打算更换到memcached扩展。在更换的时候，因为原来有长连接的需求，在memcache扩展里只要用pconnect方法就可以了，但是memcached的长连接是这样实现的
-1234public Memcached::__construct ([ string $persistent_id ] )persis">
+<meta property="og:description" content="项目原本连接memcache用的是php的memcache扩展，现在为了与php7兼容，打算更换到memcached扩展。在更换的时候，因为原来有长连接的需求，在memcache扩展里只要用pconnect方法就可以了，但是memcached的长连接是这样实现的 1234public Memcached::__construct ([ string $persistent_id ] )persis">
+<meta property="og:locale" content="default">
 <meta property="og:image" content="http://i2.bvimg.com/520266/2adfaeda460aa83a.png">
 <meta property="og:image" content="http://i2.bvimg.com/520266/77b99f087c906a14.png">
 <meta property="og:image" content="http://i2.bvimg.com/520266/e104ba983e01b950.png">
-<meta property="og:updated_time" content="2019-03-09T07:25:21.146Z">
+<meta property="og:updated_time" content="2019-03-09T07:25:21.147Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="长连接（persistent_connection）和php-fpm的关系">
-<meta name="twitter:description" content="项目原本连接memcache用的是php的memcache扩展，现在为了与php7兼容，打算更换到memcached扩展。在更换的时候，因为原来有长连接的需求，在memcache扩展里只要用pconnect方法就可以了，但是memcached的长连接是这样实现的
-1234public Memcached::__construct ([ string $persistent_id ] )persis">
+<meta name="twitter:description" content="项目原本连接memcache用的是php的memcache扩展，现在为了与php7兼容，打算更换到memcached扩展。在更换的时候，因为原来有长连接的需求，在memcache扩展里只要用pconnect方法就可以了，但是memcached的长连接是这样实现的 1234public Memcached::__construct ([ string $persistent_id ] )persis">
+<meta name="twitter:image" content="http://i2.bvimg.com/520266/2adfaeda460aa83a.png">
 
 
 
@@ -124,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/24/长连接（persistent-connection）和php-fpm的关系/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/24/长连接（persistent-connection）和php-fpm的关系/">
 
 
 
@@ -145,7 +145,7 @@
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -159,7 +159,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -168,7 +168,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">hello world</span>
         <span class="logo-line-after"><i></i></span>
@@ -198,7 +198,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
           </a>
@@ -208,7 +208,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             About
           </a>
@@ -218,7 +218,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             Tags
           </a>
@@ -228,7 +228,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             Categories
           </a>
@@ -238,7 +238,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             Archives
           </a>
@@ -281,7 +281,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhuye">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460">
     </span>
 
@@ -317,7 +317,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -348,8 +348,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/11/24/长连接（persistent-connection）和php-fpm的关系/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/11/24/长连接（persistent-connection）和php-fpm的关系/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/11/24/长连接（persistent-connection）和php-fpm的关系/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,19 +388,19 @@
 
       
         <p>项目原本连接memcache用的是php的memcache扩展，现在为了与php7兼容，打算更换到<strong>memcached</strong>扩展。在更换的时候，因为原来有长连接的需求，在memcache扩展里只要用pconnect方法就可以了，但是memcached的长连接是这样实现的</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public Memcached::__construct ([ string $persistent_id ] )</span><br><span class="line"></span><br><span class="line">persistent_id</span><br><span class="line">By default the Memcached instances are destroyed at the <span class="operator"><span class="keyword">end</span> <span class="keyword">of</span> the request. <span class="keyword">To</span> <span class="keyword">create</span> an instance that persists <span class="keyword">between</span> requests, <span class="keyword">use</span> persistent_id <span class="keyword">to</span> specify a <span class="keyword">unique</span> ID <span class="keyword">for</span> the instance. <span class="keyword">All</span> instances created <span class="keyword">with</span> the same persistent_id will <span class="keyword">share</span> the same <span class="keyword">connection</span>.</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public Memcached::__construct ([ string <span class="variable">$persistent_id</span> ] )</span><br><span class="line"></span><br><span class="line">persistent_id</span><br><span class="line">By<span class="built_in"> default </span>the Memcached instances are destroyed at the end of the request. <span class="keyword">To</span> create an<span class="built_in"> instance </span>that persists between requests, use persistent_id <span class="keyword">to</span> specify a unique ID <span class="keyword">for</span> the instance. All instances created with the same persistent_id will share the same connection.</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>如上所述，它是通过一个unique id来标识这个连接，同样的id会<strong>共享连接</strong>。看到这里我产生了一个问题，类似与mysql,redis,memcache这样的长连接，连接信息是如何保存的。像cgi那样的方式还好说，就保存在当前的进程下，进程结束了连接也就没有了。但是如果对fpm而言，fpm进程原本就常驻内存，而且server上一般会开很多空闲的fpm进程出来，那么创建了一个长连接之后，不同的fpm进程间会进行通信吗，在a进程打开长连接的用户如果他的下一个请求被b进程handle,可以共享进程a的连接吗？fpm的worker进程被正常重启后，长连接信息是否还会保存？为此我做了如下实验。<br>先只启动两个fpm进程，pid分别为10751和10752:<br><img src="http://i2.bvimg.com/520266/2adfaeda460aa83a.png" alt="Markdown"><br>然后写如下代码:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line">  <span class="variable">$memcache</span> = <span class="keyword">new</span> Memcached(<span class="string">'test'</span>);</span><br><span class="line">  <span class="variable">$memcache</span>-&gt;addServer(<span class="string">'10.60.1.237'</span>, <span class="number">11516</span>);</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">"pid: "</span>.getmypid().<span class="string">"&lt;/br&gt;"</span>;</span><br><span class="line">  var_dump(<span class="variable">$memcache</span>-&gt;getServerList());</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">  $memcache = <span class="keyword">new</span> Memcached(<span class="string">'test'</span>);</span></span><br><span class="line"><span class="php">  $memcache-&gt;addServer(<span class="string">'10.60.1.237'</span>, <span class="number">11516</span>);</span></span><br><span class="line"><span class="php">  <span class="keyword">echo</span> <span class="string">"pid: "</span>.getmypid().<span class="string">"&lt;/br&gt;"</span>;</span></span><br><span class="line"><span class="php">  var_dump($memcache-&gt;getServerList());</span></span><br></pre></td></tr></table></figure>
 <p>先在网页上执行<strong>一次</strong>代码,显示<br><img src="http://i2.bvimg.com/520266/77b99f087c906a14.png" alt="Markdown"><br>说明是pid为10751的worker进程执行了这段代码，且打开了一个长连接。下面将代码改为</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line">  <span class="variable">$memcache</span> = <span class="keyword">new</span> Memcached(<span class="string">'test'</span>);</span><br><span class="line">  <span class="comment">//$memcache-&gt;addServer('10.60.1.237', 11516);</span></span><br><span class="line">  <span class="keyword">echo</span> <span class="string">"pid: "</span>.getmypid().<span class="string">"&lt;/br&gt;"</span>;</span><br><span class="line">  var_dump(<span class="variable">$memcache</span>-&gt;getServerList());</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">  $memcache = <span class="keyword">new</span> Memcached(<span class="string">'test'</span>);</span></span><br><span class="line"><span class="php">  <span class="comment">//$memcache-&gt;addServer('10.60.1.237', 11516);</span></span></span><br><span class="line"><span class="php">  <span class="keyword">echo</span> <span class="string">"pid: "</span>.getmypid().<span class="string">"&lt;/br&gt;"</span>;</span></span><br><span class="line"><span class="php">  var_dump($memcache-&gt;getServerList());</span></span><br></pre></td></tr></table></figure>
 <p>然后刷新页面，显示<br><img src="http://i2.bvimg.com/520266/e104ba983e01b950.png" alt="Markdown"><br>说明，<strong>各个fpm间并不能共享长连接信息，如果不同的请求分发至不同的fpm进程，将会重新打开全新的连接</strong>。<br>下面，执行kill命令将两个worker进程都kill掉，让master进程重启两个全新的fpm进程，然后再刷新页面，发现，依然没有连接信息了，说明<strong>长连接的生命周期与fpm进程一致，fpm若重启，长连接就会断开</strong>。<br>最后，在使用memcached的长连接的时候，还有一点需要特别注意的：长连接会在addServer的时候被建立，若别的请求对相同的id去长连接一些<strong>已经建立过连接的</strong>host&amp;port，memcached扩展不会自动去重，也会新打开新的连接，所以要在代码上规避这一点，否则会建立越来越多不必要的连接，最终core dump，这一点官方也有详细的说明：  </p>
 <blockquote>
 <p>When using persistent connections, it is important to not re-add servers.<br>This is what you do not want to do:</p>
 </blockquote>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line"><span class="variable">$mc</span> = <span class="keyword">new</span> Memcached(<span class="string">'mc'</span>);</span><br><span class="line"><span class="variable">$mc</span>-&gt;setOption(Memcached::OPT_LIBKETAMA_COMPATIBLE, <span class="keyword">true</span>);</span><br><span class="line"><span class="variable">$mc</span>-&gt;addServers(<span class="keyword">array</span>(</span><br><span class="line">    <span class="keyword">array</span>(<span class="string">'mc1.example.com'</span>,<span class="number">11211</span>),</span><br><span class="line">    <span class="keyword">array</span>(<span class="string">'mc2.example.com'</span>,<span class="number">11211</span>),</span><br><span class="line">));</span><br><span class="line"><span class="preprocessor">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">$mc = <span class="keyword">new</span> Memcached(<span class="string">'mc'</span>);</span></span><br><span class="line"><span class="php">$mc-&gt;setOption(Memcached::OPT_LIBKETAMA_COMPATIBLE, <span class="keyword">true</span>);</span></span><br><span class="line"><span class="php">$mc-&gt;addServers(<span class="keyword">array</span>(</span></span><br><span class="line"><span class="php">    <span class="keyword">array</span>(<span class="string">'mc1.example.com'</span>,<span class="number">11211</span>),</span></span><br><span class="line"><span class="php">    <span class="keyword">array</span>(<span class="string">'mc2.example.com'</span>,<span class="number">11211</span>),</span></span><br><span class="line"><span class="php">));</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
 <p>Every time the page is loaded those servers will be appended to the list resulting in many simultaneous open connections to the same server. The addServer/addServers functions to not check for existing references to the specified servers.<br>A better approach is something like:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line"><span class="variable">$mc</span> = <span class="keyword">new</span> Memcached(<span class="string">'mc'</span>);</span><br><span class="line"><span class="variable">$mc</span>-&gt;setOption(Memcached::OPT_LIBKETAMA_COMPATIBLE, <span class="keyword">true</span>);</span><br><span class="line"><span class="keyword">if</span> (!count(<span class="variable">$mc</span>-&gt;getServerList())) &#123;</span><br><span class="line">    <span class="variable">$mc</span>-&gt;addServers(<span class="keyword">array</span>(</span><br><span class="line">        <span class="keyword">array</span>(<span class="string">'mc1.example.com'</span>,<span class="number">11211</span>),</span><br><span class="line">        <span class="keyword">array</span>(<span class="string">'mc2.example.com'</span>,<span class="number">11211</span>),</span><br><span class="line">    ));</span><br><span class="line">&#125;</span><br><span class="line"><span class="preprocessor">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">$mc = <span class="keyword">new</span> Memcached(<span class="string">'mc'</span>);</span></span><br><span class="line"><span class="php">$mc-&gt;setOption(Memcached::OPT_LIBKETAMA_COMPATIBLE, <span class="keyword">true</span>);</span></span><br><span class="line"><span class="php"><span class="keyword">if</span> (!count($mc-&gt;getServerList())) &#123;</span></span><br><span class="line"><span class="php">    $mc-&gt;addServers(<span class="keyword">array</span>(</span></span><br><span class="line"><span class="php">        <span class="keyword">array</span>(<span class="string">'mc1.example.com'</span>,<span class="number">11211</span>),</span></span><br><span class="line"><span class="php">        <span class="keyword">array</span>(<span class="string">'mc2.example.com'</span>,<span class="number">11211</span>),</span></span><br><span class="line"><span class="php">    ));</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -511,9 +510,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460"
-                alt="zhuye" />
+              <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460" alt="zhuye">
             
               <p class="site-author-name" itemprop="name">zhuye</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -526,7 +523,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -891,7 +888,24 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 

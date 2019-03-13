@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="default">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="redis,读书笔记," />
+  <meta name="keywords" content="读书笔记,redis,">
 
 
 
@@ -79,22 +79,18 @@
 
 
 
-<meta name="description" content="字典是一种数据结构。可以用来保存key-value形式的键值对。redis作为非关系型数据库就很依赖这种形式的映射字典，它有一套自己的实现方法。在这里我就学习并记录一下它的依赖于hash表的底层实现方法。
-基本数据结构hash表数据结构的定义都在dict.h头文件下:
-hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
+<meta name="description" content="字典是一种数据结构。可以用来保存key-value形式的键值对。redis作为非关系型数据库就很依赖这种形式的映射字典，它有一套自己的实现方法。在这里我就学习并记录一下它的依赖于hash表的底层实现方法。 基本数据结构hash表数据结构的定义都在dict.h头文件下: hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
+<meta name="keywords" content="读书笔记,redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redis源码学习：字典的实现">
 <meta property="og:url" content="http://yoursite.com/2017/02/16/redis源码学习：字典的实现-一/index.html">
 <meta property="og:site_name" content="hello world">
-<meta property="og:description" content="字典是一种数据结构。可以用来保存key-value形式的键值对。redis作为非关系型数据库就很依赖这种形式的映射字典，它有一套自己的实现方法。在这里我就学习并记录一下它的依赖于hash表的底层实现方法。
-基本数据结构hash表数据结构的定义都在dict.h头文件下:
-hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
+<meta property="og:description" content="字典是一种数据结构。可以用来保存key-value形式的键值对。redis作为非关系型数据库就很依赖这种形式的映射字典，它有一套自己的实现方法。在这里我就学习并记录一下它的依赖于hash表的底层实现方法。 基本数据结构hash表数据结构的定义都在dict.h头文件下: hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
+<meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2017-08-23T15:34:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis源码学习：字典的实现">
-<meta name="twitter:description" content="字典是一种数据结构。可以用来保存key-value形式的键值对。redis作为非关系型数据库就很依赖这种形式的映射字典，它有一套自己的实现方法。在这里我就学习并记录一下它的依赖于hash表的底层实现方法。
-基本数据结构hash表数据结构的定义都在dict.h头文件下:
-hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
+<meta name="twitter:description" content="字典是一种数据结构。可以用来保存key-value形式的键值对。redis作为非关系型数据库就很依赖这种形式的映射字典，它有一套自己的实现方法。在这里我就学习并记录一下它的依赖于hash表的底层实现方法。 基本数据结构hash表数据结构的定义都在dict.h头文件下: hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
 
 
 
@@ -124,7 +120,7 @@ hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/16/redis源码学习：字典的实现-一/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/02/16/redis源码学习：字典的实现-一/">
 
 
 
@@ -145,7 +141,7 @@ hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -159,7 +155,7 @@ hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -168,7 +164,7 @@ hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">hello world</span>
         <span class="logo-line-after"><i></i></span>
@@ -198,7 +194,7 @@ hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
           </a>
@@ -208,7 +204,7 @@ hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             About
           </a>
@@ -218,7 +214,7 @@ hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             Tags
           </a>
@@ -228,7 +224,7 @@ hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             Categories
           </a>
@@ -238,7 +234,7 @@ hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             Archives
           </a>
@@ -281,7 +277,7 @@ hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhuye">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460">
     </span>
 
@@ -317,7 +313,7 @@ hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -348,8 +344,7 @@ hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/02/16/redis源码学习：字典的实现-一/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/02/16/redis源码学习：字典的实现-一/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/16/redis源码学习：字典的实现-一/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,14 +384,18 @@ hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
 
       
         <p>字典是一种数据结构。可以用来保存key-value形式的键值对。redis作为非关系型数据库就很依赖这种形式的映射字典，它有一套自己的实现方法。在这里我就学习并记录一下它的依赖于hash表的底层实现方法。</p>
-<h3 id="基本数据结构">基本数据结构</h3><p>hash表数据结构的定义都在dict.h头文件下:</p>
-<h4 id="hash表">hash表</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> dictht &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 哈希表数组</span></span><br><span class="line">    dictEntry **table;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 哈希表大小</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> size;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 哈希表大小掩码，用于计算索引值</span></span><br><span class="line">    <span class="comment">// 总是等于 size - 1</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> sizemask;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 该哈希表已有节点的数量</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> used;</span><br><span class="line"></span><br><span class="line">&#125; dictht;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>&gt;<br>####dictEntry<br>以key-value形式保存数据的结构，定义如下:<br><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> dictEntry &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 键</span></span><br><span class="line">    <span class="keyword">void</span> *key;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 值</span></span><br><span class="line">    <span class="keyword">union</span> &#123;</span><br><span class="line">        <span class="keyword">void</span> *val;</span><br><span class="line">        <span class="keyword">uint64_t</span> u64;</span><br><span class="line">        <span class="keyword">int64_t</span> s64;</span><br><span class="line">    &#125; v;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 指向下个哈希表节点，形成链表</span></span><br><span class="line">    <span class="keyword">struct</span> dictEntry *next;</span><br><span class="line">&#125; dictEntry;</span><br></pre></td></tr></table></figure>
-<h4 id="字典:">字典:</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> dict &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 类型特定函数</span></span><br><span class="line">    dictType *type;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 私有数据</span></span><br><span class="line">    <span class="keyword">void</span> *privdata;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 哈希表</span></span><br><span class="line">    dictht ht[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// rehash 索引</span></span><br><span class="line">    <span class="comment">// 当 rehash 不在进行时，值为 -1</span></span><br><span class="line">    <span class="keyword">int</span> rehashidx; <span class="comment">/* rehashing not in progress if rehashidx == -1 */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 目前正在运行的安全迭代器的数量</span></span><br><span class="line">    <span class="keyword">int</span> iterators; <span class="comment">/* number of iterators currently running */</span></span><br><span class="line"></span><br><span class="line">&#125; dict;</span><br></pre></td></tr></table></figure>
+<h3 id="基本数据结构"><a href="#基本数据结构" class="headerlink" title="基本数据结构"></a>基本数据结构</h3><p>hash表数据结构的定义都在dict.h头文件下:</p>
+<h4 id="hash表"><a href="#hash表" class="headerlink" title="hash表"></a>hash表</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">dictht</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 哈希表数组</span></span><br><span class="line">    dictEntry **table;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 哈希表大小</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> size;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 哈希表大小掩码，用于计算索引值</span></span><br><span class="line">    <span class="comment">// 总是等于 size - 1</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> sizemask;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 该哈希表已有节点的数量</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> used;</span><br><span class="line"></span><br><span class="line">&#125; dictht;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>>
+####dictEntry
+以key-value形式保存数据的结构，定义如下:
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">dictEntry</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 键</span></span><br><span class="line">    <span class="keyword">void</span> *key;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 值</span></span><br><span class="line">    <span class="keyword">union</span> &#123;</span><br><span class="line">        <span class="keyword">void</span> *val;</span><br><span class="line">        <span class="keyword">uint64_t</span> u64;</span><br><span class="line">        <span class="keyword">int64_t</span> s64;</span><br><span class="line">    &#125; v;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 指向下个哈希表节点，形成链表</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">dictEntry</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125; dictEntry;</span><br></pre></td></tr></table></figure>
+<h4 id="字典"><a href="#字典" class="headerlink" title="字典:"></a>字典:</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">dict</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 类型特定函数</span></span><br><span class="line">    dictType *type;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 私有数据</span></span><br><span class="line">    <span class="keyword">void</span> *privdata;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 哈希表</span></span><br><span class="line">    dictht ht[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// rehash 索引</span></span><br><span class="line">    <span class="comment">// 当 rehash 不在进行时，值为 -1</span></span><br><span class="line">    <span class="keyword">int</span> rehashidx; <span class="comment">/* rehashing not in progress if rehashidx == -1 */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 目前正在运行的安全迭代器的数量</span></span><br><span class="line">    <span class="keyword">int</span> iterators; <span class="comment">/* number of iterators currently running */</span></span><br><span class="line"></span><br><span class="line">&#125; dict;</span><br></pre></td></tr></table></figure>
 <p>其中包含了两个hash表，一个用来存储数据，一个是用来做rehash的。<br>字典的核心源码在dict.h和dict.c中。下面简述下字典的增加，删除，查询等操作的源码</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">int dictAdd(dict *<span class="keyword">d</span>, void *key, void *val)</span><br><span class="line">&#123;</span><br><span class="line">    dictEntry *entry = dictAddRaw(<span class="keyword">d</span>,key);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!entry) <span class="keyword">return</span> DICT_ERR;</span><br><span class="line">    dictSetVal(<span class="keyword">d</span>, entry, val);    <span class="comment">//设置当前节点的value值</span></span><br><span class="line">    <span class="keyword">return</span> DICT_OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dictEntry *dictAddRaw(dict *<span class="keyword">d</span>, void *key)</span><br><span class="line">&#123;</span><br><span class="line">    int index;</span><br><span class="line">    dictEntry *entry;</span><br><span class="line">    dictht *ht;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (dictIsRehashing(<span class="keyword">d</span>)) _dictRehashStep(<span class="keyword">d</span>); <span class="comment">//若需要rehash，则先执行rehash操作。</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Get the index of the new element, or -1 if</span><br><span class="line">     * the element already exists. */</span></span><br><span class="line">    <span class="keyword">if</span> ((index = _dictKeyIndex(<span class="keyword">d</span>, key)) == -1)  <span class="comment">//通过_dictKeyIndex方法算出当前key所属table的index</span></span><br><span class="line">        <span class="keyword">return</span> NULL;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Allocate the memory and store the new entry */</span></span><br><span class="line">    ht = dictIsRehashing(<span class="keyword">d</span>) ? &amp;<span class="keyword">d</span>-&gt;ht[1] : &amp;<span class="keyword">d</span>-&gt;ht[0];</span><br><span class="line">    entry = zmalloc(sizeof(*entry));   <span class="comment">//把当前的dictEntry指针放到hash表链表的头部</span></span><br><span class="line">    entry-&gt;next = ht-&gt;<span class="keyword">table</span>[index];</span><br><span class="line">    ht-&gt;<span class="keyword">table</span>[index] = entry;</span><br><span class="line">    ht-&gt;used++;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Set the hash entry fields. */</span></span><br><span class="line">    dictSetKey(<span class="keyword">d</span>, entry, key);  <span class="comment">//设置当前节点的key值</span></span><br><span class="line">    <span class="keyword">return</span> entry;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> dictAdd(dict *d, <span class="keyword">void</span> *<span class="built_in">key</span>, <span class="keyword">void</span> *val)</span><br><span class="line">&#123;</span><br><span class="line">    dictEntry *entry = dictAddRaw(d,<span class="built_in">key</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!entry) <span class="keyword">return</span> DICT_ERR;</span><br><span class="line">    dictSetVal(d, entry, val);    <span class="comment">//设置当前节点的value值</span></span><br><span class="line">    <span class="keyword">return</span> DICT_OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dictEntry *dictAddRaw(dict *d, <span class="keyword">void</span> *<span class="built_in">key</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> index;</span><br><span class="line">    dictEntry *entry;</span><br><span class="line">    dictht *ht;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (dictIsRehashing(d)) _dictRehashStep(d); <span class="comment">//若需要rehash，则先执行rehash操作。</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Get the index of the new element, or -1 if</span></span><br><span class="line"><span class="comment">     * the element already exists. */</span></span><br><span class="line">    <span class="keyword">if</span> ((index = _dictKeyIndex(d, <span class="built_in">key</span>)) == <span class="number">-1</span>)  <span class="comment">//通过_dictKeyIndex方法算出当前key所属table的index</span></span><br><span class="line">        <span class="keyword">return</span> NULL;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Allocate the memory and store the new entry */</span></span><br><span class="line">    ht = dictIsRehashing(d) ? &amp;d-&gt;ht[<span class="number">1</span>] : &amp;d-&gt;ht[<span class="number">0</span>];</span><br><span class="line">    entry = zmalloc(sizeof(*entry));   <span class="comment">//把当前的dictEntry指针放到hash表链表的头部</span></span><br><span class="line">    entry-&gt;next = ht-&gt;table[index];</span><br><span class="line">    ht-&gt;table[index] = entry;</span><br><span class="line">    ht-&gt;used++;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Set the hash entry fields. */</span></span><br><span class="line">    dictSetKey(d, entry, <span class="built_in">key</span>);  <span class="comment">//设置当前节点的key值</span></span><br><span class="line">    <span class="keyword">return</span> entry;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在执行_dictKeyIndex()方法时，在函数开始会检查当前使用的hash表是否需要扩展。若满足</p>
-<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if <span class="list">(<span class="keyword">d-&gt;ht</span>[<span class="number">0</span>].used &gt;= d-&gt;ht[<span class="number">0</span>].size <span class="keyword">&amp;&amp;</span></span><br><span class="line">    <span class="list">(<span class="keyword">dict_can_resize</span> ||</span><br><span class="line">     d-&gt;ht[<span class="number">0</span>].used/d-&gt;ht[<span class="number">0</span>].size &gt; dict_force_resize_ratio)</span>)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">if</span> (d-&gt;</span><span class="function"><span class="title">ht</span>[0].used &gt;= d-&gt;</span>ht[<span class="number">0</span>].size &amp;&amp;</span><br><span class="line">    (dict_can_resize ||</span><br><span class="line">     <span class="function"><span class="title">d</span>-&gt;</span><span class="function"><span class="title">ht</span>[0].used/d-&gt;</span>ht[<span class="number">0</span>].size &gt; dict_force_resize_ratio))</span><br></pre></td></tr></table></figure>
 <p>那么redis就会分配新的空间给dict.ht[1]，并将rehash标志位打开，开始rehash操作。<strong>dict_can_resize</strong>变量由系统控制，当服务器在执行BGSAVE或BGREWRITEAOF命令时，该变量为真。</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">dictEntry *dictFind(dict *<span class="keyword">d</span>, <span class="keyword">const</span> void *key)</span><br><span class="line">&#123;</span><br><span class="line">    dictEntry *<span class="keyword">he</span>;</span><br><span class="line">    unsigned int <span class="keyword">h</span>, idx, <span class="keyword">table</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">d</span>-&gt;ht[0].size == 0) <span class="keyword">return</span> NULL; <span class="comment">/* We don't have a table at all */</span></span><br><span class="line">    <span class="keyword">if</span> (dictIsRehashing(<span class="keyword">d</span>)) _dictRehashStep(<span class="keyword">d</span>);<span class="comment">//若在rehash状态，则执行rehash操作</span></span><br><span class="line">    <span class="keyword">h</span> = dictHashKey(<span class="keyword">d</span>, key);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">table</span> = 0; <span class="keyword">table</span> &lt;= 1; <span class="keyword">table</span>++) &#123;</span><br><span class="line">        idx = <span class="keyword">h</span> &amp; <span class="keyword">d</span>-&gt;ht[<span class="keyword">table</span>].sizemask;</span><br><span class="line">        <span class="keyword">he</span> = <span class="keyword">d</span>-&gt;ht[<span class="keyword">table</span>].<span class="keyword">table</span>[idx];</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">he</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (dictCompareKeys(<span class="keyword">d</span>, key, <span class="keyword">he</span>-&gt;key))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">he</span>;</span><br><span class="line">            <span class="keyword">he</span> = <span class="keyword">he</span>-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!dictIsRehashing(<span class="keyword">d</span>)) <span class="keyword">return</span> NULL; <span class="comment">//如果不在rehash中，则没有必要去查找ht[1]了。key肯定不存在。</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> NULL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>dictFind函数可以找到指定key的节点，先通过hash函数和sizemask值算出index，然后扫描一遍链表结构找到匹配的节点并返回。</p>
@@ -419,9 +418,9 @@ hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
       
         <div class="post-tags">
           
-            <a href="/tags/redis/" rel="tag"># redis</a>
-          
             <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+          
+            <a href="/tags/redis/" rel="tag"># redis</a>
           
         </div>
       
@@ -522,9 +521,7 @@ hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460"
-                alt="zhuye" />
+              <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460" alt="zhuye">
             
               <p class="site-author-name" itemprop="name">zhuye</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -537,7 +534,7 @@ hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -602,7 +599,7 @@ hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数据结构"><span class="nav-number">1.</span> <span class="nav-text">基本数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hash表"><span class="nav-number">1.1.</span> <span class="nav-text">hash表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字典:"><span class="nav-number">1.2.</span> <span class="nav-text">字典:</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数据结构"><span class="nav-number">1.</span> <span class="nav-text">基本数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hash表"><span class="nav-number">1.1.</span> <span class="nav-text">hash表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字典"><span class="nav-number">1.2.</span> <span class="nav-text">字典:</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -918,7 +915,24 @@ hash表12345678910111213141516typedef struct dictht &amp;#123;    // 哈希">
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 

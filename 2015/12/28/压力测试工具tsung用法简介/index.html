@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="default">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="测试," />
+  <meta name="keywords" content="测试,">
 
 
 
@@ -80,11 +80,13 @@
 
 
 <meta name="description" content="简介最近参与开发了公司的评论和点赞的系统，该系统是作为symfony的一个独立plugin，可能会被其它很多系统使用，比如说图片，视频，newsfeed等等，都有可能直接嵌入，所以该独立模块做的尽可能通用，对性能也有一定要求。最终采用以mysql作为储存方案，以redis作为缓存方案的设计。接口开发完后想对接口进行性能负载测试，估算该系统的读写性能的上限。了解了几个常用的测试工具和与公司之前所用的">
+<meta name="keywords" content="测试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="压力测试工具tsung初体验">
 <meta property="og:url" content="http://yoursite.com/2015/12/28/压力测试工具tsung用法简介/index.html">
 <meta property="og:site_name" content="hello world">
 <meta property="og:description" content="简介最近参与开发了公司的评论和点赞的系统，该系统是作为symfony的一个独立plugin，可能会被其它很多系统使用，比如说图片，视频，newsfeed等等，都有可能直接嵌入，所以该独立模块做的尽可能通用，对性能也有一定要求。最终采用以mysql作为储存方案，以redis作为缓存方案的设计。接口开发完后想对接口进行性能负载测试，估算该系统的读写性能的上限。了解了几个常用的测试工具和与公司之前所用的">
+<meta property="og:locale" content="default">
 <meta property="og:image" content="http://i2.bvimg.com/520266/071ca6af8dc0b716.jpg">
 <meta property="og:image" content="http://i2.bvimg.com/520266/357f03d3c536988d.png">
 <meta property="og:image" content="http://i2.bvimg.com/520266/c4ac98043eff22bb.png">
@@ -93,6 +95,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="压力测试工具tsung初体验">
 <meta name="twitter:description" content="简介最近参与开发了公司的评论和点赞的系统，该系统是作为symfony的一个独立plugin，可能会被其它很多系统使用，比如说图片，视频，newsfeed等等，都有可能直接嵌入，所以该独立模块做的尽可能通用，对性能也有一定要求。最终采用以mysql作为储存方案，以redis作为缓存方案的设计。接口开发完后想对接口进行性能负载测试，估算该系统的读写性能的上限。了解了几个常用的测试工具和与公司之前所用的">
+<meta name="twitter:image" content="http://i2.bvimg.com/520266/071ca6af8dc0b716.jpg">
 
 
 
@@ -122,7 +125,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/12/28/压力测试工具tsung用法简介/"/>
+  <link rel="canonical" href="http://yoursite.com/2015/12/28/压力测试工具tsung用法简介/">
 
 
 
@@ -143,7 +146,7 @@
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -157,7 +160,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -166,7 +169,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">hello world</span>
         <span class="logo-line-after"><i></i></span>
@@ -196,7 +199,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
           </a>
@@ -206,7 +209,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             About
           </a>
@@ -216,7 +219,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             Tags
           </a>
@@ -226,7 +229,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             Categories
           </a>
@@ -236,7 +239,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             Archives
           </a>
@@ -279,7 +282,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhuye">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460">
     </span>
 
@@ -315,7 +318,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -346,8 +349,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2015/12/28/压力测试工具tsung用法简介/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/28/压力测试工具tsung用法简介/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/28/压力测试工具tsung用法简介/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -386,47 +388,47 @@
       
 
       
-        <h4 id="简介">简介</h4><p>最近参与开发了公司的评论和点赞的系统，该系统是作为symfony的一个独立plugin，可能会被其它很多系统使用，比如说图片，视频，newsfeed等等，都有可能直接嵌入，所以该独立模块做的尽可能通用，对性能也有一定要求。最终采用以mysql作为储存方案，以redis作为缓存方案的设计。接口开发完后想对接口进行性能负载测试，估算该系统的读写性能的上限。<br><br>了解了几个常用的测试工具和与公司之前所用的测试工具进行对比后，最终选定tsung进行测试工具：<br><br>tsung是erlang开发的一个开源的多协议分布式负载测试工具，它能用来压力测试HTTP, WebDAV, SOAP, PostgreSQL, MySQL, LDAP 和 Jabber/XMPP的服务器。它可以分布在多个客户机，并能轻松够模拟成千上万的虚拟用户数并发。</p>
-<h4 id="安装">安装</h4><p>首先是安装tsung，因为最新的tsung是1.6.0版的，系统自带的源可能没有最新版本，所以到官网<a href="http://tsung.erlang-projects.org/" target="_blank" rel="external">http://tsung.erlang-projects.org/</a> 下载源码包来编译，configure &amp;&amp; make &amp;&amp; make install完成。<br><a id="more"></a></p>
-<h4 id="配置文件">配置文件</h4><p>tsung是根据xml配置文件里的参数内容来进行压测。默认tsung会加载配置文件：~/.tsung/tsung.xml<br><br>如果该文件夹下初始为空，则在/usr/share/doc/tsung/examples下有样例的xml文件，http的配置是http_simple.xml<br><br>下面来讲几个关键的配置</p>
-<h5 id="clients">clients</h5><p>用户产生的方式</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">clients</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">client</span> <span class="attribute">host</span>=<span class="value">"localhost"</span> <span class="attribute">use_controller_vm</span>=<span class="value">"true"</span> <span class="attribute">maxusers</span>=<span class="value">"30000"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">clients</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>最近参与开发了公司的评论和点赞的系统，该系统是作为symfony的一个独立plugin，可能会被其它很多系统使用，比如说图片，视频，newsfeed等等，都有可能直接嵌入，所以该独立模块做的尽可能通用，对性能也有一定要求。最终采用以mysql作为储存方案，以redis作为缓存方案的设计。接口开发完后想对接口进行性能负载测试，估算该系统的读写性能的上限。<br><br>了解了几个常用的测试工具和与公司之前所用的测试工具进行对比后，最终选定tsung进行测试工具：<br><br>tsung是erlang开发的一个开源的多协议分布式负载测试工具，它能用来压力测试HTTP, WebDAV, SOAP, PostgreSQL, MySQL, LDAP 和 Jabber/XMPP的服务器。它可以分布在多个客户机，并能轻松够模拟成千上万的虚拟用户数并发。</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>首先是安装tsung，因为最新的tsung是1.6.0版的，系统自带的源可能没有最新版本，所以到官网<a href="http://tsung.erlang-projects.org/" target="_blank" rel="noopener">http://tsung.erlang-projects.org/</a> 下载源码包来编译，configure &amp;&amp; make &amp;&amp; make install完成。<br><a id="more"></a></p>
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><p>tsung是根据xml配置文件里的参数内容来进行压测。默认tsung会加载配置文件：~/.tsung/tsung.xml<br><br>如果该文件夹下初始为空，则在/usr/share/doc/tsung/examples下有样例的xml文件，http的配置是http_simple.xml<br><br>下面来讲几个关键的配置</p>
+<h5 id="clients"><a href="#clients" class="headerlink" title="clients"></a>clients</h5><p>用户产生的方式</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">clients</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">client</span> <span class="attr">host</span>=<span class="string">"localhost"</span> <span class="attr">use_controller_vm</span>=<span class="string">"true"</span> <span class="attr">maxusers</span>=<span class="string">"30000"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">clients</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>tsung运行时可以由很多的虚拟机组成，client配置指明这个client机器上最多生成的用户数，如果use_controller_vm为true的话，那么当用户数达到mmaxusers，tsung会自动生成新的VM。</p>
-<h5 id="servers">servers</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">servers</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">server</span> <span class="attribute">host</span>=<span class="value">"test.com"</span> <span class="attribute">port</span>=<span class="value">"80"</span> <span class="attribute">type</span>=<span class="value">"tcp"</span>&gt;</span><span class="tag">&lt;/<span class="title">server</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">servers</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="servers"><a href="#servers" class="headerlink" title="servers"></a>servers</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servers</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">server</span> <span class="attr">host</span>=<span class="string">"test.com"</span> <span class="attr">port</span>=<span class="string">"80"</span> <span class="attr">type</span>=<span class="string">"tcp"</span>&gt;</span><span class="tag">&lt;/<span class="name">server</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servers</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>server段可以配置被测服务器的相关信息，也可以配置成集群，如下</p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;servers&gt;</span><br><span class="line">  &lt;server <span class="variable">host=</span><span class="string">"server1"</span> <span class="variable">port=</span><span class="string">"80"</span> <span class="variable">type=</span><span class="string">"tcp"</span> <span class="variable">weight=</span><span class="string">"4"</span>&gt;&lt;/server&gt;</span><br><span class="line">  &lt;server <span class="variable">host=</span><span class="string">"server2"</span> <span class="variable">port=</span><span class="string">"80"</span> <span class="variable">type=</span><span class="string">"tcp"</span> <span class="variable">weight=</span><span class="string">"1"</span>&gt;&lt;/server&gt;</span><br><span class="line">&lt;/servers&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servers</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">server</span> <span class="attr">host</span>=<span class="string">"server1"</span> <span class="attr">port</span>=<span class="string">"80"</span> <span class="attr">type</span>=<span class="string">"tcp"</span> <span class="attr">weight</span>=<span class="string">"4"</span>&gt;</span><span class="tag">&lt;/<span class="name">server</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">server</span> <span class="attr">host</span>=<span class="string">"server2"</span> <span class="attr">port</span>=<span class="string">"80"</span> <span class="attr">type</span>=<span class="string">"tcp"</span> <span class="attr">weight</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;/<span class="name">server</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servers</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>这时tsung会根据weight值来选择发起请求的server</p>
-<h5 id="monitoring">monitoring</h5><p>系统监控服务，配置完后可获取被测server的cpu，内存，负载，数据库的相关信息。可以配置成erlang的监控服务和snmp的监控服务。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">monitoring</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">monitor</span> <span class="attribute">host</span>=<span class="value">"garden"</span> <span class="attribute">type</span>=<span class="value">"erlang"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">mysqladmin</span> <span class="attribute">port</span>=<span class="value">"3306"</span> <span class="attribute">username</span>=<span class="value">"root"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">monitor</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">monitoring</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h5 id="load">load</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">load</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="title">arrivalphase</span> <span class="attribute">phase</span>=<span class="value">"1"</span> <span class="attribute">duration</span>=<span class="value">"3"</span> <span class="attribute">unit</span>=<span class="value">"minute"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="title">users</span> <span class="attribute">maxnumber</span>=<span class="value">"100"</span> <span class="attribute">interarrival</span>=<span class="value">"0.02"</span> <span class="attribute">unit</span>=<span class="value">"second"</span> &gt;</span><span class="tag">&lt;/<span class="title">users</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="title">arrivalphase</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">load</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="monitoring"><a href="#monitoring" class="headerlink" title="monitoring"></a>monitoring</h5><p>系统监控服务，配置完后可获取被测server的cpu，内存，负载，数据库的相关信息。可以配置成erlang的监控服务和snmp的监控服务。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">monitoring</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">monitor</span> <span class="attr">host</span>=<span class="string">"garden"</span> <span class="attr">type</span>=<span class="string">"erlang"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mysqladmin</span> <span class="attr">port</span>=<span class="string">"3306"</span> <span class="attr">username</span>=<span class="string">"root"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">monitor</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">monitoring</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="load"><a href="#load" class="headerlink" title="load"></a>load</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">load</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">arrivalphase</span> <span class="attr">phase</span>=<span class="string">"1"</span> <span class="attr">duration</span>=<span class="string">"3"</span> <span class="attr">unit</span>=<span class="string">"minute"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">users</span> <span class="attr">maxnumber</span>=<span class="string">"100"</span> <span class="attr">interarrival</span>=<span class="string">"0.02"</span> <span class="attr">unit</span>=<span class="string">"second"</span> &gt;</span><span class="tag">&lt;/<span class="name">users</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">arrivalphase</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">load</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>load段可配置访问的负载，访问可以配成多个阶段，由phase值指定。duration是测试持续时间，unit是单位。<br><br>users段的maxnumber限制了生成的最大用户数，interarrival=”0.02”表示0.02秒产生一个新用户，用户按照session的配置顺序执行session中的request。</p>
-<h5 id="options">options</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">options</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="title">option</span> <span class="attribute">type</span>=<span class="value">"ts_http"</span> <span class="attribute">name</span>=<span class="value">"user_agent"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="title">user_agent</span> <span class="attribute">probability</span>=<span class="value">"80"</span>&gt;</span>Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.8) Gecko/20050513 Galeon/1.3.21<span class="tag">&lt;/<span class="title">user_agent</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="title">user_agent</span> <span class="attribute">probability</span>=<span class="value">"20"</span>&gt;</span>Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4<span class="tag">&lt;/<span class="title">user_agent</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="title">option</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="title">options</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="options"><a href="#options" class="headerlink" title="options"></a>options</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">options</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">type</span>=<span class="string">"ts_http"</span> <span class="attr">name</span>=<span class="string">"user_agent"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">user_agent</span> <span class="attr">probability</span>=<span class="string">"80"</span>&gt;</span>Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.8) Gecko/20050513 Galeon/1.3.21<span class="tag">&lt;/<span class="name">user_agent</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">user_agent</span> <span class="attr">probability</span>=<span class="string">"20"</span>&gt;</span>Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4<span class="tag">&lt;/<span class="name">user_agent</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">options</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>options段可配置一些请求的信息，如agent信息。</p>
-<h5 id="sessions">sessions</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">sessions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">session</span> <span class="attribute">name</span>=<span class="value">"http-example"</span> <span class="attribute">probability</span>=<span class="value">"70"</span> <span class="attribute">type</span>=<span class="value">"ts_http"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">setdynvars</span> <span class="attribute">sourcetype</span>=<span class="value">"random_number"</span> <span class="attribute">start</span>=<span class="value">"1"</span> <span class="attribute">end</span> =<span class="value">"100"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">var</span> <span class="attribute">name</span>=<span class="value">"itemid"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">setdynvars</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">transaction</span> <span class="attribute">name</span>=<span class="value">'getlist'</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">request</span> <span class="attribute">subst</span>=<span class="value">"true"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">http</span> <span class="attribute">url</span>=<span class="value">"/comment/getList"</span> <span class="attribute">method</span>=<span class="value">"POST"</span> <span class="attribute">contents</span> = "<span class="attribute">item_type</span>=<span class="value">image&amp;amp;item_id=%%_itemid%%"</span>&gt;</span><span class="tag">&lt;/<span class="title">http</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">request</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">transaction</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">session</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">session</span> <span class="attribute">name</span>=<span class="value">"http-example"</span> <span class="attribute">probability</span>=<span class="value">"30"</span> <span class="attribute">type</span>=<span class="value">"ts_http"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">setdynvars</span> <span class="attribute">sourcetype</span>=<span class="value">"random_number"</span> <span class="attribute">start</span>=<span class="value">"1"</span> <span class="attribute">end</span>=<span class="value">"100"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">var</span> <span class="attribute">name</span>=<span class="value">"itemid"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">setdynvars</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">setdynvars</span> <span class="attribute">sourcetype</span>=<span class="value">"random_number"</span> <span class="attribute">start</span>=<span class="value">"20"</span> <span class="attribute">end</span>=<span class="value">"5000000"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">var</span> <span class="attribute">name</span>=<span class="value">"content"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">setdynvars</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">transaction</span> <span class="attribute">name</span>=<span class="value">'getlist'</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">request</span> <span class="attribute">subst</span>=<span class="value">"true"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">http</span> <span class="attribute">url</span>=<span class="value">"/comment/addComment"</span> <span class="attribute">method</span>=<span class="value">"POST"</span> <span class="attribute">contents</span> = "<span class="attribute">item_type</span>=<span class="value">image&amp;amp;item_id=%%_itemid%%&amp;amp;content=%%_content%%"</span>&gt;</span><span class="tag">&lt;/<span class="title">http</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">request</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">transaction</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">session</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">sessions</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="sessions"><a href="#sessions" class="headerlink" title="sessions"></a>sessions</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">sessions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">session</span> <span class="attr">name</span>=<span class="string">"http-example"</span> <span class="attr">probability</span>=<span class="string">"70"</span> <span class="attr">type</span>=<span class="string">"ts_http"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">setdynvars</span> <span class="attr">sourcetype</span>=<span class="string">"random_number"</span> <span class="attr">start</span>=<span class="string">"1"</span> <span class="attr">end</span> =<span class="string">"100"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">var</span> <span class="attr">name</span>=<span class="string">"itemid"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">setdynvars</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">transaction</span> <span class="attr">name</span>=<span class="string">'getlist'</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">request</span> <span class="attr">subst</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">http</span> <span class="attr">url</span>=<span class="string">"/comment/getList"</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">contents</span> = <span class="string">"item_type=image&amp;amp;item_id=%%_itemid%%"</span>&gt;</span><span class="tag">&lt;/<span class="name">http</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">request</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">transaction</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">session</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">session</span> <span class="attr">name</span>=<span class="string">"http-example"</span> <span class="attr">probability</span>=<span class="string">"30"</span> <span class="attr">type</span>=<span class="string">"ts_http"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">setdynvars</span> <span class="attr">sourcetype</span>=<span class="string">"random_number"</span> <span class="attr">start</span>=<span class="string">"1"</span> <span class="attr">end</span>=<span class="string">"100"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">var</span> <span class="attr">name</span>=<span class="string">"itemid"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">setdynvars</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">setdynvars</span> <span class="attr">sourcetype</span>=<span class="string">"random_number"</span> <span class="attr">start</span>=<span class="string">"20"</span> <span class="attr">end</span>=<span class="string">"5000000"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">var</span> <span class="attr">name</span>=<span class="string">"content"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">setdynvars</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">transaction</span> <span class="attr">name</span>=<span class="string">'getlist'</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">request</span> <span class="attr">subst</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">http</span> <span class="attr">url</span>=<span class="string">"/comment/addComment"</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">contents</span> = <span class="string">"item_type=image&amp;amp;item_id=%%_itemid%%&amp;amp;content=%%_content%%"</span>&gt;</span><span class="tag">&lt;/<span class="name">http</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">request</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">transaction</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">session</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">sessions</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>可配置多个子session，进而可测试多个api，可以设置请求概率，在probability里被定义，要求每个session的probability之和是100。类型是http。<br><br>sessions里可用for来设定请求次数，如下</p>
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">for</span> <span class="keyword">from</span>=<span class="string">"1"</span> <span class="keyword">to</span>=<span class="string">"@loop"</span> incr=<span class="string">"1"</span> <span class="keyword">var</span>=<span class="string">"counter"</span>&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">for</span> <span class="attribute">from</span>=<span class="string">"1"</span> <span class="attribute">to</span>=<span class="string">"@loop"</span> <span class="attribute">incr</span>=<span class="string">"1"</span> <span class="attribute">var</span>=<span class="string">"counter"</span>&gt;</span><br></pre></td></tr></table></figure>
 <p>在<request>里面可以设置请求的具体信息。在请求参数里可以带上随机数。随机数和随机字符串的定义如下：</request></p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;setdynvars <span class="variable">sourcetype=</span><span class="string">"random_number"</span> <span class="variable">start=</span><span class="string">"20"</span> <span class="variable">end=</span><span class="string">"5000000"</span>&gt;</span><br><span class="line">  &lt;var <span class="variable">name=</span><span class="string">"xxx"</span> /&gt;</span><br><span class="line">&lt;/setdynvars&gt;</span><br><span class="line">&lt;setdynvars <span class="variable">sourcetype=</span><span class="string">"random_string"</span> <span class="variable">length=</span><span class="string">"10"</span>&gt;</span><br><span class="line">  &lt;var <span class="variable">name=</span><span class="string">"xxx"</span> /&gt;</span><br><span class="line">&lt;/setdynvars&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">setdynvars</span> <span class="attr">sourcetype</span>=<span class="string">"random_number"</span> <span class="attr">start</span>=<span class="string">"20"</span> <span class="attr">end</span>=<span class="string">"5000000"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">var</span> <span class="attr">name</span>=<span class="string">"xxx"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">setdynvars</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">setdynvars</span> <span class="attr">sourcetype</span>=<span class="string">"random_string"</span> <span class="attr">length</span>=<span class="string">"10"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">var</span> <span class="attr">name</span>=<span class="string">"xxx"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">setdynvars</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>以%%_xxx%%的形式来调用，这里必须注意的是，要使用随机数，request必须加上<strong>subst=”true”</strong>参数，不然随机数无法被引用成功。随机数也可从文件读取，如csv。<br><br>http内部可定义header参数：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">http_header</span> <span class="attribute">name</span>=<span class="value">"Authorization"</span> <span class="attribute">value</span>=<span class="value">"111"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">http_header</span> <span class="attribute">name</span>=<span class="value">"Cookie"</span> <span class="attribute">value</span>=<span class="value">"authToken=%%_auth_token%%; Path=/"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- content-Type：POST请求参数的格式，如果是json格式可以这样写 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">http_header</span> <span class="attribute">name</span>=<span class="value">"Content-Type"</span> <span class="attribute">value</span>=<span class="value">"application/json"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">http_header</span> <span class="attr">name</span>=<span class="string">"Authorization"</span> <span class="attr">value</span>=<span class="string">"111"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">http_header</span> <span class="attr">name</span>=<span class="string">"Cookie"</span> <span class="attr">value</span>=<span class="string">"authToken=%%_auth_token%%; Path=/"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- content-Type：POST请求参数的格式，如果是json格式可以这样写 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">http_header</span> <span class="attr">name</span>=<span class="string">"Content-Type"</span> <span class="attr">value</span>=<span class="string">"application/json"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 <p>thinktime可用于定义两个请求的间隔时间</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">thinktime</span> <span class="attribute">value</span>=<span class="value">"1"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;thinktime <span class="attribute">value</span>=<span class="string">"1"</span>/&gt;</span><br></pre></td></tr></table></figure>
 <p>另外可定义不同的transaction ，这样子结果里就会显示不同transaction的具体信息。</p>
-<h4 id="开始测试">开始测试</h4><p>运行命令</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsung <span class="built_in">start</span></span><br></pre></td></tr></table></figure>
+<h4 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h4><p>运行命令</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsung <span class="literal">start</span></span><br></pre></td></tr></table></figure>
 <p>开始测试<br><br>运行时执行</p>
-<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsung <span class="keyword">status</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">tsung status</span></span><br></pre></td></tr></table></figure>
 <p>可获取tsung运行时的状态<br></p>
-<h4 id="生成报表">生成报表</h4><p>测试程序结束后，进入log文件夹下的对应结果文件夹，执行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsung_stats</span><br></pre></td></tr></table></figure>
+<h4 id="生成报表"><a href="#生成报表" class="headerlink" title="生成报表"></a>生成报表</h4><p>测试程序结束后，进入log文件夹下的对应结果文件夹，执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsung_stats</span><br></pre></td></tr></table></figure>
 <p>就可以得到我们想要的结果报表了。</p>
-<h4 id="分析结果报表">分析结果报表</h4><p>生成好后的report.html就是测试的最终结果。<br><br>Main statistics里有一些总体的信息<br><img src="http://i2.bvimg.com/520266/071ca6af8dc0b716.jpg" alt="Markdown"><br>有几张重要的结果图如下：<br></p>
+<h4 id="分析结果报表"><a href="#分析结果报表" class="headerlink" title="分析结果报表"></a>分析结果报表</h4><p>生成好后的report.html就是测试的最终结果。<br><br>Main statistics里有一些总体的信息<br><img src="http://i2.bvimg.com/520266/071ca6af8dc0b716.jpg" alt="Markdown"><br>有几张重要的结果图如下：<br></p>
 <ul>
 <li>tsung产生的用户曲线图<br><img src="http://i2.bvimg.com/520266/357f03d3c536988d.png" alt="Markdown"><br>Y轴代表每秒用户数，tsung每秒会产生一批用户，这个统计结果是每十秒统计一次，所有的图的起始位置显示的是0，其实是第一个10秒</li>
 <li>http接口响应数曲线图（TPS）<br><img src="http://i2.bvimg.com/520266/c4ac98043eff22bb.png" alt="Markdown"><br>Y轴是每秒响应数，右上角的200是http状态码，如果有多个状态码，会有多条不同颜色的曲线。</li>
 <li>http接口响应时间曲线<br><img src="http://i2.bvimg.com/520266/e7b7ae51456f224f.png" alt="Markdown"><br>Y轴是接口响应时间，单位是毫秒，request的线代表请求响应总耗时，connect的线代表tcp链接建立的时间。<br></li>
 </ul>
-<h4 id="后记">后记</h4><p>经过测试，发现该系统支持的最大写入频率是80次/min，因为并未加入cache, queue等优化方案，是直接同步写库，初始业务量也未必会很大，所以该数据也已满足正式环境的使用。根据测试结果我们改进了一些逻辑SQL，使执行效率尽可能高。<br><br>另外还使用了<strong>innotop</strong>作为mysql的监控工具，<strong>htop</strong>作为系统负载的监控工具，在这里就不展开介绍了：）</p>
+<h4 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h4><p>经过测试，发现该系统支持的最大写入频率是80次/min，因为并未加入cache, queue等优化方案，是直接同步写库，初始业务量也未必会很大，所以该数据也已满足正式环境的使用。根据测试结果我们改进了一些逻辑SQL，使执行效率尽可能高。<br><br>另外还使用了<strong>innotop</strong>作为mysql的监控工具，<strong>htop</strong>作为系统负载的监控工具，在这里就不展开介绍了：）</p>
 
       
     </div>
@@ -545,9 +547,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460"
-                alt="zhuye" />
+              <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460" alt="zhuye">
             
               <p class="site-author-name" itemprop="name">zhuye</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -560,7 +560,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -941,7 +941,24 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 

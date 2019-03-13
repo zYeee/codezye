@@ -6,10 +6,10 @@
 
 
 <html class="theme-next mist use-motion" lang="default">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="mysql," />
+  <meta name="keywords" content="mysql,">
 
 
 
@@ -80,16 +80,19 @@
 
 
 <meta name="description" content="复制原理mysql支持2种复制方式：基于行的复制方式和基于语句的复制方式。这两种方式都是通过在主库上记录二进制日志，在备库重放日志的方式来实现异步的数据复制。大致原理如图所示。">
+<meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql主从复制">
 <meta property="og:url" content="http://yoursite.com/2015/10/02/mysql主从复制/index.html">
 <meta property="og:site_name" content="hello world">
 <meta property="og:description" content="复制原理mysql支持2种复制方式：基于行的复制方式和基于语句的复制方式。这两种方式都是通过在主库上记录二进制日志，在备库重放日志的方式来实现异步的数据复制。大致原理如图所示。">
+<meta property="og:locale" content="default">
 <meta property="og:image" content="http://i2.bvimg.com/520266/ccc9d6e860f8b18a.jpg">
 <meta property="og:updated_time" content="2019-03-09T07:23:53.946Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql主从复制">
 <meta name="twitter:description" content="复制原理mysql支持2种复制方式：基于行的复制方式和基于语句的复制方式。这两种方式都是通过在主库上记录二进制日志，在备库重放日志的方式来实现异步的数据复制。大致原理如图所示。">
+<meta name="twitter:image" content="http://i2.bvimg.com/520266/ccc9d6e860f8b18a.jpg">
 
 
 
@@ -119,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/10/02/mysql主从复制/"/>
+  <link rel="canonical" href="http://yoursite.com/2015/10/02/mysql主从复制/">
 
 
 
@@ -140,7 +143,7 @@
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -154,7 +157,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -163,7 +166,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">hello world</span>
         <span class="logo-line-after"><i></i></span>
@@ -193,7 +196,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
           </a>
@@ -203,7 +206,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             About
           </a>
@@ -213,7 +216,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             Tags
           </a>
@@ -223,7 +226,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             Categories
           </a>
@@ -233,7 +236,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             Archives
           </a>
@@ -276,7 +279,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhuye">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460">
     </span>
 
@@ -312,7 +315,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -343,8 +346,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2015/10/02/mysql主从复制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/10/02/mysql主从复制/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/10/02/mysql主从复制/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -383,24 +385,24 @@
       
 
       
-        <h3 id="复制原理">复制原理</h3><p>mysql支持<strong>2</strong>种复制方式：<strong>基于行</strong>的复制方式和<strong>基于语句</strong>的复制方式。这两种方式都是通过在主库上记录二进制日志，在备库重放日志的方式来实现异步的数据复制。大致原理如图所示。<br><img src="http://i2.bvimg.com/520266/ccc9d6e860f8b18a.jpg" alt="Markdown"><br><a id="more"></a></p>
-<h3 id="实验机器配置">实验机器配置</h3><p>采用vitrualbox启动虚拟机的方式开两台主机。<br><br>主库IP:192.168.5.24<br><br>从库IP:182.168.5.25<br></p>
-<h3 id="复制步骤">复制步骤</h3><ul>
+        <h3 id="复制原理"><a href="#复制原理" class="headerlink" title="复制原理"></a>复制原理</h3><p>mysql支持<strong>2</strong>种复制方式：<strong>基于行</strong>的复制方式和<strong>基于语句</strong>的复制方式。这两种方式都是通过在主库上记录二进制日志，在备库重放日志的方式来实现异步的数据复制。大致原理如图所示。<br><img src="http://i2.bvimg.com/520266/ccc9d6e860f8b18a.jpg" alt="Markdown"><br><a id="more"></a></p>
+<h3 id="实验机器配置"><a href="#实验机器配置" class="headerlink" title="实验机器配置"></a>实验机器配置</h3><p>采用vitrualbox启动虚拟机的方式开两台主机。<br><br>主库IP:192.168.5.24<br><br>从库IP:182.168.5.25<br></p>
+<h3 id="复制步骤"><a href="#复制步骤" class="headerlink" title="复制步骤"></a>复制步骤</h3><ul>
 <li>登陆主服务器，建立新账号</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">'master'</span>@<span class="number">192.168</span>.5.24 <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'123456'</span>;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">'master'</span>@<span class="number">192.168</span><span class="number">.5</span><span class="number">.24</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'123456'</span>;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>给账户赋予权限</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">GRANT</span> REPLICATION <span class="keyword">SLAVE</span>, REPLICATION CLIENT <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="keyword">master</span>@<span class="string">'192.168.5.24'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'123456'</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">REPLICATION</span> <span class="keyword">SLAVE</span>, <span class="keyword">REPLICATION</span> <span class="keyword">CLIENT</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="keyword">master</span>@<span class="string">'192.168.5.24'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'123456'</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>在主库上打开binlog</li>
 </ul>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在<span class="keyword">my</span>.cnf中加入：</span><br><span class="line">log_bin=mysql-bin</span><br></pre></td></tr></table></figure>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在my.cnf中加入：</span><br><span class="line">log_bin=mysql-bin</span><br></pre></td></tr></table></figure>
 <p>备库也要增加类似配置并重启服务器</p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">log_bin =</span> mysql-bin</span><br><span class="line"><span class="variable">server_id =</span> <span class="number">3</span></span><br><span class="line"><span class="variable">relay_log =</span> /var/lib/mysql/mysql-relay-bin</span><br><span class="line"><span class="variable">log_slave_updates =</span> <span class="number">1</span>   <span class="comment">#允许备库将其重放的事件也记录到自身的二进制日志中</span></span><br><span class="line"><span class="variable">read_only =</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">log_bin = mysql-bin</span><br><span class="line">server_id = 3</span><br><span class="line">relay_log = /var/lib/mysql/mysql-relay-bin</span><br><span class="line">log_slave_updates = 1   <span class="comment">#允许备库将其重放的事件也记录到自身的二进制日志中</span></span><br><span class="line">read_only = 1</span><br></pre></td></tr></table></figure>
 <p>输入开始复制的基本命令 </p>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [(none)]&gt; CHANGE MASTER TO MASTER_HOST='192.168.5.24',</span><br><span class="line">    -<span class="ruby">&gt; <span class="constant">MASTER_USER</span>=<span class="string">'master'</span>,</span><br><span class="line"></span>    -<span class="ruby">&gt; <span class="constant">MASTER_PASSWORD</span>=<span class="string">'123456'</span>,</span><br><span class="line"></span>    -<span class="ruby">&gt; <span class="constant">MASTER_LOG_FILE</span>=<span class="string">'mysql-bin.000004'</span>,</span><br><span class="line"></span>    -<span class="ruby">&gt; <span class="constant">MASTER_LOG_POS</span>=<span class="number">0</span>;</span><br><span class="line"></span>    </span><br><span class="line">MariaDB [(none)]&gt; start slave;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [(none)]&gt; CHANGE MASTER <span class="keyword">TO</span> <span class="attribute">MASTER_HOST</span>=<span class="string">'192.168.5.24'</span>,</span><br><span class="line">    -&gt; <span class="attribute">MASTER_USER</span>=<span class="string">'master'</span>,</span><br><span class="line">    -&gt; <span class="attribute">MASTER_PASSWORD</span>=<span class="string">'123456'</span>,</span><br><span class="line">    -&gt; <span class="attribute">MASTER_LOG_FILE</span>=<span class="string">'mysql-bin.000004'</span>,</span><br><span class="line">    -&gt; <span class="attribute">MASTER_LOG_POS</span>=0;</span><br><span class="line">    </span><br><span class="line">MariaDB [(none)]&gt; start slave;</span><br></pre></td></tr></table></figure>
 <p>若成功开始复制，那么show slave stauts时，<strong>Slave_IO_State</strong>,<strong>Slave_IO_Running</strong>,<strong>Slave_SQL_Running</strong>这三个字段一定是打开的，如果不打开肯定没有正常运行。<br><br>这时候show slave status\G发现并没有正常启动,Slave_IO_State和Slave_SQL_Running并没有运行起来。</p>
 <blockquote>
 <p>Last_IO_Error: Got fatal error 1236 from master when reading data from binary log: ‘Misconfigured master - server id was not set’</p>
@@ -524,9 +526,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460"
-                alt="zhuye" />
+              <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/9430026?v=3&s=460" alt="zhuye">
             
               <p class="site-author-name" itemprop="name">zhuye</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -539,7 +539,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -920,7 +920,24 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 
