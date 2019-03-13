@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="leetcode,">
 
 
 
@@ -80,6 +80,7 @@
 
 
 <meta name="description" content="题目地址是Domino and Tromino Tiling   1234题目的大概意思是用xx  xxx  两种砖块去填充一个2xn的场地，已知n时输出有多少种不同的方法。">
+<meta name="keywords" content="leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode790:错位相减法对算法的优化">
 <meta property="og:url" content="http://yoursite.com/2019/03/13/leetcode790-错位相减法对算法的优化/index.html">
@@ -87,7 +88,7 @@
 <meta property="og:description" content="题目地址是Domino and Tromino Tiling   1234题目的大概意思是用xx  xxx  两种砖块去填充一个2xn的场地，已知n时输出有多少种不同的方法。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://i1.bvimg.com/520266/8bfbdaa59492c57c.png">
-<meta property="og:updated_time" content="2019-03-13T16:04:08.202Z">
+<meta property="og:updated_time" content="2019-03-13T16:16:39.907Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode790:错位相减法对算法的优化">
 <meta name="twitter:description" content="题目地址是Domino and Tromino Tiling   1234题目的大概意思是用xx  xxx  两种砖块去填充一个2xn的场地，已知n时输出有多少种不同的方法。">
@@ -314,6 +315,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -371,7 +394,7 @@
 <li>对于每个dp[n-k](k&gt;=3)，因为有了另一种形状的加入，从dp[n]的值还需要累加dp[n-3]…dp[0]的值并x2(这是很重要也很复杂的一点，因为这篇blog重点讲的是优化，就不展开说推论过程了)<br>得出递推式是</li>
 </ol>
 <script type="math/tex; mode=display">dp[n] = dp[n-1] + dp[n-2] + 2*\sum_{i=0}^{n-3}{dp[i]}</script><p>这个递推式实现起来不难，但是因为中间有一个累加操作，所以时间复杂度是O(n^2)级别，后来看了一些题解报告，发现是可以通过数学方法优化到O(n)，就是高中数学教的<strong>错位相减法</strong>,推论过程如下：</p>
-<script type="math/tex; mode=display">dp[n]-dp[n-1]=dp[n-1]+dp[n-2]+2*\sum_{i=0}^{n-3}{dp[i]}-dp[n-2]+dp[n-3]-2*\sum_{i=0}^{n-4}{dp[i]}</script><p>移项可得</p>
+<script type="math/tex; mode=display">dp[n]-dp[n-1]=dp[n-1]+dp[n-2]+2*\sum_{i=0}^{n-3}{dp[i]}-dp[n-2]-dp[n-3]-2*\sum_{i=0}^{n-4}{dp[i]}</script><p>移项可得</p>
 <script type="math/tex; mode=display">dp[n] = 2 * dp[n-1] + dp[n-3]</script><p>这样子，就把时间复杂度从平方级别优化到了线性级别O(n)<br>效率上的提升也很直观<br><img src="http://i1.bvimg.com/520266/8bfbdaa59492c57c.png" alt="Markdown"><br>另外，还可以通过矩阵乘法把代码优化到对数级别的时间复杂度，可惜线性代数的知识都要忘光了，就没有深入研究。</p>
 
       
@@ -387,6 +410,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+        </div>
       
 
       
