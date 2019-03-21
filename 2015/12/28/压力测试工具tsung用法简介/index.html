@@ -106,15 +106,15 @@
 <meta property="og:site_name" content="hello world">
 <meta property="og:description" content="简介最近参与开发了公司的评论和点赞的系统，该系统是作为symfony的一个独立plugin，可能会被其它很多系统使用，比如说图片，视频，newsfeed等等，都有可能直接嵌入，所以该独立模块做的尽可能通用，对性能也有一定要求。最终采用以mysql作为储存方案，以redis作为缓存方案的设计。接口开发完后想对接口进行性能负载测试，估算该系统的读写性能的上限。了解了几个常用的测试工具和与公司之前所用的">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://i2.bvimg.com/520266/071ca6af8dc0b716.jpg">
-<meta property="og:image" content="http://i2.bvimg.com/520266/357f03d3c536988d.png">
-<meta property="og:image" content="http://i2.bvimg.com/520266/c4ac98043eff22bb.png">
-<meta property="og:image" content="http://i2.bvimg.com/520266/e7b7ae51456f224f.png">
-<meta property="og:updated_time" content="2019-03-09T07:22:29.158Z">
+<meta property="og:image" content="https://zyeee-blog.oss-cn-beijing.aliyuncs.com/blog/main_statistics.jpg">
+<meta property="og:image" content="https://zyeee-blog.oss-cn-beijing.aliyuncs.com/blog/graphes_users_simulaneous.png">
+<meta property="og:image" content="https://zyeee-blog.oss-cn-beijing.aliyuncs.com/blog/http_code.png">
+<meta property="og:image" content="https://zyeee-blog.oss-cn-beijing.aliyuncs.com/blog/mean_request.png">
+<meta property="og:updated_time" content="2019-03-21T00:35:26.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="压力测试工具tsung初体验">
 <meta name="twitter:description" content="简介最近参与开发了公司的评论和点赞的系统，该系统是作为symfony的一个独立plugin，可能会被其它很多系统使用，比如说图片，视频，newsfeed等等，都有可能直接嵌入，所以该独立模块做的尽可能通用，对性能也有一定要求。最终采用以mysql作为储存方案，以redis作为缓存方案的设计。接口开发完后想对接口进行性能负载测试，估算该系统的读写性能的上限。了解了几个常用的测试工具和与公司之前所用的">
-<meta name="twitter:image" content="http://i2.bvimg.com/520266/071ca6af8dc0b716.jpg">
+<meta name="twitter:image" content="https://zyeee-blog.oss-cn-beijing.aliyuncs.com/blog/main_statistics.jpg">
 
 
 
@@ -421,7 +421,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-09 15:22:29" itemprop="dateModified" datetime="2019-03-09T15:22:29+08:00">2019-03-09</time>
+                <time title="Modified: 2019-03-21 08:35:26" itemprop="dateModified" datetime="2019-03-21T08:35:26+08:00">2019-03-21</time>
               
             
           </span>
@@ -531,11 +531,11 @@
 <h4 id="生成报表"><a href="#生成报表" class="headerlink" title="生成报表"></a>生成报表</h4><p>测试程序结束后，进入log文件夹下的对应结果文件夹，执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsung_stats</span><br></pre></td></tr></table></figure>
 <p>就可以得到我们想要的结果报表了。</p>
-<h4 id="分析结果报表"><a href="#分析结果报表" class="headerlink" title="分析结果报表"></a>分析结果报表</h4><p>生成好后的report.html就是测试的最终结果。<br><br>Main statistics里有一些总体的信息<br><img src="http://i2.bvimg.com/520266/071ca6af8dc0b716.jpg" alt="Markdown"><br>有几张重要的结果图如下：<br></p>
+<h4 id="分析结果报表"><a href="#分析结果报表" class="headerlink" title="分析结果报表"></a>分析结果报表</h4><p>生成好后的report.html就是测试的最终结果。<br><br>Main statistics里有一些总体的信息<br><img src="https://zyeee-blog.oss-cn-beijing.aliyuncs.com/blog/main_statistics.jpg" alt="Markdown"><br>有几张重要的结果图如下：<br></p>
 <ul>
-<li>tsung产生的用户曲线图<br><img src="http://i2.bvimg.com/520266/357f03d3c536988d.png" alt="Markdown"><br>Y轴代表每秒用户数，tsung每秒会产生一批用户，这个统计结果是每十秒统计一次，所有的图的起始位置显示的是0，其实是第一个10秒</li>
-<li>http接口响应数曲线图（TPS）<br><img src="http://i2.bvimg.com/520266/c4ac98043eff22bb.png" alt="Markdown"><br>Y轴是每秒响应数，右上角的200是http状态码，如果有多个状态码，会有多条不同颜色的曲线。</li>
-<li>http接口响应时间曲线<br><img src="http://i2.bvimg.com/520266/e7b7ae51456f224f.png" alt="Markdown"><br>Y轴是接口响应时间，单位是毫秒，request的线代表请求响应总耗时，connect的线代表tcp链接建立的时间。<br></li>
+<li>tsung产生的用户曲线图<br><img src="https://zyeee-blog.oss-cn-beijing.aliyuncs.com/blog/graphes_users_simulaneous.png" alt="Markdown"><br>Y轴代表每秒用户数，tsung每秒会产生一批用户，这个统计结果是每十秒统计一次，所有的图的起始位置显示的是0，其实是第一个10秒</li>
+<li>http接口响应数曲线图（TPS）<br><img src="https://zyeee-blog.oss-cn-beijing.aliyuncs.com/blog/http_code.png" alt="Markdown"><br>Y轴是每秒响应数，右上角的200是http状态码，如果有多个状态码，会有多条不同颜色的曲线。</li>
+<li>http接口响应时间曲线<br><img src="https://zyeee-blog.oss-cn-beijing.aliyuncs.com/blog/mean_request.png" alt="Markdown"><br>Y轴是接口响应时间，单位是毫秒，request的线代表请求响应总耗时，connect的线代表tcp链接建立的时间。<br></li>
 </ul>
 <h4 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h4><p>经过测试，发现该系统支持的最大写入频率是80次/min，因为并未加入cache, queue等优化方案，是直接同步写库，初始业务量也未必会很大，所以该数据也已满足正式环境的使用。根据测试结果我们改进了一些逻辑SQL，使执行效率尽可能高。<br><br>另外还使用了<strong>innotop</strong>作为mysql的监控工具，<strong>htop</strong>作为系统负载的监控工具，在这里就不展开介绍了：）</p>
 
@@ -662,7 +662,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
