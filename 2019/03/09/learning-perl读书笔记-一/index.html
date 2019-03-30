@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="hello world">
 <meta property="og:description" content="Chapter 2: scalar data integer类型中可以加入下划线来增强可读性，如61_298_040_283_768 string类型可以用”x”来做repetition操作  12&quot;fred&quot; x 3  #&quot;fredfredfred&quot;5 x 4.8  #&quot;5555&quot;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-15T15:40:44.504Z">
+<meta property="og:updated_time" content="2019-03-24T13:53:35.954Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="learning perl读书笔记(一)">
 <meta name="twitter:description" content="Chapter 2: scalar data integer类型中可以加入下划线来增强可读性，如61_298_040_283_768 string类型可以用”x”来做repetition操作  12&quot;fred&quot; x 3  #&quot;fredfredfred&quot;5 x 4.8  #&quot;5555&quot;">
@@ -416,7 +416,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-15 23:40:44" itemprop="dateModified" datetime="2019-03-15T23:40:44+08:00">2019-03-15</time>
+                <time title="Modified: 2019-03-24 21:53:35" itemprop="dateModified" datetime="2019-03-24T21:53:35+08:00">2019-03-24</time>
               
             
           </span>
@@ -527,7 +527,7 @@
 </ul>
 <h2 id="Chapter-5-Input-and-Output"><a href="#Chapter-5-Input-and-Output" class="headerlink" title="Chapter 5:Input and Output"></a>Chapter 5:Input and Output</h2><ul>
 <li>标准输入：\<stdin></stdin></li>
-<li>文件输入：&lt;&gt; <code>./input.pl fred barney</code> 类似这样的命令，可以将input.pl脚本同级目录下的fred和barney文件中的内容作为输入给到input.pl，在input.pl中可以通过&lt;&gt;操作来获取。它会按顺序来读取这些文件内容（相当于把所有的文件合并成了一个大的文件）</li>
+<li>文件输入：<code>./input.pl fred barney</code> 类似这样的命令，可以将input.pl脚本同级目录下的fred和barney文件中的内容作为输入给到input.pl，在input.pl中可以通过&lt;&gt;操作来获取。&lt;&gt;也可以获取标准输入。它会按顺序来读取这些文件内容（相当于把所有的文件合并成了一个大的文件）</li>
 </ul>
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (<span class="keyword">defined</span>($line = &lt;&gt;))&#123;</span><br><span class="line">	<span class="keyword">chomp</span>($line);</span><br><span class="line">	<span class="keyword">print</span> <span class="string">"It was $line that I saw\n"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
