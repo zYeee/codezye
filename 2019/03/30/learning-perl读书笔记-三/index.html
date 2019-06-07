@@ -98,29 +98,25 @@
 
 
 
-  <meta name="description" content="项目原本连接memcache用的是php的memcache扩展，现在为了与php7兼容，打算更换到memcached扩展。在更换的时候，因为原来有长连接的需求，在memcache扩展里只要用pconnect方法就可以了，但是memcached的长连接是这样实现的 1234public Memcached::__construct ([ string $persistent_id ] )persis">
-<meta name="keywords" content="技术心得">
+  <meta name="description" content="Chapter 10: More Control Structures123if ()&amp;#123;&amp;#125; else&amp;#123;&amp;#125; 和 123unless ()&amp;#123;&amp;#125; else&amp;#123;&amp;#125; 是相反逻辑的条件判断">
+<meta name="keywords" content="读书笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="长连接（persistent_connection）和php-fpm的关系">
-<meta property="og:url" content="http://yoursite.com/2017/11/24/长连接（persistent-connection）和php-fpm的关系/index.html">
+<meta property="og:title" content="learning perl读书笔记(三)">
+<meta property="og:url" content="http://yoursite.com/2019/03/30/learning-perl读书笔记-三/index.html">
 <meta property="og:site_name" content="hello world">
-<meta property="og:description" content="项目原本连接memcache用的是php的memcache扩展，现在为了与php7兼容，打算更换到memcached扩展。在更换的时候，因为原来有长连接的需求，在memcache扩展里只要用pconnect方法就可以了，但是memcached的长连接是这样实现的 1234public Memcached::__construct ([ string $persistent_id ] )persis">
+<meta property="og:description" content="Chapter 10: More Control Structures123if ()&amp;#123;&amp;#125; else&amp;#123;&amp;#125; 和 123unless ()&amp;#123;&amp;#125; else&amp;#123;&amp;#125; 是相反逻辑的条件判断">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://zyeee-blog.oss-cn-beijing.aliyuncs.com/blog/1.png">
-<meta property="og:image" content="https://zyeee-blog.oss-cn-beijing.aliyuncs.com/blog/2.png">
-<meta property="og:image" content="https://zyeee-blog.oss-cn-beijing.aliyuncs.com/blog/3.png">
-<meta property="og:updated_time" content="2019-03-21T00:30:45.154Z">
+<meta property="og:updated_time" content="2019-06-07T01:25:53.196Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="长连接（persistent_connection）和php-fpm的关系">
-<meta name="twitter:description" content="项目原本连接memcache用的是php的memcache扩展，现在为了与php7兼容，打算更换到memcached扩展。在更换的时候，因为原来有长连接的需求，在memcache扩展里只要用pconnect方法就可以了，但是memcached的长连接是这样实现的 1234public Memcached::__construct ([ string $persistent_id ] )persis">
-<meta name="twitter:image" content="https://zyeee-blog.oss-cn-beijing.aliyuncs.com/blog/1.png">
+<meta name="twitter:title" content="learning perl读书笔记(三)">
+<meta name="twitter:description" content="Chapter 10: More Control Structures123if ()&amp;#123;&amp;#125; else&amp;#123;&amp;#125; 和 123unless ()&amp;#123;&amp;#125; else&amp;#123;&amp;#125; 是相反逻辑的条件判断">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/24/长连接（persistent-connection）和php-fpm的关系/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/30/learning-perl读书笔记-三/">
 
 
 
@@ -130,7 +126,7 @@
   };
 </script>
 
-  <title>长连接（persistent_connection）和php-fpm的关系 | hello world</title>
+  <title>learning perl读书笔记(三) | hello world</title>
   
 
 
@@ -360,7 +356,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/24/长连接（persistent-connection）和php-fpm的关系/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/30/learning-perl读书笔记-三/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhuye">
@@ -377,7 +373,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">长连接（persistent_connection）和php-fpm的关系
+          <h1 class="post-title" itemprop="name headline">learning perl读书笔记(三)
 
               
             
@@ -403,7 +399,7 @@
                 
               
 
-              <time title="Created: 2017-11-24 21:43:01" itemprop="dateCreated datePublished" datetime="2017-11-24T21:43:01+08:00">2017-11-24</time>
+              <time title="Created: 2019-03-30 22:59:32" itemprop="dateCreated datePublished" datetime="2019-03-30T22:59:32+08:00">2019-03-30</time>
             
 
             
@@ -420,7 +416,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-21 08:30:45" itemprop="dateModified" datetime="2019-03-21T08:30:45+08:00">2019-03-21</time>
+                <time title="Modified: 2019-06-07 09:25:53" itemprop="dateModified" datetime="2019-06-07T09:25:53+08:00">2019-06-07</time>
               
             
           </span>
@@ -437,7 +433,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/php/" itemprop="url" rel="index"><span itemprop="name">php</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/perl/" itemprop="url" rel="index"><span itemprop="name">perl</span></a></span>
 
                 
                 
@@ -456,8 +452,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2017/11/24/长连接（persistent-connection）和php-fpm的关系/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/11/24/长连接（persistent-connection）和php-fpm的关系/" itemprop="commentCount"></span>
+                <a href="/2019/03/30/learning-perl读书笔记-三/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/30/learning-perl读书笔记-三/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -465,7 +461,7 @@
 
           
           
-            <span id="/2017/11/24/长连接（persistent-connection）和php-fpm的关系/" class="leancloud_visitors" data-flag-title="长连接（persistent_connection）和php-fpm的关系">
+            <span id="/2019/03/30/learning-perl读书笔记-三/" class="leancloud_visitors" data-flag-title="learning perl读书笔记(三)">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -496,20 +492,45 @@
       
 
       
-        <p>项目原本连接memcache用的是php的memcache扩展，现在为了与php7兼容，打算更换到<strong>memcached</strong>扩展。在更换的时候，因为原来有长连接的需求，在memcache扩展里只要用pconnect方法就可以了，但是memcached的长连接是这样实现的</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public Memcached::__construct ([ string <span class="variable">$persistent_id</span> ] )</span><br><span class="line"></span><br><span class="line">persistent_id</span><br><span class="line">By<span class="built_in"> default </span>the Memcached instances are destroyed at the end of the request. <span class="keyword">To</span> create an<span class="built_in"> instance </span>that persists between requests, use persistent_id <span class="keyword">to</span> specify a unique ID <span class="keyword">for</span> the instance. All instances created with the same persistent_id will share the same connection.</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>如上所述，它是通过一个unique id来标识这个连接，同样的id会<strong>共享连接</strong>。看到这里我产生了一个问题，类似与mysql,redis,memcache这样的长连接，连接信息是如何保存的。像cgi那样的方式还好说，就保存在当前的进程下，进程结束了连接也就没有了。但是如果对fpm而言，fpm进程原本就常驻内存，而且server上一般会开很多空闲的fpm进程出来，那么创建了一个长连接之后，不同的fpm进程间会进行通信吗，在a进程打开长连接的用户如果他的下一个请求被b进程handle,可以共享进程a的连接吗？fpm的worker进程被正常重启后，长连接信息是否还会保存？为此我做了如下实验。<br>先只启动两个fpm进程，pid分别为10751和10752:<br><img src="https://zyeee-blog.oss-cn-beijing.aliyuncs.com/blog/1.png" alt="Markdown"><br>然后写如下代码:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">  $memcache = <span class="keyword">new</span> Memcached(<span class="string">'test'</span>);</span></span><br><span class="line"><span class="php">  $memcache-&gt;addServer(<span class="string">'10.60.1.237'</span>, <span class="number">11516</span>);</span></span><br><span class="line"><span class="php">  <span class="keyword">echo</span> <span class="string">"pid: "</span>.getmypid().<span class="string">"&lt;/br&gt;"</span>;</span></span><br><span class="line"><span class="php">  var_dump($memcache-&gt;getServerList());</span></span><br></pre></td></tr></table></figure>
-<p>先在网页上执行<strong>一次</strong>代码,显示<br><img src="https://zyeee-blog.oss-cn-beijing.aliyuncs.com/blog/2.png" alt="Markdown"><br>说明是pid为10751的worker进程执行了这段代码，且打开了一个长连接。下面将代码改为</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">  $memcache = <span class="keyword">new</span> Memcached(<span class="string">'test'</span>);</span></span><br><span class="line"><span class="php">  <span class="comment">//$memcache-&gt;addServer('10.60.1.237', 11516);</span></span></span><br><span class="line"><span class="php">  <span class="keyword">echo</span> <span class="string">"pid: "</span>.getmypid().<span class="string">"&lt;/br&gt;"</span>;</span></span><br><span class="line"><span class="php">  var_dump($memcache-&gt;getServerList());</span></span><br></pre></td></tr></table></figure>
-<p>然后刷新页面，显示<br><img src="https://zyeee-blog.oss-cn-beijing.aliyuncs.com/blog/3.png" alt="Markdown"><br>说明，<strong>各个fpm间并不能共享长连接信息，如果不同的请求分发至不同的fpm进程，将会重新打开全新的连接</strong>。<br>下面，执行kill命令将两个worker进程都kill掉，让master进程重启两个全新的fpm进程，然后再刷新页面，发现，依然没有连接信息了，说明<strong>长连接的生命周期与fpm进程一致，fpm若重启，长连接就会断开</strong>。<br>最后，在使用memcached的长连接的时候，还有一点需要特别注意的：长连接会在addServer的时候被建立，若别的请求对相同的id去长连接一些<strong>已经建立过连接的</strong>host&amp;port，memcached扩展不会自动去重，也会新打开新的连接，所以要在代码上规避这一点，否则会建立越来越多不必要的连接，最终core dump，这一点官方也有详细的说明：  </p>
-<blockquote>
-<p>When using persistent connections, it is important to not re-add servers.<br>This is what you do not want to do:</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">$mc = <span class="keyword">new</span> Memcached(<span class="string">'mc'</span>);</span></span><br><span class="line"><span class="php">$mc-&gt;setOption(Memcached::OPT_LIBKETAMA_COMPATIBLE, <span class="keyword">true</span>);</span></span><br><span class="line"><span class="php">$mc-&gt;addServers(<span class="keyword">array</span>(</span></span><br><span class="line"><span class="php">    <span class="keyword">array</span>(<span class="string">'mc1.example.com'</span>,<span class="number">11211</span>),</span></span><br><span class="line"><span class="php">    <span class="keyword">array</span>(<span class="string">'mc2.example.com'</span>,<span class="number">11211</span>),</span></span><br><span class="line"><span class="php">));</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>Every time the page is loaded those servers will be appended to the list resulting in many simultaneous open connections to the same server. The addServer/addServers functions to not check for existing references to the specified servers.<br>A better approach is something like:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">$mc = <span class="keyword">new</span> Memcached(<span class="string">'mc'</span>);</span></span><br><span class="line"><span class="php">$mc-&gt;setOption(Memcached::OPT_LIBKETAMA_COMPATIBLE, <span class="keyword">true</span>);</span></span><br><span class="line"><span class="php"><span class="keyword">if</span> (!count($mc-&gt;getServerList())) &#123;</span></span><br><span class="line"><span class="php">    $mc-&gt;addServers(<span class="keyword">array</span>(</span></span><br><span class="line"><span class="php">        <span class="keyword">array</span>(<span class="string">'mc1.example.com'</span>,<span class="number">11211</span>),</span></span><br><span class="line"><span class="php">        <span class="keyword">array</span>(<span class="string">'mc2.example.com'</span>,<span class="number">11211</span>),</span></span><br><span class="line"><span class="php">    ));</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+        <h2 id="Chapter-10-More-Control-Structures"><a href="#Chapter-10-More-Control-Structures" class="headerlink" title="Chapter 10: More Control Structures"></a>Chapter 10: More Control Structures</h2><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ()&#123;</span><br><span class="line">&#125; <span class="keyword">else</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">unless ()&#123;</span><br><span class="line">&#125; <span class="keyword">else</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>是相反逻辑的条件判断<br><a id="more"></a></p>
+<p>-</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">until</span><span class="params">()</span></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">while</span><span class="params">()</span></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对条件真假的判断也具有相反的语意</p>
+<p>-<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">for</span> (1.<span class="selector-class">.10</span>)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>是从1循环到10</p>
+<p>-</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> $last_name = $last_name&#123;$someone&#125; // <span class="string">'no last name'</span>;</span><br><span class="line">如果$last_name&#123;$someone&#125;不为<span class="keyword">undef</span>，则传值给$lastname，如果是<span class="keyword">undef</span>，$last_name的值就是<span class="string">'not last name'</span></span><br></pre></td></tr></table></figure>
+<h2 id="Chapter-14-Strings-and-Sorting"><a href="#Chapter-14-Strings-and-Sorting" class="headerlink" title="Chapter 14: Strings and Sorting"></a>Chapter 14: Strings and Sorting</h2><ul>
+<li>index()返回的是子串第一次出现的位置</li>
+</ul>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> $where = <span class="keyword">index</span>($big, $small, $offset);</span><br><span class="line">$where是$small在$big中第一次出现的位置，如果$small不是$big的子串，那么返回-<span class="number">1</span>,$offset是起始搜索的位置。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>rindex()返回的是子串最后一次出现的位置</li>
+<li><code>substr($string, $offset, $limit, $replace)</code>可以截取字符串，也可以对字符串进行<strong>子串替换</strong>操作</li>
+</ul>
+<h2 id="Chapter-16-Some-Advanced-Perl-Techniques"><a href="#Chapter-16-Some-Advanced-Perl-Techniques" class="headerlink" title="Chapter 16: Some Advanced Perl Techniques"></a>Chapter 16: Some Advanced Perl Techniques</h2><ul>
+<li>array slice</li>
+</ul>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">my $<span class="keyword">new</span><span class="type">_home_phone</span> = <span class="string">"555-6099"</span>;</span><br><span class="line">my $<span class="keyword">new</span><span class="type">_address</span> = <span class="string">"99380 Red Rock West"</span>;</span><br><span class="line">@items[<span class="number">2</span>, <span class="number">3</span>] = ($<span class="keyword">new</span><span class="type">_address</span>, $<span class="keyword">new</span><span class="type">_home_phone</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Hash Slice</li>
+</ul>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> @three_scores = @score&#123; <span class="keyword">qw</span>/ barney fred dino/ &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> @players = <span class="keyword">qw</span>/ barney fred dino /;</span><br><span class="line"><span class="keyword">my</span> @bowling_scores = (<span class="number">195</span>, <span class="number">205</span>, <span class="number">30</span>);</span><br><span class="line">@score&#123; @players &#125; = @bowling_scores;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>using eval</li>
+</ul>
+<p>eval{};代码块可以trap程序运行时的exception,使程序不会crash。错误信息会保存在特殊变量$@里。<br>以下四种情况是eval无法被trap的:  </p>
+<ol>
+<li>语法错误  </li>
+<li>系统错误，比如说内存溢出  </li>
+<li>warnings  </li>
+<li>exit()操作  </li>
+</ol>
 
       
     </div>
@@ -533,7 +554,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/技术心得/" rel="tag"># 技术心得</a>
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
           
         </div>
       
@@ -546,8 +567,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/23/redis用作访问流量限制时遇到的问题/" rel="next" title="redis用作访问流量限制时遇到的问题">
-                <i class="fa fa-chevron-left"></i> redis用作访问流量限制时遇到的问题
+              <a href="/2019/03/15/learning-perl读书笔记-二/" rel="next" title="learning perl读书笔记(二)">
+                <i class="fa fa-chevron-left"></i> learning perl读书笔记(二)
               </a>
             
           </div>
@@ -555,10 +576,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/12/LINUX-UNIX系统编程手册读书笔记（一）/" rel="prev" title="LINUX/UNIX系统编程手册读书笔记（一）">
-                LINUX/UNIX系统编程手册读书笔记（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -609,8 +626,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -736,6 +762,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-10-More-Control-Structures"><span class="nav-number">1.</span> <span class="nav-text">Chapter 10: More Control Structures</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-14-Strings-and-Sorting"><span class="nav-number">2.</span> <span class="nav-text">Chapter 14: Strings and Sorting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-16-Some-Advanced-Perl-Techniques"><span class="nav-number">3.</span> <span class="nav-text">Chapter 16: Some Advanced Perl Techniques</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -893,9 +936,9 @@
 
 <script>
   var disqus_config = function() {
-    this.page.url = "http://yoursite.com/2017/11/24/长连接（persistent-connection）和php-fpm的关系/";
-    this.page.identifier = "2017/11/24/长连接（persistent-connection）和php-fpm的关系/";
-    this.page.title = '长连接（persistent_connection）和php-fpm的关系';
+    this.page.url = "http://yoursite.com/2019/03/30/learning-perl读书笔记-三/";
+    this.page.identifier = "2019/03/30/learning-perl读书笔记-三/";
+    this.page.title = 'learning perl读书笔记(三)';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');
