@@ -98,25 +98,25 @@
 
 
 
-  <meta name="description" content="设计模式断断续续一直在看，但是因为实际项目中没有接触过，所以也一直都是纸上谈兵，处于一个看了就忘，忘了再看的阶段。最近在看新公司的框架代码，用的是symfony，但是做过大幅度修改，加入了很多自己的特性和优化。而且继承关系嵌套很复杂，越看越让人觉得以前的自己根本不会写代码ToT。比如说这个框架里实现了java spring里的interceptor方法，看了一天的代码才勉强看明白。里面应该是用了i">
-<meta name="keywords" content="设计模式">
+  <meta name="description" content="最近的项目里有个小需求，简单来说就是需要把app登陆后，每个设备(device_id)对应系统推送的enable/disable状态给记录下来。因为这个状态不需要与别的表进行join，只要能够提供一些get/set的快速查询功能就可以，所以定下来将这些数据存至redis。接下来就是思考数据结构了，如果数据量少的话，那怎么存都可以，简单的k-v对也能满足。但是这里涉及到所有的中国登陆用户，活跃量肯定">
+<meta name="keywords" content="redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[设计模式]工厂模式和ioc控制反转（一）">
-<meta property="og:url" content="http://yoursite.com/2015/11/18/设计模式-工厂模式和ioc控制反转（一）/index.html">
+<meta property="og:title" content="redis存大量键值对时内存占用优化">
+<meta property="og:url" content="http://yoursite.com/2020/04/02/redis存大量键值对时内存占用优化/index.html">
 <meta property="og:site_name" content="hello world">
-<meta property="og:description" content="设计模式断断续续一直在看，但是因为实际项目中没有接触过，所以也一直都是纸上谈兵，处于一个看了就忘，忘了再看的阶段。最近在看新公司的框架代码，用的是symfony，但是做过大幅度修改，加入了很多自己的特性和优化。而且继承关系嵌套很复杂，越看越让人觉得以前的自己根本不会写代码ToT。比如说这个框架里实现了java spring里的interceptor方法，看了一天的代码才勉强看明白。里面应该是用了i">
+<meta property="og:description" content="最近的项目里有个小需求，简单来说就是需要把app登陆后，每个设备(device_id)对应系统推送的enable/disable状态给记录下来。因为这个状态不需要与别的表进行join，只要能够提供一些get/set的快速查询功能就可以，所以定下来将这些数据存至redis。接下来就是思考数据结构了，如果数据量少的话，那怎么存都可以，简单的k-v对也能满足。但是这里涉及到所有的中国登陆用户，活跃量肯定">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2015-11-18T16:06:59.000Z">
+<meta property="og:updated_time" content="2020-04-02T11:50:59.719Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[设计模式]工厂模式和ioc控制反转（一）">
-<meta name="twitter:description" content="设计模式断断续续一直在看，但是因为实际项目中没有接触过，所以也一直都是纸上谈兵，处于一个看了就忘，忘了再看的阶段。最近在看新公司的框架代码，用的是symfony，但是做过大幅度修改，加入了很多自己的特性和优化。而且继承关系嵌套很复杂，越看越让人觉得以前的自己根本不会写代码ToT。比如说这个框架里实现了java spring里的interceptor方法，看了一天的代码才勉强看明白。里面应该是用了i">
+<meta name="twitter:title" content="redis存大量键值对时内存占用优化">
+<meta name="twitter:description" content="最近的项目里有个小需求，简单来说就是需要把app登陆后，每个设备(device_id)对应系统推送的enable/disable状态给记录下来。因为这个状态不需要与别的表进行join，只要能够提供一些get/set的快速查询功能就可以，所以定下来将这些数据存至redis。接下来就是思考数据结构了，如果数据量少的话，那怎么存都可以，简单的k-v对也能满足。但是这里涉及到所有的中国登陆用户，活跃量肯定">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/11/18/设计模式-工厂模式和ioc控制反转（一）/">
+  <link rel="canonical" href="http://yoursite.com/2020/04/02/redis存大量键值对时内存占用优化/">
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>[设计模式]工厂模式和ioc控制反转（一） | hello world</title>
+  <title>redis存大量键值对时内存占用优化 | hello world</title>
   
 
 
@@ -356,7 +356,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/11/18/设计模式-工厂模式和ioc控制反转（一）/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/02/redis存大量键值对时内存占用优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhuye">
@@ -373,7 +373,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[设计模式]工厂模式和ioc控制反转（一）
+          <h1 class="post-title" itemprop="name headline">redis存大量键值对时内存占用优化
 
               
             
@@ -399,24 +399,12 @@
                 
               
 
-              <time title="Created: 2015-11-18 22:43:08" itemprop="dateCreated datePublished" datetime="2015-11-18T22:43:08+08:00">2015-11-18</time>
+              <time title="Created: 2020-04-02 19:48:00 / Modified: 19:50:59" itemprop="dateCreated datePublished" datetime="2020-04-02T19:48:00+08:00">2020-04-02</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2015-11-19 00:06:59" itemprop="dateModified" datetime="2015-11-19T00:06:59+08:00">2015-11-19</time>
               
             
           </span>
@@ -433,7 +421,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking-in-programming/" itemprop="url" rel="index"><span itemprop="name">thinking in programming</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a></span>
 
                 
                 
@@ -452,8 +440,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2015/11/18/设计模式-工厂模式和ioc控制反转（一）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/11/18/设计模式-工厂模式和ioc控制反转（一）/" itemprop="commentCount"></span>
+                <a href="/2020/04/02/redis存大量键值对时内存占用优化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/04/02/redis存大量键值对时内存占用优化/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -461,7 +449,7 @@
 
           
           
-            <span id="/2015/11/18/设计模式-工厂模式和ioc控制反转（一）/" class="leancloud_visitors" data-flag-title="[设计模式]工厂模式和ioc控制反转（一）">
+            <span id="/2020/04/02/redis存大量键值对时内存占用优化/" class="leancloud_visitors" data-flag-title="redis存大量键值对时内存占用优化">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -492,20 +480,25 @@
       
 
       
-        <p>设计模式断断续续一直在看，但是因为实际项目中没有接触过，所以也一直都是纸上谈兵，处于一个看了就忘，忘了再看的阶段。最近在看新公司的框架代码，用的是symfony，但是做过大幅度修改，加入了很多自己的特性和优化。而且继承关系嵌套很复杂，越看越让人觉得以前的自己根本不会写代码ToT。比如说这个框架里实现了java spring里的interceptor方法，看了一天的代码才勉强看明白。里面应该是用了ioc控制反转这个设计模式。之前我从来没有了解过这个，了解后一下子想到了工厂模式，因为没有什么设计模式方面的经验，所以甚至很容易把两者混淆，于是想写点总结记录一下两者异同，也便加深自己的理解。<br><a id="more"></a></p>
+        <p>最近的项目里有个小需求，简单来说就是需要把app登陆后，每个设备(device_id)对应系统推送的enable/disable状态给记录下来。因为这个状态不需要与别的表进行join，只要能够提供一些get/set的快速查询功能就可以，所以定下来将这些数据存至<strong>redis</strong>。<br>接下来就是思考数据结构了，如果数据量少的话，那怎么存都可以，简单的k-v对也能满足。但是这里涉及到所有的中国登陆用户，活跃量肯定会在百万级别以上，所以需要考虑到对内存占用作优化。之前我对几个数据结构内存存储这一块有个大概的认识，比较模糊，知道哪种方案好，但是不知道究竟好在哪里，能好多少。所以这次先多做几组测试比较，看看内存优化与不优化相差多大。  </p>
+<hr>
+<p>要存储这样的信息，可以采用的数据结构有两种：<code>string</code>，<code>hash</code> 。<br>string就是前文所说的，直接存kv对进去，每个k-v对在redis里都会是一个<strong>sds(simple dynamic string)</strong> struct， 内存占用是线性增长的，所以对几百万个key来说，这肯定是最占用内存的。<br>接下来是hash，hash是就是可以存k-v对的字典，相当于可以把这几百万个k-v对都存到一个<strong>parent-key</strong>下面，有底层<strong>hashtable</strong>的支持也可以减少内存的占用。但这里也引出了二个新的问题：  </p>
+<ol>
+<li>如果几百万个k-v对都存到一个hash_key下面，那就会形成一个<strong>big key</strong>, big key在redis里是一个bad practise  </li>
+<li>redis本身提供了<strong>ziplist</strong>这样的数据结构，在hash中元素少于配置的<code>hash-max-ziplist-entries</code>时，就会采用ziplist来实现字典，ziplist要比hashtable省内存<br>这两个问题其实可以一起解决，创建很多的hash bucket，把key做一次mapping后，放进对应的hash bucket里，这样子既可以规避big key的问题，又可以使用ziplist，算是一个好的解决方案。  </li>
+</ol>
+<p>下面模拟<strong>100万</strong>的数据来做三个实验，redis版本是5.05，用python单线程生成uuid进行模拟写入</p>
+<h3 id="直接按string类型存放"><a href="#直接按string类型存放" class="headerlink" title="直接按string类型存放"></a>直接按string类型存放</h3><p>跑完100万个key之后，info里关于memory的部分是这样的：  </p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># Memory</span></span><br><span class="line"><span class="symbol">used_memory:</span><span class="number">73243224</span></span><br><span class="line"><span class="symbol">used_memory_human:</span><span class="number">69.85</span>M</span><br><span class="line"><span class="symbol">used_memory_rss:</span><span class="number">77819904</span></span><br><span class="line"><span class="symbol">used_memory_rss_human:</span><span class="number">74.21</span>M</span><br><span class="line"><span class="symbol">used_memory_peak:</span><span class="number">73260176</span></span><br><span class="line"><span class="symbol">used_memory_peak_human:</span><span class="number">69.87</span>M</span><br><span class="line"><span class="symbol">used_memory_peak_perc:</span><span class="number">99.98</span>%</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>redis分配了69.85M内存</p>
+<h3 id="按hash类型存放，放到一个key下面"><a href="#按hash类型存放，放到一个key下面" class="headerlink" title="按hash类型存放，放到一个key下面"></a>按hash类型存放，放到一个key下面</h3><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># Memory</span></span><br><span class="line"><span class="symbol">used_memory:</span><span class="number">81243552</span></span><br><span class="line"><span class="symbol">used_memory_human:</span><span class="number">77.48</span>M</span><br><span class="line"><span class="symbol">used_memory_rss:</span><span class="number">86122496</span></span><br><span class="line"><span class="symbol">used_memory_rss_human:</span><span class="number">82.13</span>M</span><br><span class="line"><span class="symbol">used_memory_peak:</span><span class="number">81258640</span></span><br><span class="line"><span class="symbol">used_memory_peak_human:</span><span class="number">77.49</span>M</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>redis分配了77.48M内存</p>
+<h3 id="按hash类型，分bucket存放"><a href="#按hash类型，分bucket存放" class="headerlink" title="按hash类型，分bucket存放"></a>按hash类型，分bucket存放</h3><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">used_memory:</span><span class="number">41935568</span></span><br><span class="line"><span class="symbol">used_memory_human:</span><span class="number">39.99</span>M</span><br><span class="line"><span class="symbol">used_memory_rss:</span><span class="number">54710272</span></span><br><span class="line"><span class="symbol">used_memory_rss_human:</span><span class="number">52.18</span>M</span><br><span class="line"><span class="symbol">used_memory_peak:</span><span class="number">81258640</span></span><br><span class="line"><span class="symbol">used_memory_peak_human:</span><span class="number">77.49</span>M</span><br><span class="line"><span class="symbol">used_memory_peak_perc:</span><span class="number">51.61</span>%</span><br></pre></td></tr></table></figure>
+<p>redis分配了39.99M内存</p>
+<p>从上面可以看出，直接存hash和存string相差无几，对于这种存储需求和结构，一开始的估计不是很准确。第三种方案是最省内存的。</p>
 <blockquote>
-<p>In object-oriented programming (OOP), a factory is an object for creating other objects – formally a factory is simply an object that returns an object from some method call, which is assumed to be “new”.[a] More broadly, a subroutine that returns a “new” object may be referred to as a “factory”, as in factory method or factory function. This is a basic concept in OOP, and forms the basis for a number of related software design patterns.             —wikipedia</p>
+<p>“Hashes, Lists, Sets composed of just integers, and Sorted Sets, when smaller than a given number of elements, and up to a maximum element size, are encoded in a very memory efficient way that uses up to 10 times less memory (with 5 time less memory used being the average saving)”</p>
 </blockquote>
-<p>从维基百科对工厂模式的解释可以看出，它就真的像是一个工厂那样，你想要什么类，告诉它，它就能够把你想要的类生产出来给你。而可以被你调用的方法名，都是一致的，所以你不需要关心它们的内部实现。<br><br>比如说，数据库有很多种，mysql，sqlite，access等等，此时可以把这些类都封装好，让一个通用的工厂，来生产这些类的实例。<br><br>下面用一个简单的例子来说明。工厂模式也有很多变种，比如抽像工厂模式，在这里不作细表。</p>
-<p>首先定义一个抽象基类来控制数据库操作的基本方法，这里就简单的定义两个方法。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">DB_adapter</span></span>&#123;</span><br><span class="line">    <span class="keyword">abstract</span> <span class="function"><span class="keyword">function</span> <span class="title">connect</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">abstract</span> <span class="function"><span class="keyword">function</span> <span class="title">query</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>下面再定义两个数据库类的具体实现</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">mysql_adapter</span> <span class="keyword">extends</span> <span class="title">DB_adapter</span></span>&#123;</span><br><span class="line">    function connect()&#123;</span><br><span class="line">        echo <span class="string">"mysql connect..."</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    function query()&#123;</span><br><span class="line">        echo <span class="string">"mysql query..."</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">sqlite_adapter</span> <span class="keyword">extends</span> <span class="title">DB_adapter</span></span>&#123;</span><br><span class="line">    function connect()&#123;</span><br><span class="line">        echo <span class="string">"sqlite connect..."</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    function query()&#123;</span><br><span class="line">        echo <span class="string">"sqlite query"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>数据库的连接实例可用<strong>单例模式</strong>，这里为了简单说明也就省略了。<br>下面是一个工厂类</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DB_factory</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getDB</span><span class="params">($type)</span></span>&#123;</span><br><span class="line">        $class = $type.<span class="string">"_adapter"</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> $class;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>用这种方式来调用，就能够得到自己想要的数据库对象。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DB_factory::getDB(<span class="string">"mysql"</span>);</span><br></pre></td></tr></table></figure>
-<p>以上就是有关工厂模式的简单介绍，下一篇进行ioc的总结。</p>
 
       
     </div>
@@ -529,7 +522,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+            <a href="/tags/redis/" rel="tag"># redis</a>
           
         </div>
       
@@ -542,8 +535,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/01/vim项目全局搜索的方法比较/" rel="next" title="vim项目全局搜索的方法比较">
-                <i class="fa fa-chevron-left"></i> vim项目全局搜索的方法比较
+              <a href="/2019/03/13/leetcode790-错位相减法对算法的优化/" rel="next" title="leetcode790:错位相减法对算法的优化">
+                <i class="fa fa-chevron-left"></i> leetcode790:错位相减法对算法的优化
               </a>
             
           </div>
@@ -551,10 +544,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/19/设计模式-工厂模式和ioc控制反转（二）/" rel="prev" title="[设计模式]工厂模式和ioc控制反转（二）">
-                [设计模式]工厂模式和ioc控制反转（二） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -605,8 +594,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -730,6 +728,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#直接按string类型存放"><span class="nav-number">1.</span> <span class="nav-text">直接按string类型存放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按hash类型存放，放到一个key下面"><span class="nav-number">2.</span> <span class="nav-text">按hash类型存放，放到一个key下面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按hash类型，分bucket存放"><span class="nav-number">3.</span> <span class="nav-text">按hash类型，分bucket存放</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -887,9 +902,9 @@
 
 <script>
   var disqus_config = function() {
-    this.page.url = "http://yoursite.com/2015/11/18/设计模式-工厂模式和ioc控制反转（一）/";
-    this.page.identifier = "2015/11/18/设计模式-工厂模式和ioc控制反转（一）/";
-    this.page.title = '[设计模式]工厂模式和ioc控制反转（一）';
+    this.page.url = "http://yoursite.com/2020/04/02/redis存大量键值对时内存占用优化/";
+    this.page.identifier = "2020/04/02/redis存大量键值对时内存占用优化/";
+    this.page.title = 'redis存大量键值对时内存占用优化';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');

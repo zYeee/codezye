@@ -352,6 +352,209 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/02/redis存大量键值对时内存占用优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhuye">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hello world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/04/02/redis存大量键值对时内存占用优化/" class="post-title-link" itemprop="url">redis存大量键值对时内存占用优化</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-04-02 19:48:00 / Modified: 19:50:59" itemprop="dateCreated datePublished" datetime="2020-04-02T19:48:00+08:00">2020-04-02</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2020/04/02/redis存大量键值对时内存占用优化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/04/02/redis存大量键值对时内存占用优化/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2020/04/02/redis存大量键值对时内存占用优化/" class="leancloud_visitors" data-flag-title="redis存大量键值对时内存占用优化">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近的项目里有个小需求，简单来说就是需要把app登陆后，每个设备(device_id)对应系统推送的enable/disable状态给记录下来。因为这个状态不需要与别的表进行join，只要能够提供一些get/set的快速查询功能就可以，所以定下来将这些数据存至<strong>redis</strong>。<br>接下来就是思考数据结构了，如果数据量少的话，那怎么存都可以，简单的k-v对也能满足。但是这里涉及到所有的中国登陆用户，活跃量肯定会在百万级别以上，所以需要考虑到对内存占用作优化。之前我对几个数据结构内存存储这一块有个大概的认识，比较模糊，知道哪种方案好，但是不知道究竟好在哪里，能好多少。所以这次先多做几组测试比较，看看内存优化与不优化相差多大。  </p>
+<hr>
+<p>要存储这样的信息，可以采用的数据结构有两种：<code>string</code>，<code>hash</code> 。<br>string就是前文所说的，直接存kv对进去，每个k-v对在redis里都会是一个<strong>sds(simple dynamic string)</strong> struct， 内存占用是线性增长的，所以对几百万个key来说，这肯定是最占用内存的。<br>接下来是hash，hash是就是可以存k-v对的字典，相当于可以把这几百万个k-v对都存到一个<strong>parent-key</strong>下面，有底层<strong>hashtable</strong>的支持也可以减少内存的占用。但这里也引出了二个新的问题：  </p>
+<ol>
+<li>如果几百万个k-v对都存到一个hash_key下面，那就会形成一个<strong>big key</strong>, big key在redis里是一个bad practise  </li>
+<li>redis本身提供了<strong>ziplist</strong>这样的数据结构，在hash中元素少于配置的<code>hash-max-ziplist-entries</code>时，就会采用ziplist来实现字典，ziplist要比hashtable省内存<br>这两个问题其实可以一起解决，创建很多的hash bucket，把key做一次mapping后，放进对应的hash bucket里，这样子既可以规避big key的问题，又可以使用ziplist，算是一个好的解决方案。  </li>
+</ol>
+<p>下面模拟<strong>100万</strong>的数据来做三个实验，redis版本是5.05，用python单线程生成uuid进行模拟写入</p>
+<h3 id="直接按string类型存放"><a href="#直接按string类型存放" class="headerlink" title="直接按string类型存放"></a>直接按string类型存放</h3><p>跑完100万个key之后，info里关于memory的部分是这样的：  </p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># Memory</span></span><br><span class="line"><span class="symbol">used_memory:</span><span class="number">73243224</span></span><br><span class="line"><span class="symbol">used_memory_human:</span><span class="number">69.85</span>M</span><br><span class="line"><span class="symbol">used_memory_rss:</span><span class="number">77819904</span></span><br><span class="line"><span class="symbol">used_memory_rss_human:</span><span class="number">74.21</span>M</span><br><span class="line"><span class="symbol">used_memory_peak:</span><span class="number">73260176</span></span><br><span class="line"><span class="symbol">used_memory_peak_human:</span><span class="number">69.87</span>M</span><br><span class="line"><span class="symbol">used_memory_peak_perc:</span><span class="number">99.98</span>%</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>redis分配了69.85M内存</p>
+<h3 id="按hash类型存放，放到一个key下面"><a href="#按hash类型存放，放到一个key下面" class="headerlink" title="按hash类型存放，放到一个key下面"></a>按hash类型存放，放到一个key下面</h3><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># Memory</span></span><br><span class="line"><span class="symbol">used_memory:</span><span class="number">81243552</span></span><br><span class="line"><span class="symbol">used_memory_human:</span><span class="number">77.48</span>M</span><br><span class="line"><span class="symbol">used_memory_rss:</span><span class="number">86122496</span></span><br><span class="line"><span class="symbol">used_memory_rss_human:</span><span class="number">82.13</span>M</span><br><span class="line"><span class="symbol">used_memory_peak:</span><span class="number">81258640</span></span><br><span class="line"><span class="symbol">used_memory_peak_human:</span><span class="number">77.49</span>M</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>redis分配了77.48M内存</p>
+<h3 id="按hash类型，分bucket存放"><a href="#按hash类型，分bucket存放" class="headerlink" title="按hash类型，分bucket存放"></a>按hash类型，分bucket存放</h3><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">used_memory:</span><span class="number">41935568</span></span><br><span class="line"><span class="symbol">used_memory_human:</span><span class="number">39.99</span>M</span><br><span class="line"><span class="symbol">used_memory_rss:</span><span class="number">54710272</span></span><br><span class="line"><span class="symbol">used_memory_rss_human:</span><span class="number">52.18</span>M</span><br><span class="line"><span class="symbol">used_memory_peak:</span><span class="number">81258640</span></span><br><span class="line"><span class="symbol">used_memory_peak_human:</span><span class="number">77.49</span>M</span><br><span class="line"><span class="symbol">used_memory_peak_perc:</span><span class="number">51.61</span>%</span><br></pre></td></tr></table></figure>
+<p>redis分配了39.99M内存</p>
+<p>从上面可以看出，直接存hash和存string相差无几，对于这种存储需求和结构，一开始的估计不是很准确。第三种方案是最省内存的。</p>
+<blockquote>
+<p>“Hashes, Lists, Sets composed of just integers, and Sorted Sets, when smaller than a given number of elements, and up to a maximum element size, are encoded in a very memory efficient way that uses up to 10 times less memory (with 5 time less memory used being the average saving)”</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/13/leetcode790-错位相减法对算法的优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2154,209 +2357,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/06/docker搭建并部署简单的LNMP环境(一)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhuye">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hello world">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/06/06/docker搭建并部署简单的LNMP环境(一)/" class="post-title-link" itemprop="url">docker搭建并部署LNMP环境(一)</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2016-06-06 23:59:59" itemprop="dateCreated datePublished" datetime="2016-06-06T23:59:59+08:00">2016-06-06</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2016-06-07 22:08:33" itemprop="dateModified" datetime="2016-06-07T22:08:33+08:00">2016-06-07</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">Comments: </span>
-                <a href="/2016/06/06/docker搭建并部署简单的LNMP环境(一)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/06/docker搭建并部署简单的LNMP环境(一)/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/2016/06/06/docker搭建并部署简单的LNMP环境(一)/" class="leancloud_visitors" data-flag-title="docker搭建并部署LNMP环境(一)">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>　　作为开发一直都想要一个自动化的集成环境解决方案，这样可以省去很多部署环境的时间，尽可能消除不同操作系统之间的差异。为了达到这个目的以前一直用的都是vagrant这套工具，但是vagrant从本质上说还是操作系统级别的虚拟机，只适合跑在本地。而且在繁琐地配置了几台vps后，更迫切地需要一个更轻量级的方案来优化一些开发工作。<br>　　docker作为一个能够提供容器级别的虚拟化的工具，可以很好的达到我的目的。docker作为一个前几年的新兴技术已经有越来越火的趋势，也有越来越多的公司把docker用于生产环境。于是就有了一个动手搭建一套基于docker的LNMP环境，下面做一些简单的记录和介绍：<br>　　docker官方所推崇的理念是单一进程容器，是与传统的把多个服务放在一个宿主机内的概念相对的一个思想。所以这一套最简单的LNMP架构，也可以拆分成三个不同的容器，并进行连接。官方也提供了相应的镜象。<br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/06/06/docker搭建并部署简单的LNMP环境(一)/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2403,7 +2403,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2752,9 +2752,9 @@
   
     
       
-        
-      
     
+      
+        
       
     
       
